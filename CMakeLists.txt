@@ -44,7 +44,7 @@ target_link_libraries(regionalizer gtest pthread)
 enable_testing()
 
 if(BUILD_TESTS)
-	#	add_subdirectory(regionalizerTests)
+	add_subdirectory(regionalizerTests)
 endif()
 
 
