@@ -3,7 +3,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/JaroslawWiosna/regionalizer.svg)](https://github.com/JaroslawWiosna/regionalizer/graphs/contributors)
 [![Travis status](https://travis-ci.org/JaroslawWiosna/regionalizer.svg)](https://travis-ci.org/JaroslawWiosna/regionalizer)
 [![Coverage Status](https://coveralls.io/repos/github/JaroslawWiosna/regionalizer/badge.svg)](https://coveralls.io/github/JaroslawWiosna/regionalizer)
-# regionalzier
+# regionalizier
 
 > TBD
 
