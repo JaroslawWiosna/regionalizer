@@ -23,19 +23,20 @@
 //#include <type_traits>
 
 struct geo_location{
-short int degrees;
-short int minutes;
-short int seconds;
-float int total_degrees_value;
+    short int degrees;
+    short int minutes;
+    short int seconds;
+    float total_degrees_value;
 };
 
-class Coordiantes{
-private geo_location width;
-private geo_location length;
-
-public Cooridinates(geo_location width,geo_location length):width(width),length(length);
-public float distanceFrom(Coordinates differentCity);
-}
+class Coordinates{
+  public: 
+    Coordinates(geo_location width,geo_location length);
+    float distanceFrom(Coordinates differentCity);
+  private:
+    geo_location width;
+    geo_location length;
+};
 
 #endif // COORDINATES_HPP
 
