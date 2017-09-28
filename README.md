@@ -10,6 +10,7 @@
   - [Overview](#overview)
   - [How to clone?](#how-to-clone)
   - [Algorithms](#algorithms)
+  - [Coding style](#coding-style)
   - [Special thanks to](#special-thanks-to)
 
 ---
@@ -40,6 +41,22 @@ git submodule update --init --recursive
 ## Algorithms
 
 > TBD
+
+---
+
+## Coding style
+
+### Naming convention
+
+> Use CamelCase
+
+### Spaces or tabs?
+
+> Use spaces only. 4 spaces per indentiation level.
+
+### Maximum line length
+
+> Limit is 79 characters per line.
 
 ---
 
