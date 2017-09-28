@@ -28,6 +28,7 @@ addons:
             - libgtest-dev
             - cmake
             - cmake-data
+            - lcov
 #            - libboost-all-dev
 
 before_script:
