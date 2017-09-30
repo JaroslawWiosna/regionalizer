@@ -1,4 +1,5 @@
 #include "FlagParser.hpp"
+#include "DatabaseReader.hpp"
 
 int main(int argc, char *argv[]) {
     FlagParser parser(argc, argv);
@@ -14,6 +15,15 @@ int main(int argc, char *argv[]) {
 	std::cout << "Aborting....";
 	std::cout << std::endl;
 	return -1;
+    }
+
+    std::string databaseFile{flags["-list"]};
+
+    auto vec = readCitiesFromFile(databaseFile);
+
+    for (City i : vec) {
+        std::cout << i.getAllFields();
+        std::cout << std::endl;
     }
 
     return 0;

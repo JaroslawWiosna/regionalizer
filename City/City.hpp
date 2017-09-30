@@ -41,6 +41,12 @@ class City{
     );
     
     double distanceFrom(City differentCity);
+    std::string getName();
+    std::size_t getArea();
+    std::size_t getPopulation();
+    std::string getLatitude();
+    std::string getLongitude();
+    std::string getAllFields();
   private:
     std::string name;
     std::size_t area;

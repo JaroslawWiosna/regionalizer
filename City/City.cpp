@@ -59,5 +59,39 @@ double City::distanceFrom(City differentCity) {
     return d;
 }
  
+std::string City::getName() {
+    return name;
+}
+
+std::size_t City::getArea() {
+    return area;
+}
+
+std::size_t City::getPopulation() {
+    return population;
+}
+
+std::string City::getLatitude() {
+    return latitude;
+}
+
+std::string City::getLongitude() {
+    return longitude;
+}
+
+std::string City::getAllFields() {
+    std::string res{};
+    res += name;
+    res += " ";
+    res += std::to_string(area);
+    res += " ";
+    res += std::to_string(population);
+    res += " ";
+    res += latitude;
+    res += " ";
+    res += longitude;
+    res += " ";
+    return res;
+}
 
 
