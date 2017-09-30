@@ -20,6 +20,7 @@
 //#include <utility>
 //#include <type_traits>
 #include <fstream>
+#include <sstream>
 #include "City.hpp"
 
 std::vector<City> readCitiesFromFile(std::string databaseFile);

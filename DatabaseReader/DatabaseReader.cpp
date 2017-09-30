@@ -13,19 +13,23 @@ std::vector<City> readCitiesFromFile(std::string databaseFile) {
     std::ifstream ifs;
     ifs.open(databaseFile, std::ifstream::in);
     std::string line{};
+    std::size_t len;
 
     while(std::getline(ifs, line)) {
         if (line[0] == '#') {
             continue;
 	}
-        std::size_t len{line.length()};
+	std::string lineToParse{line};
+        len = lineToParse.length();
+
         std::string::size_type posDelimiterCity = line.find('-');
         std::string name{line.substr(0, posDelimiterCity)};
-	// TODO: parse next params
-       /* 
-        std::string::size_type posDelimiterArea = line.find('-');
-        std::string area{line.substr(posDelimiterCity, posDelimiterArea)};
-*/
+	lineToParse = lineToParse.substr(posDelimiterCity, len);
+
+	// TODO: not working yet...
+//        std::string::size_type posDelimiterArea = lineToParse.find('-');
+//        std::string area{lineToParse.substr(posDelimiterCity, posDelimiterArea)};
+        //City city(name, std::stol(area), 0, name, name);
         City city(name, 0, 0, name, name);
 	vecOfCities.push_back(city);
     }
