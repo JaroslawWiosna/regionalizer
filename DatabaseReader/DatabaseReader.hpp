@@ -24,6 +24,6 @@
 #include "City.hpp"
 
 std::vector<City> readCitiesFromFile(std::string databaseFile);
-
+void split (std::string str, std::string splitBy, std::vector<std::string>& tokens);
 #endif // DATABASEREADER_HPP
 

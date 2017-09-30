@@ -13,27 +13,35 @@ std::vector<City> readCitiesFromFile(std::string databaseFile) {
     std::ifstream ifs;
     ifs.open(databaseFile, std::ifstream::in);
     std::string line{};
-    std::size_t len;
 
     while(std::getline(ifs, line)) {
         if (line[0] == '#') {
             continue;
 	}
-	std::string lineToParse{line};
-        len = lineToParse.length();
+        std::vector<std::string> params;
+	split(line, "-", params);
 
-        std::string::size_type posDelimiterCity = line.find('-');
-        std::string name{line.substr(0, posDelimiterCity)};
-	lineToParse = lineToParse.substr(posDelimiterCity, len);
-
-	// TODO: not working yet...
-//        std::string::size_type posDelimiterArea = lineToParse.find('-');
-//        std::string area{lineToParse.substr(posDelimiterCity, posDelimiterArea)};
-        //City city(name, std::stol(area), 0, name, name);
-        City city(name, 0, 0, name, name);
+        City city(params[0], params[1], params[2], params[3], params[4]);
 	vecOfCities.push_back(city);
     }
 
     return vecOfCities;
+}
+
+// TODO: move to separate file? utils perhaps?
+void split (std::string str, std::string splitBy, std::vector<std::string>& tokens) {
+    tokens.push_back(str);
+    std::size_t splitAt;
+    std::size_t splitLen = splitBy.size();
+    std::string frag;
+    while (true) {
+        frag = tokens.back();
+	splitAt = frag.find(splitBy);
+	if (splitAt == std::string::npos) {
+            break;
+        }
+	tokens.back() = frag.substr(0, splitAt);
+	tokens.push_back(frag.substr(splitAt+splitLen, frag.size()-(splitAt+splitLen)));
+    }
 }
 
