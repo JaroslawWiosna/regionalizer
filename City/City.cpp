@@ -22,6 +22,20 @@ City::City(std::string name,
 	    longitude{longitude} {
 
 }
+
+City::City(std::string name,
+        std::string area,
+        std::string population,
+        std::string latitude,
+        std::string longitude) : 
+            name{name},
+	    area{0},
+	    population{0},
+	    latitude{latitude},
+	    longitude{longitude} {
+    area = std::stoi(area);
+    population = std::stoi(population);
+}
     
 double City::distanceFrom(City differentCity) {
    // below we have Coordinates as decimal values
@@ -59,5 +73,39 @@ double City::distanceFrom(City differentCity) {
     return d;
 }
  
+std::string City::getName() {
+    return name;
+}
+
+std::size_t City::getArea() {
+    return area;
+}
+
+std::size_t City::getPopulation() {
+    return population;
+}
+
+std::string City::getLatitude() {
+    return latitude;
+}
+
+std::string City::getLongitude() {
+    return longitude;
+}
+
+std::string City::getAllFields() {
+    std::string res{};
+    res += name;
+    res += " ";
+    res += std::to_string(area);
+    res += " ";
+    res += std::to_string(population);
+    res += " ";
+    res += latitude;
+    res += " ";
+    res += longitude;
+    res += " ";
+    return res;
+}
 
 
