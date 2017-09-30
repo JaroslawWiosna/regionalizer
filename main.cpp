@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
     std::string databaseFile{flags["-list"]};
 
-    auto vec = readCitiesFromFile(databaseFile);
+    auto vec = DatabaseReader::readCitiesFromFile(databaseFile);
 
     for (City i : vec) {
         std::cout << i.getAllFields();

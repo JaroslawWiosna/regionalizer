@@ -23,7 +23,12 @@
 #include <sstream>
 #include "City.hpp"
 
+namespace DatabaseReader {
+
 std::vector<City> readCitiesFromFile(std::string databaseFile);
 void split (std::string str, std::string splitBy, std::vector<std::string>& tokens);
+
+}
+
 #endif // DATABASEREADER_HPP
 

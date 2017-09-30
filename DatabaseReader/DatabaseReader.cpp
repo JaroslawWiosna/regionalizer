@@ -8,6 +8,8 @@
 
 #include "DatabaseReader.hpp"
 
+namespace DatabaseReader {
+
 std::vector<City> readCitiesFromFile(std::string databaseFile) {
     std::vector<City> vecOfCities;
     std::ifstream ifs;
@@ -43,5 +45,7 @@ void split (std::string str, std::string splitBy, std::vector<std::string>& toke
 	tokens.back() = frag.substr(0, splitAt);
 	tokens.push_back(frag.substr(splitAt+splitLen, frag.size()-(splitAt+splitLen)));
     }
+}
+
 }
 
