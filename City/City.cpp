@@ -19,7 +19,8 @@ City::City(std::string name,
 	    area{area},
 	    population{population},
 	    latitude{latitude},
-	    longitude{longitude} {
+	    longitude{longitude},
+            distanceToTheFarthest{0} {
 
 }
 
@@ -32,7 +33,8 @@ City::City(std::string name,
 	    area{0},
 	    population{0},
 	    latitude{latitude},
-	    longitude{longitude} {
+	    longitude{longitude},
+            distanceToTheFarthest{0} {
     area = std::stoi(area);
     population = std::stoi(population);
 }
@@ -72,7 +74,11 @@ double City::distanceFrom(City differentCity) {
 
     return d;
 }
- 
+
+void City::setDistanceToTheFarthest(std::size_t distance) {
+    distanceToTheFarthest = distance;
+}
+
 std::string City::getName() {
     return name;
 }
@@ -105,6 +111,8 @@ std::string City::getAllFields() {
     res += " ";
     res += longitude;
     res += " ";
+    res += distanceToTheFarthest;
+    res += " ;";
     return res;
 }
 
