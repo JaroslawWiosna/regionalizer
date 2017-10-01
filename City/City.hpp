@@ -29,8 +29,8 @@ class City{
         area{0},
 	population{0},
 	latitude{"30N40'40''"},
-	longitude{"15E0'0''"} {
-
+	longitude{"15E0'0''"},
+        distanceToTheFarthest{0} {
     }
     
     City(std::string name,
@@ -48,11 +48,13 @@ class City{
     );
     
     double distanceFrom(City differentCity);
+    void setDistanceToTheFarthest(std::size_t distance);
     std::string getName();
     std::size_t getArea();
     std::size_t getPopulation();
     std::string getLatitude();
     std::string getLongitude();
+    std::size_t getDistanceToTheFarthest();
     std::string getAllFields();
   private:
     std::string name;
@@ -60,6 +62,7 @@ class City{
     std::size_t population;
     std::string latitude;
     std::string longitude;
+    std::size_t distanceToTheFarthest;
 };
 
 #endif // CITY_HPP

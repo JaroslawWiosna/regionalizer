@@ -19,7 +19,8 @@ City::City(std::string name,
 	    area{area},
 	    population{population},
 	    latitude{latitude},
-	    longitude{longitude} {
+	    longitude{longitude},
+            distanceToTheFarthest{0} {
 
 }
 
@@ -32,9 +33,10 @@ City::City(std::string name,
 	    area{0},
 	    population{0},
 	    latitude{latitude},
-	    longitude{longitude} {
-    area = std::stoi(area);
-    population = std::stoi(population);
+	    longitude{longitude},
+            distanceToTheFarthest{0} {
+    this->area = std::stoi(area);
+    this->population = std::stoi(population);
 }
     
 double City::distanceFrom(City differentCity) {
@@ -50,10 +52,10 @@ double City::distanceFrom(City differentCity) {
    // TODO: convert this->longitude to Alon
    // TODO: convert differentCity.latitude to Blat
    // TODO: convert differentCity.latitude to Blon
-    double Alat = 51.75;
-    double Alon = 19.49; //19deg 27' 17''
-    double Blat = 51.24; // 51deg 13' 56''
-    double Blon = 21.01; //21deg 00' 30''
+    double Alat = std::stod(this->latitude);
+    double Alon = std::stod(this->longitude); 
+    double Blat = std::stod(differentCity.latitude);
+    double Blon = std::stod(differentCity.longitude);
 
     constexpr double R = 6371;
     // TODO: implement generic function for radian conversion
@@ -72,7 +74,11 @@ double City::distanceFrom(City differentCity) {
 
     return d;
 }
- 
+
+void City::setDistanceToTheFarthest(std::size_t distance) {
+    distanceToTheFarthest = distance;
+}
+
 std::string City::getName() {
     return name;
 }
@@ -93,6 +99,10 @@ std::string City::getLongitude() {
     return longitude;
 }
 
+std::size_t City::getDistanceToTheFarthest() {
+    return distanceToTheFarthest;
+}
+
 std::string City::getAllFields() {
     std::string res{};
     res += name;
@@ -105,6 +115,8 @@ std::string City::getAllFields() {
     res += " ";
     res += longitude;
     res += " ";
+    res += std::to_string(distanceToTheFarthest);
+    res += " ;";
     return res;
 }
 
