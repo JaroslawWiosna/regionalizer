@@ -32,12 +32,19 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILE_FLAGS}" )
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 
-include_directories( Coordinates City FlagParser DatabaseReader )
+include_directories( 
+  Coordinates 
+  City 
+  FlagParser 
+  DatabaseReader 
+  Gnuplot
+)
 set(files
   Coordinates/Coordinates.cpp
   City/City.cpp
   FlagParser/FlagParser.cpp
   DatabaseReader/DatabaseReader.cpp
+  Gnuplot/Gnuplot.cpp
 )
 
 project (regionalizer)

@@ -1,5 +1,6 @@
 #include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
+#include "Gnuplot.hpp"
 
 int main(int argc, char *argv[]) {
     // Part 1 - start - parse argv and get databaseFile
@@ -79,6 +80,8 @@ int main(int argc, char *argv[]) {
         std::cout << std::endl;
     }
 
+    // Part <last> - start - save to gnuplot.
+    Gnuplot::saveDummyPlot();
 
     return 0;
 }    
