@@ -54,6 +54,7 @@ class City{
     std::size_t getPopulation();
     std::string getLatitude();
     std::string getLongitude();
+    std::size_t getDistanceToTheFarthest();
     std::string getAllFields();
   private:
     std::string name;
