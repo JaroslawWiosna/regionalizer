@@ -26,7 +26,7 @@
 namespace VectorOfCities {
 
 void setDistanceToTheFarthestInTheWholeVector(std::vector<City>& vec);
-
+void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec);
 }
 
 #endif // VECTOROFCITIES_HPP
