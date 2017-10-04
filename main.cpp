@@ -1,5 +1,6 @@
 #include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
+#include "Gnuplot.hpp"
 #include "VectorOfCities.hpp"
 
 int main(int argc, char *argv[]) {
@@ -49,5 +50,7 @@ int main(int argc, char *argv[]) {
     // Formula: HL = 10 - ((distanceFrom(capital) / distanceToTheFarthest)*10)
     VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(vec);
     // Part 4 - end
+    // Part <last> - start - save to gnuplot.
+    Gnuplot::saveDummyPlot();
     return 0;
 }    
