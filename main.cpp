@@ -1,5 +1,6 @@
 #include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
+#include "VectorOfCities.hpp"
 
 int main(int argc, char *argv[]) {
     // Part 1 - start - parse argv and get databaseFile
@@ -31,18 +32,7 @@ int main(int argc, char *argv[]) {
     // Part 2 - end
     // Part 3 - start - calculate distance from one city to the farthest
     
-    for (City& i : vec) {
-	//std::size_t farthestDistanceSoFar{};
-	double farthestDistanceSoFar{};
-        for (City j : vec) {
-	    //std::size_t tmp = i.distanceFrom(j);
-	    double tmp = i.distanceFrom(j);
-	    if (tmp > farthestDistanceSoFar) {
-                farthestDistanceSoFar = tmp;
-	    }
-	}
-        i.setDistanceToTheFarthest(farthestDistanceSoFar);	
-    }
+    VectorOfCities::setDistanceToTheFarthestInTheWholeVector(vec);
 
     for (City i : vec) {
         std::cout << i.getAllFields();
