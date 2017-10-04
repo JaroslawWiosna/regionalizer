@@ -34,7 +34,8 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 
 include_directories( 
   Coordinates 
-  City 
+  City
+  VectorOfCities
   FlagParser 
   DatabaseReader 
   Gnuplot
@@ -42,6 +43,7 @@ include_directories(
 set(files
   Coordinates/Coordinates.cpp
   City/City.cpp
+  VectorOfCities/VectorOfCities.cpp
   FlagParser/FlagParser.cpp
   DatabaseReader/DatabaseReader.cpp
   Gnuplot/Gnuplot.cpp
