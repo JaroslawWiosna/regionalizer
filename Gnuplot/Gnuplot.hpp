@@ -12,6 +12,7 @@
 #define GNUPLOT_HPP
 
 #include <iostream>
+#include <fstream>
 //#include <list>
 //#include <cfloat> // FLT_MIN
 //#include <cmath> // abs
