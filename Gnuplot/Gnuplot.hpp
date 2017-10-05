@@ -12,6 +12,7 @@
 #define GNUPLOT_HPP
 
 #include <iostream>
+#include <fstream>
 //#include <list>
 //#include <cfloat> // FLT_MIN
 //#include <cmath> // abs
@@ -21,10 +22,12 @@
 //#include <memory>
 //#include <utility>
 //#include <type_traits>
+#include <stdlib.h>
 
 namespace Gnuplot {
 
 void saveDummyPlot();
+bool isGnuplotInstalledOnHost();
 
 }
 
