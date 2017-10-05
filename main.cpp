@@ -1,5 +1,6 @@
 #include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
+#include "help.txt.hpp"
 
 int main(int argc, char *argv[]) {
     // Part 1 - start - parse argv and get databaseFile
@@ -13,7 +14,7 @@ int main(int argc, char *argv[]) {
     } else {
 	std::cout << "Help found, so I am about to print help...";	
 	std::cout << std::endl;
-// TODO: print the content of help.txt
+        std::cout << ___help_txt;
 	std::cout << "Aborting....";
 	std::cout << std::endl;
 	return -1;
@@ -27,7 +28,7 @@ int main(int argc, char *argv[]) {
 	std::cout << "Aborting....";
 	std::cout << std::endl;
 	return -1;
-    }
+    } 
 
     std::string databaseFile{flags["-list"]};
     // Part 1 - end

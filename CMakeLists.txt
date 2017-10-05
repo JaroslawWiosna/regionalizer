@@ -40,8 +40,21 @@ set(files
   DatabaseReader/DatabaseReader.cpp
 )
 
+######
+
+SET(RESOURCE_COMPILER xxd)
+  SET(INPUT_FILE "../help.txt")
+  SET(OUTPUT_FILE ${INPUT_FILE}.hpp)
+  ADD_CUSTOM_COMMAND(
+    OUTPUT ${OUTPUT_FILE}
+    COMMAND ${RESOURCE_COMPILER} -i ${INPUT_FILE} ${OUTPUT_FILE}
+    COMMENT "Compiling ${INPUT_FILE} (text file) to hpp")
+  LIST(APPEND COMPILED_RESOURCES ${OUTPUT_FILE})
+
+######
+
 project (regionalizer)
-add_executable(regionalizer main.cpp ${files}) 
+add_executable(regionalizer main.cpp ${files} ${COMPILED_RESOURCES}) 
 include_directories(${GTEST_INCLUDE_DIRS})
 target_link_libraries(regionalizer gtest pthread)
 
