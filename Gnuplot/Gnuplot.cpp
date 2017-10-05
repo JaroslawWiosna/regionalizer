@@ -16,5 +16,9 @@ void saveDummyPlot() {
     std::cout << "saveDummyPlot\n";
 }
 
+bool isGnuplotInstalledOnHost() {
+    return ( 0 == system("gnuplot --version") ? true : false );
+}
+
 }
 

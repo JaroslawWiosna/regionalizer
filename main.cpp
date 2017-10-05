@@ -51,6 +51,12 @@ int main(int argc, char *argv[]) {
     VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(vec);
     // Part 4 - end
     // Part <last> - start - save to gnuplot.
+    if (!Gnuplot::isGnuplotInstalledOnHost()) {
+        std::cout << "Gnuplot is not installed on host";
+        std::cout << std::endl;
+        std::cout << "Aborting...";
+	return -1;
+    }
     Gnuplot::saveDummyPlot();
     return 0;
 }    

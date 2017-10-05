@@ -21,10 +21,12 @@
 //#include <memory>
 //#include <utility>
 //#include <type_traits>
+#include <stdlib.h>
 
 namespace Gnuplot {
 
 void saveDummyPlot();
+bool isGnuplotInstalledOnHost();
 
 }
 
