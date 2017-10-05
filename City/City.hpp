@@ -24,6 +24,10 @@
 
 class City{
   public: 
+/** 
+ * @brief explicit Ctor with empty name, zero area and zero population,
+ * some dummy coordinates. Never meant to be used..., for now.
+ */ 
     explicit City() : 
         name{""}, 
         area{0},
@@ -32,14 +36,42 @@ class City{
 	longitude{"15E0'0''"},
         distanceToTheFarthest{0} {
     }
-    
+
+/**
+ * @brief Secondary ctor of Class City.
+ * That is because of area and population types which is arithmetic here.
+ * Mainly Cities are constructed based on std::string as area and population
+ * types.
+ *
+ * @param[in] name
+ * @param[in] area
+ * @param[in] population
+ * @param[in] latitude
+ * @param[in] longitude
+ */
     City(std::string name,
         std::size_t area,
         std::size_t population,
         std::string latitude,
         std::string longitude
     );
-     
+
+/** 
+ * @brief Primary ctor of Class City
+ * Every single one of arguments are std::string
+ * area and population fields are arithmetic, so conversion is needed.
+ * distanceToTheFarthest is set to zero, because when object is created 
+ * we know nothing about other cities. Implicitly, we are assuming that
+ * `this` city is one and only in the world.
+ * Later, when vector of Cities is introduced distanceToTheFarthest will be 
+ * updated
+ *
+ * @param[in] name
+ * @param[in] area
+ * @param[in] population
+ * @param[in] latitude
+ * @param[in] longitude
+ */
     City(std::string name,
         std::string area,
         std::string population,
@@ -47,14 +79,59 @@ class City{
         std::string longitude
     );
     
+ /**
+  * @brief Calculate distance to other city
+  * The algorithm inside is a kind of magic.
+  * @todo TODO: the algorithm inside needs to be documented.
+  *
+  * @param[in] City differentCity
+  *
+  * @return distance in kilometers
+  */
     double distanceFrom(City differentCity);
+ 
+ /**
+  * @brief distanceToTheFarthest setter
+  *
+  * @param[in] std::size_t distance
+  *
+  * @return nothing
+  */
     void setDistanceToTheFarthest(std::size_t distance);
+
+ /**
+  * @brief  getter
+  */
     std::string getName();
+
+ /**
+  * @brief  getter
+  */
     std::size_t getArea();
+
+ /**
+  * @brief  getter
+  */
     std::size_t getPopulation();
+
+ /**
+  * @brief  getter
+  */
     std::string getLatitude();
+
+ /**
+  * @brief  getter
+  */
     std::string getLongitude();
+
+ /**
+  * @brief  getter
+  */
     std::size_t getDistanceToTheFarthest();
+
+ /**
+  * @brief  getter
+  */
     std::string getAllFields();
   private:
     std::string name;
