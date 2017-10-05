@@ -9,6 +9,7 @@
 
   - [Overview](#overview)
   - [How to clone?](#how-to-clone)
+  - [How to generate doxygen documentation?](#how-to-generate-doxygen-documentation)
   - [Algorithms](#algorithms)
   - [Coding style](#coding-style)
   - [Special thanks to](#special-thanks-to)
@@ -35,6 +36,15 @@ git submodule update --init --recursive
 ```
 
 [Thanks to mklement0](https://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules)
+
+---
+
+## How to generate doxygen documentation?
+
+```sh
+doxygen doxygenConfigurationFile
+```
+...then please find `index.html` in `html` directory.
 
 ---
 
