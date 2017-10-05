@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     parser.printFlags();
     auto flags = parser.getFlags();
 
-    if (flags.find("--help")  == flags.end()) {
+    if (parser.hasKey("--help")) {
 	std::cout << "Help not found, so moving on...";	
 	std::cout << std::endl;
     } else {
