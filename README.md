@@ -73,3 +73,8 @@ doxygen doxygenConfigurationFile
 ## Special thanks to
 https://gronlier.fr/blog/2015/01/adding-code-coverage-to-your-c-project/
 
+
+## Creating database using city_update_tool
+
+Run in java eclipse: file `city_update tool` to get text file `cities_data_pre_parsed` with cites name, area(km^2) and population
+Now run in java eclipse: file `city_update tool2` to get full city database text file `cities_data` containg data from `cities_data_pre_parsed` with additional cities longitude and latitude.
