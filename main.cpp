@@ -13,6 +13,7 @@
 #include "DatabaseReader.hpp"
 #include "Gnuplot.hpp"
 #include "VectorOfCities.hpp"
+#include "help.txt.hpp"
 
 int main(int argc, char *argv[]) {
     // Part 1 - start - parse argv and get databaseFile
@@ -20,6 +21,17 @@ int main(int argc, char *argv[]) {
     parser.printFlags();
     auto flags = parser.getFlags();
 
+    if (parser.hasKey("--help")) {
+	std::cout << "Help not found, so moving on...";	
+	std::cout << std::endl;
+    } else {
+	std::cout << "Help found, so I am about to print help...";	
+	std::cout << std::endl;
+        std::cout << ___help_txt;
+	std::cout << "Aborting....";
+	std::cout << std::endl;
+	return -1;
+    }
     if (!flags["-list"].empty()) {
         std::cout << "Great! " << flags["-list"] << " is being processed";
 	std::cout << std::endl;
@@ -29,7 +41,7 @@ int main(int argc, char *argv[]) {
 	std::cout << "Aborting....";
 	std::cout << std::endl;
 	return -1;
-    }
+    } 
 
     std::string databaseFile{flags["-list"]};
     // Part 1 - end

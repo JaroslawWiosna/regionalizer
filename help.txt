@@ -1,0 +1,23 @@
++-----------------------------------------------------------------------------+
+|                          R E G I O N A L I Z E R                            |
++-----------------------------------------------------------------------------+
+
+    USAGE:
+
+    ./regionalizer -list [path to database file]
+
+i.e.:
+    ./regionalizer -list ../database/file.txt
+
+    LIST OF ...:
+
+    -list [path to the database file]
+    
+    Parses the file and outputs TBD
+
+
+    --help
+
+    Prints this very manual and terminates
+
+
