@@ -26,9 +26,10 @@ void setDistanceToTheFarthestInTheWholeVector(std::vector<City>& vec) {
 }
 
 void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){ 
+    std::string bestCapitalSoFar{};
+    std::size_t bestHLsoFar{};
     for (City i : vec) {
-        std::cout << "The capital is " << i.getName();
-        std::cout << std::endl;
+        std::cout << " " << i.getName() << "\t";
 	std::size_t hl{}; // happiness level
         for (City j : vec) {
 	    std::size_t tmp = (10.0 - ((static_cast<double>(j.distanceFrom(i)) / 
@@ -37,8 +38,17 @@ void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){
 	}
 	std::cout << "Happiness level = " << hl;
         std::cout << std::endl;
-        std::cout << std::endl;
+        if (hl > bestHLsoFar) {
+	    bestHLsoFar = hl;
+	    bestCapitalSoFar = i.getName();
+	}
     }
+    std::cout << std::endl;
+    std::cout << "The best capital would be  " << bestCapitalSoFar;
+    std::cout << std::endl;
+    std::cout << "Happiness level = " << bestHLsoFar;
+    std::cout << std::endl;
+
 }
 
 } // namespace
