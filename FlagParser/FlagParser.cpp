@@ -85,6 +85,10 @@ void FlagParser::printFlags() {
     }
 }
 
+bool FlagParser::hasKey(std::string key) {
+    return (flags.find(key) == flags.end());
+}
+
 std::map<std::string, std::string> FlagParser::getFlags() {
     return flags;
 }
