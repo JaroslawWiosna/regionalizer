@@ -14,28 +14,63 @@ namespace Gnuplot {
 
 void saveDummyPlot() {
     std::cout << "saveDummyPlot\n";
-    std::ofstream dummyPlot;
-    dummyPlot.open("dummyPlot.gnu");
+    std::ofstream script;
+    script.open("script.gnu");
 
-    dummyPlot << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
-    dummyPlot << std::endl;
-    dummyPlot << "set output 'dummyPlot.png'";
-    dummyPlot << std::endl;
-    dummyPlot << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
-    dummyPlot << std::endl;
-    dummyPlot << "set samples 50, 50";
-    dummyPlot << std::endl;
-    dummyPlot << "plot [-10:10] sin(x),atan(x),cos(atan(x))";
-    dummyPlot << std::endl;
+    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
+    script << std::endl;
+    script << "set output 'script.png'";
+    script << std::endl;
+    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << std::endl;
+    script << "set samples 50, 50";
+    script << std::endl;
+    script << "plot [-10:10] sin(x),atan(x),cos(atan(x))";
+    script << std::endl;
 
-    dummyPlot.close();
-    system( "gnuplot dummyPlot.gnu" );
-    system( "rm -f dummyPlot.gnu" );
+    script.close();
+    system( "gnuplot script.gnu" );
+    system( "rm -f script.gnu" );
 }
 
 bool isGnuplotInstalledOnHost() {
     return ( 0 == system("gnuplot --version") ? true : false );
 }
+
+void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
+    std::ofstream data;
+    data.open("HappinessLevel-onlyOneRegion.dat");
+    for (const City& i : vec) {
+        data << i.getLatitude();
+	data << " ";
+        data << i.getLongitude();
+	data << " ";
+	data << "345345345";
+	data << std::endl;
+    }
+    data.close();
+
+    std::ofstream script;
+    script.open("HappinessLevel-onlyOneRegion.gnu");
+    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
+    script << std::endl;
+    script << "set output 'HappinessLevel-onlyOneRegion.png'";
+    script << std::endl;
+    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << std::endl;
+    script << "set title \"HL\"";
+    script << std::endl;
+    script << "splot 'HappinessLevel-onlyOneRegion.dat'";
+    script << std::endl;
+    script << "set output";
+    script << std::endl;
+
+    script.close();
+    system( "gnuplot HappinessLevel-onlyOneRegion.gnu" );
+    system( "rm -f HappinessLevel-onlyOneRegion.gnu" );
+    system( "rm -f HappinessLevel-onlyOneRegion.dat" );
+}    
+
 
 }
 

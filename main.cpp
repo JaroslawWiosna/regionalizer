@@ -81,5 +81,6 @@ int main(int argc, char *argv[]) {
 	return -1;
     }
     Gnuplot::saveDummyPlot();
+    Gnuplot::plotHappinessLevelWhenWeHaveOnlyOneRegion(vec);
     return 0;
 }    
