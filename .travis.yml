@@ -40,6 +40,8 @@ script:
     - cmake -DBUILD_TESTS=ON -DBUILD_LONG_RUNNING_TESTS=ON ..
     - make
     - make test
+    - ./regionalizer -list ../database/Poland-Cities010-Top10-mock.txt
+    - ./regionalizer -list ../database/cities_data
 
 after_success:
     - cd ${TRAVIS_BUILD_DIR} 
