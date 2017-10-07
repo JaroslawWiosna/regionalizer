@@ -91,11 +91,11 @@ std::size_t City::getPopulation() {
     return population;
 }
 
-std::string City::getLatitude() {
+std::string City::getLatitude() const {
     return latitude;
 }
 
-std::string City::getLongitude() {
+std::string City::getLongitude() const {
     return longitude;
 }
 

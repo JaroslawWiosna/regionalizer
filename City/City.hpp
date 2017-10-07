@@ -118,12 +118,12 @@ class City{
  /**
   * @brief  getter
   */
-    std::string getLatitude();
+    std::string getLatitude() const;
 
  /**
   * @brief  getter
   */
-    std::string getLongitude();
+    std::string getLongitude() const;
 
  /**
   * @brief  getter

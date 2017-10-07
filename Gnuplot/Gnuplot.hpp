@@ -17,17 +17,19 @@
 //#include <cfloat> // FLT_MIN
 //#include <cmath> // abs
 //#include <algorithm>
-//#include <vector>
+#include <vector>
 #include <string>
 //#include <memory>
 //#include <utility>
 //#include <type_traits>
 #include <stdlib.h>
+#include "City.hpp"
 
 namespace Gnuplot {
 
 void saveDummyPlot();
 bool isGnuplotInstalledOnHost();
+void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec);
 
 }
 
