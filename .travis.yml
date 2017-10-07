@@ -28,6 +28,7 @@ addons:
             - libgtest-dev
             - cmake
             - cmake-data
+            - gnuplot
 #            - lcov
 #            - libboost-all-dev
 
