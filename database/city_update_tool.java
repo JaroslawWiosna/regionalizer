@@ -1,20 +1,21 @@
 package cities_updater_tool;
 
 /**
- * @brief creates database of cities in poland with their name, area and population number
+ * @brief creates database of cities in Poland with their name, area and population number
  * 
- * @condition_on_start webpage we use https://pl.wikipedia.org/wiki/Miasta_w_Polsce_(statystyki) must exist 
+ * @condition_on_start web-page we use https://pl.wikipedia.org/wiki/Miasta_w_Polsce_(statystyki) must exist 
  * 					   and contains useful for this method informations
  * 
- * @way_of_working Open the webpage and adds the cities from the webpage to the file.  		
- * 				   It does that by cutting the needed values from the web html.
+ * @way_of_working Open the web-page and adds the cities from the web-page to the file.  		
+ * 				   It does that by cutting the needed values from the web html. It also
+ * 				   remove polish letters from the cities names.
  * @authors Wojciech Mielczarek
  * @authors Jaroslaw Wiosna
  * 
  * @todo TODOs are in city_updater_tool todo
  * 
  * @condition_on_stop creates final file cities_data_pre_parsed.txt with all cities that he founds the coordinates for, 
- * 					  on the given webpage
+ * 					  on the given web-page
  */
 
 import java.io.FileNotFoundException;
@@ -24,8 +25,20 @@ import java.io.InputStreamReader;
 import java.net.URL; 
 import java.net.URLConnection;
 
+
 // not working so far
 public class city_update_tool {
+	public static String cutTheNameFromString(int location_of_the_city_name_in_table,String... list){
+		String list2[]=list[location_of_the_city_name_in_table].split("<");
+		String city_name=list2[0];
+		//removing polish letters
+		final char list_of_letters_to_replace[]={'Ą','ą','Ć','ć','Ę','ę','Ł','ł','Ń','ń','Ó','ó','Ś','ś','Ź','ź','Ż','ż'};
+		final char list_of_letters_for_replacment[]={'A','a','C','c','E','e','L','l','N','n','O','o','S','s','Z','z','Z','z'};
+		for(int i=0;i<list_of_letters_to_replace.length;i++)
+			city_name=city_name.replace(list_of_letters_to_replace[i], list_of_letters_for_replacment[i]);
+		return city_name;
+	}
+
 	public static void main(String[] args) {
 		String city_argument_splitter="|";
 		try {
@@ -44,17 +57,20 @@ public class city_update_tool {
 					linecount++;
 					if(linecount==2||linecount==3)continue;
 				}           
-					if(start_writing&&(inputLine.contains("title=")||inputLine.contains("tabela-liczba"))){
+				if(start_writing&&(inputLine.contains("title=")||inputLine.contains("tabela-liczba"))){
 					String list[]=inputLine.split(">");
+					//city name
 					if(linecount==1){
-						if(inputLine.contains("<b>")&&inputLine.contains("<i>")){String list2[]=list[4].split("<"); writeToFile+=list2[0]+city_argument_splitter;}
-						else if(inputLine.contains("<b>")){String list2[]=list[3].split("<"); writeToFile+=list2[0]+city_argument_splitter;}
-						else {String list2[]=list[2].split("<"); writeToFile+=list2[0]+city_argument_splitter;}
-						}
+						if(inputLine.contains("<b>")&&inputLine.contains("<i>")){ writeToFile+=cutTheNameFromString(4,list)+city_argument_splitter;}
+						else if(inputLine.contains("<b>")){writeToFile+=cutTheNameFromString(3,list)+city_argument_splitter;}
+						else {writeToFile+=cutTheNameFromString(2,list)+city_argument_splitter;}
+					}
 					if(linecount==4||linecount==5){ 
-						String list2[]=list[1].split("<"); 
+						String list2[]=list[1].split("<");
+						//area
 						if(linecount==4)
 							writeToFile+=(list2[0]+city_argument_splitter);
+						//population
 						else if(linecount==5){
 							String list3[]=list2[0].split("&");
 							String list4[]=list2[0].split(";");
@@ -62,11 +78,11 @@ public class city_update_tool {
 								String list5[]=list3[1].split(";");
 								Integer liczbaludnosc=0;
 								if(list4.length==2)liczbaludnosc = Integer.parseInt(list3[0])*1000+
-														Integer.parseInt(list4[1]);
+										Integer.parseInt(list4[1]);
 								if(list4.length==3)liczbaludnosc = Integer.parseInt(list3[0])*1000000+
 										1000*Integer.parseInt(list5[1])+Integer.parseInt(list4[2]);
 								writeToFile+=(liczbaludnosc.toString());
-								} 
+							} 
 							else writeToFile+=(list2[0]);
 							zapis.println(writeToFile);
 							writeToFile="";}
