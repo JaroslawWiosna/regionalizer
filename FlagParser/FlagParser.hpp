@@ -26,6 +26,7 @@ class FlagParser {
     ~FlagParser();
     void parse(std::vector<std::string> vargv);
     void printFlags();
+    bool hasKey(std::string key);
     std::map<std::string, std::string> getFlags();
 };
 
