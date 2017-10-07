@@ -67,7 +67,7 @@ public class city_update_tool2 {
 			URL cities_cooridnates = new URL("http://astronomia.zagan.pl/art/wspolrzedne.html");
 			URLConnection connection = cities_cooridnates.openConnection();
 			BufferedReader web_data = new BufferedReader(new InputStreamReader(connection.getInputStream(), "iso-8859-2"));
-			String city_file_inputLine, web_page_inputLine;
+			String city_file_inputLine, web_page_inputLine,latitude="",longitiude="";
 			File cities_data_pre_parsed;
 			Scanner read = null;
 			try {
@@ -84,24 +84,24 @@ public class city_update_tool2 {
 				boolean element_found=false;
 
 				while (((web_page_inputLine = web_data.readLine()) != null)) { 
-					if(web_page_inputLine.contains("META"))continue;
+					if(web_page_inputLine.contains("META")||web_page_inputLine.contains("HEAD"))continue;
 					if(web_page_inputLine.contains(city_args[0])){
-						System.out.println(web_page_inputLine);
 						String arg_list[]=web_page_inputLine.split(" ");
 						int coordinate_numbers=0;
-						//if(web_page_inputLine.contains("Alwernia"))for(String element : arg_list)System.out.print(element); //left in case of error investigation
+					//	if(web_page_inputLine.contains("Alwernia"))for(String element : arg_list)System.out.print(element); //left in case of error investigation
 						for(String element : arg_list){
 							if(element.contains("0")||element.contains("1")||element.contains("2")
 									||element.contains("3")||element.contains("4")||element.contains("5")
 									||element.contains("6")||element.contains("8")||element.contains("9")){
 								element= remove_direction_and_change_to_decimal(element);
 								switch(coordinate_numbers){
-								case 0: {coordinates+=element+city_argument_splitter;break;}
-								case 1: {coordinates+=element;break;}
+								case 0: {longitiude=element;break;}
+								case 1: {latitude=element;break;}
 								}
 								coordinate_numbers++;
 							}
 						}
+						coordinates=latitude+city_argument_splitter+longitiude;
 						element_found=true;
 					}
 					if(element_found) break;

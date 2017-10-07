@@ -1,5 +1,0 @@
-# Lines started with hash will be ignored...
-# Values are separated by hyphen-minus sign U+002D
-# City name - Area - Population - Latitude - Longitude
-Warsaw - 517.24 - 1753977 - 21N00'30'' - 52E
-Lodz - 293.25 - 696000 - 19N15'00'' - 51E30'00''
