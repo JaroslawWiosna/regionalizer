@@ -1,14 +1,14 @@
 # Lines started with hash will be ignored...
-# Values are separated by hyphen-minus sign U+002D
+# Values are separated by pipe sign "|"
 # Based on http://www.geonames.org/PL/largest-cities-in-poland.html 
-# City name - Area - Population - Latitude - Longitude
-Warsaw - 517.24 - 1702139 - 52.23 - 21.012
-Lodz - 293.25 - 768755 - 51.75 - 19.467
-Krakow - 250 - 755050 - 50.061 - 19.937
-Wroclaw - 250 - 632893 - 51.1 - 17.033
-Poznan - 250 - 570352 - 52.407 - 16.93
-Gdansk - 250 - 461865 - 54.352 - 18.646
-Szczecin - 250 - 407811 - 53.429 - 14.553
-Bydgoszcz - 250 - 366452 - 53.123 - 18.008
-Lublin - 250 - 360044 - 51.25 - 22.567
-Katowice - 250 - 317316 - 50.258 - 19.028
+# City name|Area|Population|Latitude|Longitude
+Warsaw|517.24|1702139|52.23|21.012
+Lodz|293.25|768755|51.75|19.467
+Krakow|250|755050|50.061|19.937
+Wroclaw|250|632893|51.1|17.033
+Poznan|250|570352|52.407|16.93
+Gdansk|250|461865|54.352|18.646
+Szczecin|250|407811|53.429|14.553
+Bydgoszcz|250|366452|53.123|18.008
+Lublin|250|360044|51.25|22.567
+Katowice|250|317316|50.258|19.028

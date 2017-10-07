@@ -21,7 +21,7 @@ std::vector<City> readCitiesFromFile(std::string databaseFile) {
             continue;
 	}
         std::vector<std::string> params;
-	split(line, "-", params);
+	split(line, "|", params);
 
         City city(params[0], params[1], params[2], params[3], params[4]);
 	vecOfCities.push_back(city);
