@@ -37,14 +37,14 @@ include_directories(
   VectorOfCities
   FlagParser 
   DatabaseReader 
-  Gnuplot
+  GnuplotHandler
 )
 set(files
   City/City.cpp
   VectorOfCities/VectorOfCities.cpp
   FlagParser/FlagParser.cpp
   DatabaseReader/DatabaseReader.cpp
-  Gnuplot/Gnuplot.cpp
+  GnuplotHandler/GnuplotHandler.cpp
 )
 
 ######

@@ -1,5 +1,5 @@
 /**
- * \class Gnuplot
+ * @file GnuplotHandler
  *
  * @par Licence
  * This Source Code Form is subject to the terms of the Mozilla Public
@@ -8,8 +8,8 @@
  *
  */
 
-#ifndef GNUPLOT_HPP
-#define GNUPLOT_HPP
+#ifndef GNUPLOTHANDLER_HPP
+#define GNUPLOTHANDLER_HPP
 
 #include <iostream>
 #include <fstream>
@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include "City.hpp"
 
-namespace Gnuplot {
+namespace GnuplotHandler {
 
 void saveDummyPlot();
 bool isGnuplotInstalledOnHost();
@@ -33,5 +33,5 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec);
 
 }
 
-#endif // GNUPLOT_HPP
+#endif // GNUPLOTHANDLER_HPP
 

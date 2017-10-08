@@ -11,7 +11,7 @@
 
 #include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
-#include "Gnuplot.hpp"
+#include "GnuplotHandler.hpp"
 #include "VectorOfCities.hpp"
 #include "help.txt.hpp"
 
@@ -74,13 +74,13 @@ int main(int argc, char *argv[]) {
     VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(vec);
     // Part 4 - end
     // Part <last> - start - save to gnuplot.
-    if (!Gnuplot::isGnuplotInstalledOnHost()) {
+    if (!GnuplotHandler::isGnuplotInstalledOnHost()) {
         std::cout << "Gnuplot is not installed on host";
         std::cout << std::endl;
         std::cout << "Aborting...";
 	return -1;
     }
-    Gnuplot::saveDummyPlot();
-    Gnuplot::plotHappinessLevelWhenWeHaveOnlyOneRegion(vec);
+    GnuplotHandler::saveDummyPlot();
+    GnuplotHandler::plotHappinessLevelWhenWeHaveOnlyOneRegion(vec);
     return 0;
 }    

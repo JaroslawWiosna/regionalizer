@@ -1,5 +1,5 @@
 /**
- * \class Gnuplot
+ * @file GnuplotHandler
  *
  * @par Licence
  * This Source Code Form is subject to the terms of the Mozilla Public
@@ -8,9 +8,9 @@
  *
  */
 
-#include "Gnuplot.hpp"
+#include "GnuplotHandler.hpp"
 
-namespace Gnuplot {
+namespace GnuplotHandler {
 
 void saveDummyPlot() {
     std::cout << "saveDummyPlot\n";
