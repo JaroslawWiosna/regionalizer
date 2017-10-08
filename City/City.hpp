@@ -103,17 +103,17 @@ class City{
  /**
   * @brief  getter
   */
-    std::string getName();
+    std::string getName() const;
 
  /**
   * @brief  getter
   */
-    std::size_t getArea();
+    std::size_t getArea() const;
 
  /**
   * @brief  getter
   */
-    std::size_t getPopulation();
+    std::size_t getPopulation() const;
 
  /**
   * @brief  getter
@@ -128,7 +128,7 @@ class City{
  /**
   * @brief  getter
   */
-    std::size_t getDistanceToTheFarthest();
+    std::size_t getDistanceToTheFarthest() const;
 
  /**
   * @brief  getter

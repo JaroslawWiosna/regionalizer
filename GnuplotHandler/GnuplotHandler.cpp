@@ -71,6 +71,43 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
     system( "rm -f HappinessLevel-onlyOneRegion.dat" );
 }    
 
+void plotPopulation(const std::vector<City>& vec) {
+    std::ofstream data;
+    data.open("population.dat");
+    for (const City& i : vec) {
+        data << i.getLongitude();
+	data << " ";
+        data << i.getLatitude();
+	data << " ";
+	data << i.getPopulation();
+	data << std::endl;
+    }
+    data.close();
+
+    std::ofstream script;
+    script.open("population.gnu");
+    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
+    script << std::endl;
+    script << "set output 'population.png'";
+    script << std::endl;
+    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << std::endl;
+    script << "set title \"HL\"";
+    script << std::endl;
+    script << "set xrange [13 : 29] reverse nowriteback";
+    script << std::endl;
+    script << "set yrange [49 : 59] noreverse nowriteback";
+    script << std::endl;
+    script << "plot 'population.dat' with points palette";
+    script << std::endl;
+    script << "set output";
+    script << std::endl;
+
+    script.close();
+    system( "gnuplot population.gnu" );
+//    system( "rm -f population.gnu" );
+//    system( "rm -f population.dat" );
+}
 
 }
 

@@ -79,15 +79,15 @@ void City::setDistanceToTheFarthest(std::size_t distance) {
     distanceToTheFarthest = distance;
 }
 
-std::string City::getName() {
+std::string City::getName() const {
     return name;
 }
 
-std::size_t City::getArea() {
+std::size_t City::getArea() const {
     return area;
 }
 
-std::size_t City::getPopulation() {
+std::size_t City::getPopulation() const {
     return population;
 }
 
@@ -99,7 +99,7 @@ std::string City::getLongitude() const {
     return longitude;
 }
 
-std::size_t City::getDistanceToTheFarthest() {
+std::size_t City::getDistanceToTheFarthest() const {
     return distanceToTheFarthest;
 }
 
