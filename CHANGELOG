@@ -1,0 +1,5 @@
+0.1.0
+
+ - With list of cities given, regionalizer outputs what the best capital
+   would be.
+ - The map of cities and their population is plotted.
