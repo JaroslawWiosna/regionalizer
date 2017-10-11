@@ -26,6 +26,7 @@
 namespace VectorOfCities {
 
 void setDistanceToTheFarthestInTheWholeVector(std::vector<City>& vec);
+std::size_t getPopulationOfTheWholeVector(const std::vector<City>& vec);
 void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec);
 }
 

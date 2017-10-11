@@ -86,7 +86,7 @@ void plotPopulation(const std::vector<City>& vec) {
 
     std::ofstream script;
     script.open("population.gnu");
-    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
+    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
     script << std::endl;
     script << "set output 'population.png'";
     script << std::endl;
@@ -94,11 +94,15 @@ void plotPopulation(const std::vector<City>& vec) {
     script << std::endl;
     script << "set title \"HL\"";
     script << std::endl;
+    script << "set ylabel \"latitude\"";
+    script << std::endl;
+    script << "set xlabel \"longitude\"";
+    script << std::endl;
     script << "set xrange [13 : 29] reverse nowriteback";
     script << std::endl;
     script << "set yrange [49 : 59] noreverse nowriteback";
     script << std::endl;
-    script << "plot 'population.dat' with points palette";
+    script << "plot 'population.dat' with points palette pt 7 ps 5 ";
     script << std::endl;
     script << "set output";
     script << std::endl;

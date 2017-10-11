@@ -25,6 +25,14 @@ void setDistanceToTheFarthestInTheWholeVector(std::vector<City>& vec) {
     }
 }
 
+std::size_t getPopulationOfTheWholeVector(const std::vector<City>& vec) {
+    std::size_t result{};
+    for (const auto & i : vec) {
+        result += i.getPopulation();
+    }
+    return result;
+}
+
 void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){ 
     std::string bestCapitalSoFar{};
     std::size_t bestHLsoFar{};
@@ -47,6 +55,11 @@ void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){
     std::cout << "The best capital would be  " << bestCapitalSoFar;
     std::cout << std::endl;
     std::cout << "Happiness level = " << bestHLsoFar;
+    std::cout << std::endl;
+    std::cout << "Population = " << getPopulationOfTheWholeVector(vec);
+    std::cout << std::endl;
+    std::cout << "Percentage = " << static_cast<double>(10.0 * bestHLsoFar) 
+        / getPopulationOfTheWholeVector(vec) << "%";
     std::cout << std::endl;
 
 }
