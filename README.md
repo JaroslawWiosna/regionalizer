@@ -3,9 +3,9 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/JaroslawWiosna/regionalizer.svg)](https://github.com/JaroslawWiosna/regionalizer/graphs/contributors)
 [![Travis status](https://travis-ci.org/JaroslawWiosna/regionalizer.svg)](https://travis-ci.org/JaroslawWiosna/regionalizer)
 [![Coverage Status](https://coveralls.io/repos/github/JaroslawWiosna/regionalizer/badge.svg)](https://coveralls.io/github/JaroslawWiosna/regionalizer)
-# regionalizier
+# regionalizer
 
-> TBD
+> How to choose the best capital of a state and regions?
 
   - [Overview](#overview)
   - [How to clone?](#how-to-clone)
@@ -20,6 +20,29 @@
 ## Overview
 
 [![image](https://i.imgur.com/UqwvidQ.png)](https://i.imgur.com/UqwvidQ.png)
+
+How could we know what is the best city to locate the headquaters of our company?
+ - Should we locate it in the biggest city?
+ - ..or in the centre of the state? (so the distance to the farthest city would be as small as possible?)
+The first option is quite all right, but so boring.
+I guess the primary objective is to make everyone **happy**
+Let's think about happiness for a second.
+
+> There is neither happiness nor misery in the world; there is only the comparison of one state with another, nothing more. 
+
+This line from [The Count of Monte Cristo](https://en.wikisource.org/wiki/The_Count_of_Monte_Cristo/Chapter_117) ending gave us a clue about happiness.
+Every City wants to be the capital. Only then the happiness would be **max**. The worst case for a specific city would occur when the capital is in the middle of nowhere.
+Only then the happiness would be **min**. When the capital is somewhere in between, the happiness would be somewhere in between as well.
+
+With that being said the algorithm is quite obvious:
+ - Assign the distance of the farthest city from every single one of city.
+ - Check what would be the happiness level of the whole population when the capital is "the specific" city.
+ - Check every possible city
+
+The objectives of the project
+ - [x] Choose the best city for capital (or for the location of headquaters)
+ - [ ] Choose the best cities for capitals of the regions. (Numer of regions will be passed as argvs)
+ - [ ] Chosse the optimal number of regions. (Every city wants to be the capital, but there is no sense...)
 
 ---
 
