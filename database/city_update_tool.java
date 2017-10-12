@@ -7,8 +7,7 @@ package cities_updater_tool;
  * 					   and contains useful for this method informations
  * 
  * @way_of_working Open the web-page and adds the cities from the web-page to the file.  		
- * 				   It does that by cutting the needed values from the web html. It also
- * 				   remove polish letters from the cities names.
+ * 				   It does that by cutting the needed values from the web html.
  * @authors Wojciech Mielczarek
  * @authors Jaroslaw Wiosna
  * 
@@ -31,11 +30,6 @@ public class city_update_tool {
 	public static String cutTheNameFromString(int location_of_the_city_name_in_table,String... list){
 		String list2[]=list[location_of_the_city_name_in_table].split("<");
 		String city_name=list2[0];
-		//removing polish letters
-		final char list_of_letters_to_replace[]={'Ą','ą','Ć','ć','Ę','ę','Ł','ł','Ń','ń','Ó','ó','Ś','ś','Ź','ź','Ż','ż'};
-		final char list_of_letters_for_replacment[]={'A','a','C','c','E','e','L','l','N','n','O','o','S','s','Z','z','Z','z'};
-		for(int i=0;i<list_of_letters_to_replace.length;i++)
-			city_name=city_name.replace(list_of_letters_to_replace[i], list_of_letters_for_replacment[i]);
 		return city_name;
 	}
 
@@ -47,7 +41,7 @@ public class city_update_tool {
 			BufferedReader web_data = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 			String inputLine;
 			int linecount=0;
-			PrintWriter zapis = new PrintWriter("cities_data_pre_parsed.txt");
+			PrintWriter Pre_parsed_database = new PrintWriter("cities_data_pre_parsed.txt");
 			boolean start_writing=false;
 			String writeToFile="";
 			while ((inputLine = web_data.readLine()) != null) { 
@@ -59,7 +53,7 @@ public class city_update_tool {
 				}           
 				if(start_writing&&(inputLine.contains("title=")||inputLine.contains("tabela-liczba"))){
 					String list[]=inputLine.split(">");
-					//city name
+					//nazwa miasta
 					if(linecount==1){
 						if(inputLine.contains("<b>")&&inputLine.contains("<i>")){ writeToFile+=cutTheNameFromString(4,list)+city_argument_splitter;}
 						else if(inputLine.contains("<b>")){writeToFile+=cutTheNameFromString(3,list)+city_argument_splitter;}
@@ -70,7 +64,7 @@ public class city_update_tool {
 						//area
 						if(linecount==4)
 							writeToFile+=(list2[0]+city_argument_splitter);
-						//population
+						//liczba mieszkancow
 						else if(linecount==5){
 							String list3[]=list2[0].split("&");
 							String list4[]=list2[0].split(";");
@@ -84,7 +78,7 @@ public class city_update_tool {
 								writeToFile+=(liczbaludnosc.toString());
 							} 
 							else writeToFile+=(list2[0]);
-							zapis.println(writeToFile);
+							Pre_parsed_database.println(writeToFile);
 							writeToFile="";}
 					}
 				}
@@ -92,7 +86,7 @@ public class city_update_tool {
 				}
 
 			}
-			zapis.close();
+			Pre_parsed_database.close();
 			web_data.close();
 		} catch (Exception e) {
 			e.printStackTrace();

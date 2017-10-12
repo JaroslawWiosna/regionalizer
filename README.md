@@ -75,9 +75,10 @@ doxygen doxygenConfigurationFile
 
 ## Creating database using city_update_tool
 
-Run in java eclipse: file `city_update tool` to get text file `cities_data_pre_parsed` with cites name, area(km^2) and population
-Now run in java eclipse: file `city_update tool2` to get full city database text file `cities_data` containg data from `cities_data_pre_parsed` with additional cities longitude and latitude.
-Remember about the order of runing city_update_tool first. Otherwise you will get wrong results!!
+Run in java eclipse: file `city_update tool` to get text file `cities_data_pre_parsed` with cites name, area(km^2) and population<br />
+Now run in java eclipse: file `city_update tool2` to get full city database text file `cities_data` containg data from `cities_data_pre_parsed` with additional cities longitude and latitude and remove polish letters from city's names. There are no cardinal directions like "E". The coordinates minutes are in form of decimal part of the degrees with a precision set to 4 digits after the comma.<br />
+Remember about the order of runing city_update_tool first. Otherwise you will get wrong results!!<br />
+Database final order is as following: City name|Area|Population|Latitude|Longitude
 
 ---
 
