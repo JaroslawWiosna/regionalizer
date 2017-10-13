@@ -16,7 +16,7 @@
 //#include <list>
 //#include <cfloat> // FLT_MIN
 //#include <cmath> // abs
-//#include <algorithm>
+#include <algorithm>
 #include <vector>
 #include <string>
 //#include <memory>

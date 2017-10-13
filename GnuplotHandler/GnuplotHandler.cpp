@@ -74,13 +74,19 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
 void plotPopulation(const std::vector<City>& vec) {
     std::ofstream data;
     data.open("population.dat");
-    for (const City& i : vec) {
+
+    auto sortedVec = vec;
+    sort(sortedVec.begin(), sortedVec.end(), [](const City& lhs, 
+            const City& rhs) {
+        return lhs.getPopulation() < rhs.getPopulation();
+    });
+    for (const City& i : sortedVec) {
         data << i.getLongitude();
-	data << " ";
+        data << " ";
         data << i.getLatitude();
-	data << " ";
-	data << i.getPopulation();
-	data << std::endl;
+        data << " ";
+        data << i.getPopulation();
+        data << std::endl;
     }
     data.close();
 
@@ -98,9 +104,9 @@ void plotPopulation(const std::vector<City>& vec) {
     script << std::endl;
     script << "set xlabel \"longitude\"";
     script << std::endl;
-    script << "set xrange [13 : 29] reverse nowriteback";
+    script << "set xrange [14 : 25] reverse nowriteback";
     script << std::endl;
-    script << "set yrange [49 : 59] noreverse nowriteback";
+    script << "set yrange [49 : 56] noreverse nowriteback";
     script << std::endl;
     script << "plot 'population.dat' with points palette pt 7 ps 5 ";
     script << std::endl;
