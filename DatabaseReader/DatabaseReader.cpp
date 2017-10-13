@@ -21,6 +21,10 @@ std::vector<City> readCitiesFromFile(std::string databaseFile) {
             continue;
 	}
         std::vector<std::string> params;
+        size_t pos;
+        while((pos = line.find(" "))!=std::string::npos) {
+            line.replace(line.begin()+pos,line.begin()+pos+1,"");
+        }
 	split(line, "|", params);
 
         City city(params[0], params[1], params[2], params[3], params[4]);
