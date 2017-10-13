@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     parser.printFlags();
     auto flags = parser.getFlags();
 
-    if (parser.hasKey("--help")) {
+    if (!parser.hasKey("--help")) {
 	std::cout << "Help not found, so moving on...";	
 	std::cout << std::endl;
     } else {
