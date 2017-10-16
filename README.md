@@ -1,7 +1,7 @@
 [![Licence](https://img.shields.io/github/license/JaroslawWiosna/regionalizer.svg)]()
 [![Release](https://img.shields.io/github/release/JaroslawWiosna/regionalizer.svg?maxAge=3600)](https://github.com/JaroslawWiosna/regionalizer/releases)
 [![GitHub contributors](https://img.shields.io/github/contributors/JaroslawWiosna/regionalizer.svg)](https://github.com/JaroslawWiosna/regionalizer/graphs/contributors)
-[![Travis status](https://travis-ci.org/JaroslawWiosna/regionalizer.svg)](https://travis-ci.org/JaroslawWiosna/regionalizer)
+[![Travis status](https://travis-ci.org/JaroslawWiosna/regionalizer.svg=?branch=master)](https://travis-ci.org/JaroslawWiosna/regionalizer)
 [![Coverage Status](https://coveralls.io/repos/github/JaroslawWiosna/regionalizer/badge.svg)](https://coveralls.io/github/JaroslawWiosna/regionalizer)
 # regionalizer
 
@@ -9,6 +9,7 @@
 
   - [Overview](#overview)
   - [How to clone?](#how-to-clone)
+  - [How to build?](#how-to-build)
   - [How to generate doxygen documentation?](#how-to-generate-doxygen-documentation)
   - [Creating database using city_update_tool](#creating-database-using-city_update_tools)
   - [Algorithms](#algorithms)
@@ -61,6 +62,19 @@ git submodule update --init --recursive
 ```
 
 [Thanks to mklement0](https://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules)
+
+---
+
+## How to build?
+
+```sh
+mkdir build
+cd build
+cmake ..
+make
+make test
+./regionalizer -list ../database/cities_data
+```
 
 ---
 
