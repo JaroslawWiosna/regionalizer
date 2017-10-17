@@ -72,6 +72,7 @@ int main(int argc, char *argv[]) {
     // 0 is when the capital is the farthest city.
     // Formula: HL = 10 - ((distanceFrom(capital) / distanceToTheFarthest)*10)
     VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(vec);
+    VectorOfCities::calculateHappinessLevelForTwoRegionsByBruteForce(vec);
     // Part 4 - end
     // Part <last> - start - save to gnuplot.
     if (!GnuplotHandler::isGnuplotInstalledOnHost()) {

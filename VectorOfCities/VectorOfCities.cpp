@@ -64,4 +64,52 @@ void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){
 
 }
 
+void calculateHappinessLevelForTwoRegionsByBruteForce(const std::vector<City>& vec) {
+    std::string bestCapitalsSoFar{};
+    std::size_t bestHLsoFar{};
+    auto sortedVec = sortVec(vec);
+    auto it = sortedVec.begin();
+    auto jt = it;
+    for (; it != sortedVec.begin()+8 ; ++it ) {
+        for (jt = it + 1; jt != sortedVec.begin()+9 ; ++jt ) {
+            std::cout << it->getName() << " " << jt->getName() << "\n";
+	    std::size_t hl{};
+	    for (const auto& i : sortedVec) {
+                std::size_t distanceToit = i.distanceFrom(*it);
+                std::size_t distanceTojt = i.distanceFrom(*jt);
+                std::size_t distanceToTheClosestCapital = distanceToit > 
+                        distanceTojt ? distanceTojt : distanceToit;
+	        std::size_t tmp = (10.0 - 
+                        ((static_cast<double>(distanceToTheClosestCapital) / 
+                        static_cast<double>(i.getDistanceToTheFarthest()))*10.0));
+	        hl += (i.getPopulation() * tmp);
+	    }
+	    std::cout << "Happiness level = " << hl;
+            std::cout << std::endl;
+            if (hl > bestHLsoFar) {
+	        bestHLsoFar = hl;
+	        bestCapitalsSoFar = it->getName() + "+" + jt->getName();
+	    }
+	}
+    }
+    std::cout << std::endl;
+    std::cout << "The best capitals would be  " << bestCapitalsSoFar;
+    std::cout << std::endl;
+    std::cout << "Happiness level = " << bestHLsoFar;
+    std::cout << std::endl;
+    std::cout << "Population = " << getPopulationOfTheWholeVector(vec);
+    std::cout << std::endl;
+    std::cout << "Percentage = " << static_cast<double>(10.0 * bestHLsoFar) 
+        / getPopulationOfTheWholeVector(vec) << "%";
+    std::cout << std::endl;
+}
+
+std::vector<City> sortVec(const std::vector<City>& vec) {
+    auto sortedVec = vec;
+    sort(sortedVec.begin(), sortedVec.end(), [](const City& lhs, const City& rhs) {
+        return lhs.getPopulation() > rhs.getPopulation();
+	});
+    return sortedVec;    
+}
+
 } // namespace

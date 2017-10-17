@@ -15,7 +15,7 @@
 //#include <list>
 //#include <cfloat> // FLT_MIN
 #include <cmath> // abs
-//#include <algorithm>
+#include <algorithm>
 #include <vector>
 #include <string>
 //#include <memory>
@@ -28,6 +28,8 @@ namespace VectorOfCities {
 void setDistanceToTheFarthestInTheWholeVector(std::vector<City>& vec);
 std::size_t getPopulationOfTheWholeVector(const std::vector<City>& vec);
 void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec);
+void calculateHappinessLevelForTwoRegionsByBruteForce(const std::vector<City>& vec);
+std::vector<City> sortVec(const std::vector<City>& vec);
 }
 
 #endif // VECTOROFCITIES_HPP

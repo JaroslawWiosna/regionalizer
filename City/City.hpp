@@ -89,7 +89,7 @@ class City{
   *
   * @return distance in kilometers
   */
-    double distanceFrom(City differentCity);
+    double distanceFrom(City differentCity) const;
  
  /**
   * @brief distanceToTheFarthest setter

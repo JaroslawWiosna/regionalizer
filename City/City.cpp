@@ -39,7 +39,7 @@ City::City(std::string name,
     this->population = std::stoi(population);
 }
     
-double City::distanceFrom(City differentCity) {
+double City::distanceFrom(City differentCity) const {
    // below we have Coordinates as decimal values
    // It means that 21E30' would be 21.5
    //               21E45' would be 21.75, and so on...
