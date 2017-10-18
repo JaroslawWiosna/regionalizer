@@ -10,6 +10,7 @@
   - [Overview](#overview)
   - [How to clone?](#how-to-clone)
   - [How to build?](#how-to-build)
+  - [How to contribute?](#how-to-contribute)
   - [How to generate doxygen documentation?](#how-to-generate-doxygen-documentation)
   - [Creating database using city_update_tool](#creating-database-using-city_update_tools)
   - [Algorithms](#algorithms)
@@ -75,6 +76,11 @@ make
 make test
 ./regionalizer -list ../database/cities_data
 ```
+
+---
+
+## How to contribute?
+Please, have a look [here](https://www.github.com/JaroslawWiosna/regionalizer/blob/master/CONTRIBUTING.md)
 
 ---
 
