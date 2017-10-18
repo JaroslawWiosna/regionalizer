@@ -1,3 +1,8 @@
+0.2.0
+
+ - Updated population map where Greatest Cities are on top
+ - Two regions by semi-brute-force
+
 0.1.0
 
  - With list of cities given, regionalizer outputs what the best capital
