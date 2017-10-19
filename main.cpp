@@ -15,15 +15,24 @@
 #include "VectorOfCities.hpp"
 #include "help.txt.hpp"
 
+#include <locale.h>
+#include <libintl.h>
+
+#define _(STRING) gettext(STRING)
+
 int main(int argc, char *argv[]) {
     // Part 1 - start - parse argv and get databaseFile
     FlagParser parser(argc, argv);
     parser.printFlags();
     auto flags = parser.getFlags();
 
+    setlocale(LC_ALL, "");
+    bindtextdomain("regionalizer", "/usr/share/locale");
+    textdomain("regionalizer");
+
     if (!parser.hasKey("--help")) {
-	std::cout << "Help not found, so moving on...";	
-	std::cout << std::endl;
+	std::cout << _("Help not found, so moving on...");
+        std::cout << std::endl;
     } else {
 	std::cout << "Help found, so I am about to print help...";	
 	std::cout << std::endl;
