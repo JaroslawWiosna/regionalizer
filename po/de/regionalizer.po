@@ -19,4 +19,4 @@ msgstr ""
 
 #: main.cpp:34
 msgid "Help not found, so moving on..."
-msgstr ""
+msgstr "Help (Hilfe) nicht gefunden. Lass uns weitermachen..."
