@@ -1,15 +1,15 @@
-# Polish translations for PACKAGE package.
-# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-#  <osboxes@osboxes>, 2017.
+# Polish translations for regionalizer package.
+# Copyright (C) 2017 THE REGIONALIZER'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the regionalizer package.
+# JaroslawWiosna <179892@edu.p.lodz.pl>, 2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-17 21:34+0200\n"
 "PO-Revision-Date: 2017-10-17 21:43+0200\n"
-"Last-Translator:  <osboxes@osboxes>\n"
+"Last-Translator: JaroslawWiosna <179892@edu.p.lodz.pl>\n"
 "Language-Team: Polish\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
