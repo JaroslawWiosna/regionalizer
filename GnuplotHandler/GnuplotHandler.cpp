@@ -34,7 +34,7 @@ void saveDummyPlot() {
 }
 
 bool isGnuplotInstalledOnHost() {
-    return ( 0 == system("gnuplot --version") ? true : false );
+    return ( 0 == system("gnuplot --version &> /dev/null") ? true : false );
 }
 
 void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
