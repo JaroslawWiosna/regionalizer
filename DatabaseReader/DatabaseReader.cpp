@@ -34,7 +34,6 @@ std::vector<City> readCitiesFromFile(std::string databaseFile) {
     return vecOfCities;
 }
 
-// TODO: move to separate file? utils perhaps?
 void split (std::string str, std::string splitBy, std::vector<std::string>& tokens) {
     tokens.push_back(str);
     std::size_t splitAt;

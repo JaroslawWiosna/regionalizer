@@ -40,27 +40,17 @@ City::City(std::string name,
 }
     
 double City::distanceFrom(City differentCity) const {
-   // below we have Coordinates as decimal values
-   // It means that 21E30' would be 21.5
-   //               21E45' would be 21.75, and so on...
-   // TODO: move this explanation into doxygen comment
-
-   // A = this city
-   // B = differentCity
-
-   // TODO: convert this->latitude to Alat
-   // TODO: convert this->longitude to Alon
-   // TODO: convert differentCity.latitude to Blat
-   // TODO: convert differentCity.latitude to Blon
     double Alat = std::stod(this->latitude);
     double Alon = std::stod(this->longitude); 
     double Blat = std::stod(differentCity.latitude);
     double Blon = std::stod(differentCity.longitude);
 
+    return haversineFormula(Alat, Alon, Blat, Blon);
+}
+
+double City::haversineFormula
+        (double Alat, double Alon, double Blat, double Blon) const {
     constexpr double R = 6371;
-    // TODO: implement generic function for radian conversion
-    // like Alat = utils::degreesToRadians(Alat);
-    // (consider creating utils directory with namespace 'utils'
     Alat = Alat * 3.14 / 180.0; // to_radians
     Alon = Alon * 3.14 / 180.0; // to_radians
     Blat = Blat * 3.14 / 180.0; // to_radians
@@ -68,7 +58,8 @@ double City::distanceFrom(City differentCity) const {
     double deltaLat = Blat - Alat;
     double deltaLon = Blon - Alon;
 
-    double a = pow(sin(0.5 * deltaLat),2) + cos(Alat) * cos(Blat) * pow(sin(0.5 * deltaLon),2);
+    double a = pow(sin(0.5 * deltaLat),2)
+        + cos(Alat) * cos(Blat) * pow(sin(0.5 * deltaLon),2);
     double c = 2 * atan2(sqrt(a),sqrt(1-a));
     double d = R * c;
 

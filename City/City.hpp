@@ -82,14 +82,36 @@ class City{
     
  /**
   * @brief Calculate distance to other city
-  * The algorithm inside is a kind of magic.
-  * @todo TODO: the algorithm inside needs to be documented.
+  * The algorithm inside is haversine formula.
   *
+  * below we have Coordinates as decimal values
+  * It means that 21E30' would be 21.5
+  *               21E45' would be 21.75, and so on...
+  *
+  * A = this city
+  * B = differentCity
   * @param[in] City differentCity
   *
   * @return distance in kilometers
   */
     double distanceFrom(City differentCity) const;
+     
+ /**
+  * @brief Haversine formula to calculate distance
+  *
+  * @param[in] Alat - latitude of the first city
+  * @param[in] Alon - longitude of the first city
+  * @param[in] Blat - latitude of the second city
+  * @param[in] Blat - longitude of the second city
+  *
+  * @TODO a short explanation of the formula would be useful
+  * @TODO this method does NOT use any of the class fields and can be moved
+  * to some other file (namespace utils perhaps?)
+  *
+  * @return distance in kilometers
+  */
+    double haversineFormula
+        (double Alat, double Alon, double Blat, double Blon) const;
  
  /**
   * @brief distanceToTheFarthest setter
@@ -135,6 +157,10 @@ class City{
   */
     std::string getAllFields();
   private:
+ /**
+  * @var City::name
+  * Name of the city.
+  */
     std::string name;
     std::size_t area;
     std::size_t population;

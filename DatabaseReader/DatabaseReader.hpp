@@ -25,7 +25,21 @@
 
 namespace DatabaseReader {
 
+/**
+ * @brief read data from file and returns a vector of Cities
+ *
+ * @param[in] std::string databaseFile
+ * path to the file with data
+ *
+ * @return std::vector<City>
+ * Vector of cities
+ */
 std::vector<City> readCitiesFromFile(std::string databaseFile);
+
+/**
+ * @brief helper method to parse databaseFile
+ * @todo: move to separate file? utils perhaps?
+ */
 void split (std::string str, std::string splitBy, std::vector<std::string>& tokens);
 
 }
