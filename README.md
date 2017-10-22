@@ -23,6 +23,7 @@
 ## Overview
 
 [![image](https://i.imgur.com/tTPunlN.png)](https://i.imgur.com/tTPunlN.png)
+[![image](https://i.imgur.com/uSV89DP.png)](https://i.imgur.com/uSV89DP.png)
 
 How could we know what is the best city to locate the headquaters of our company?
  - Should we locate it in the biggest city?
