@@ -19,4 +19,4 @@ msgstr ""
 
 #: main.cpp:34
 msgid "Help not found, so moving on..."
-msgstr ""
+msgstr "Hjälpafil inte hotad. Programmet fortsätter sin verksamhet."
