@@ -72,9 +72,13 @@ int main(int argc, char *argv[]) {
     // 0 is when the capital is the farthest city.
     // Formula: HL = 10 - ((distanceFrom(capital) / distanceToTheFarthest)*10)
     if (parser.hasKey("-N") && flags["-N"] == "1") {
-        VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(vec);
+        auto capitals = VectorOfCities::
+                calculateHappinessLevelForOneRegionByBruteForce(vec);
+	GnuplotHandler::plotHappinessIndex(vec, capitals);
     } else if (parser.hasKey("-N") && flags["-N"] == "2") {
-	VectorOfCities::calculateHappinessLevelForTwoRegionsByBruteForce(vec);
+	auto capitals = VectorOfCities::
+                calculateHappinessLevelForTwoRegionsByBruteForce(vec);
+	GnuplotHandler::plotHappinessIndex(vec, capitals);
     } else if (parser.hasKey("-N") && std::stoi(flags["-N"]) > 2) {
         auto capitals = VectorOfCities::regionalizeUsingRandom(vec,
                 flags["-N"]);
