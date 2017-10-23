@@ -4,14 +4,14 @@
 
     USAGE:
 
-    ./regionalizer -list [path to database file]
+    ./regionalizer --list [path to database file] -N [number of regions]
 
 i.e.:
-    ./regionalizer -list ../database/file.txt
+    ./regionalizer --list ../database/file.txt -N 2
 
     LIST OF ...:
 
-    -list [path to the database file]
+    --list [path to the database file]
     
     Parses the file and outputs TBD
 
@@ -20,4 +20,10 @@ i.e.:
 
     Prints this very manual and terminates
 
+
+    -N [number of regions]
+
+    Allowed values are `1` or `2`.
+    It is possible to run regionalizer with `N` parameter greater than `2`,
+    but the behavior is unstable.
 

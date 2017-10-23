@@ -24,6 +24,7 @@
 
 [![image](https://i.imgur.com/tTPunlN.png)](https://i.imgur.com/tTPunlN.png)
 [![image](https://i.imgur.com/uSV89DP.png)](https://i.imgur.com/uSV89DP.png)
+[![image](https://i.imgur.com/FCHbFmN.png)](https://i.imgur.com/FCHbFmN.png)
 
 How could we know what is the best city to locate the headquaters of our company?
  - Should we locate it in the biggest city?
@@ -76,7 +77,7 @@ cd build
 cmake ..
 make
 make test
-./regionalizer -list ../database/cities_data
+./regionalizer --list ../database/cities_data
 ```
 
 ---

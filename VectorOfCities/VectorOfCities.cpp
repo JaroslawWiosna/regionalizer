@@ -31,26 +31,31 @@ std::size_t getPopulationOfTheWholeVector(const std::vector<City>& vec) {
     return result;
 }
 
-void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){ 
-    std::string bestCapitalSoFar{};
+std::vector<std::string> calculateHappinessLevelForOneRegionByBruteForce
+        (std::vector<City> vec){ 
+    std::vector<std::string> bestCapitalSoFar{};
     std::size_t bestHLsoFar{};
     for (City i : vec) {
-        std::cout << " " << i.getName() << "\t";
+        // std::cout << " " << i.getName() << "\t";
 	std::size_t hl{}; // happiness level
         for (City j : vec) {
 	    std::size_t tmp = (10.0 - ((static_cast<double>(j.distanceFrom(i)) / 
                     static_cast<double>(j.getDistanceToTheFarthest()))*10.0));
 	    hl += (j.getPopulation() * tmp);
 	}
-	std::cout << "Happiness level = " << hl;
-        std::cout << std::endl;
+	// std::cout << "Happiness level = " << hl;
+        // std::cout << std::endl;
         if (hl > bestHLsoFar) {
 	    bestHLsoFar = hl;
-	    bestCapitalSoFar = i.getName();
+	    bestCapitalSoFar.clear();
+	    bestCapitalSoFar.push_back(i.getName());
 	}
     }
     std::cout << std::endl;
-    std::cout << "The best capital would be  " << bestCapitalSoFar;
+    std::cout << "The best capitals would be ";
+    for (auto i : bestCapitalSoFar) {
+        std::cout << i << " ";
+    }
     std::cout << std::endl;
     std::cout << "Happiness level = " << bestHLsoFar;
     std::cout << std::endl;
@@ -60,17 +65,19 @@ void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec){
         / getPopulationOfTheWholeVector(vec) << "%";
     std::cout << std::endl;
 
+    return bestCapitalSoFar;
 }
 
-void calculateHappinessLevelForTwoRegionsByBruteForce(const std::vector<City>& vec) {
-    std::string bestCapitalsSoFar{};
+std::vector<std::string> calculateHappinessLevelForTwoRegionsByBruteForce
+        (const std::vector<City>& vec) {
+    std::vector<std::string> bestCapitalsSoFar{};
     std::size_t bestHLsoFar{};
     auto sortedVec = sortVec(vec);
     auto it = sortedVec.begin();
     auto jt = it;
     for (; it != sortedVec.begin()+8 ; ++it ) {
         for (jt = it + 1; jt != sortedVec.begin()+9 ; ++jt ) {
-            std::cout << it->getName() << " " << jt->getName() << "\n";
+            // std::cout << it->getName() << " " << jt->getName() << "\n";
 	    std::size_t hl{};
 	    for (const auto& i : sortedVec) {
                 std::size_t distanceToit = i.distanceFrom(*it);
@@ -82,16 +89,21 @@ void calculateHappinessLevelForTwoRegionsByBruteForce(const std::vector<City>& v
                         static_cast<double>(i.getDistanceToTheFarthest()))*10.0));
 	        hl += (i.getPopulation() * tmp);
 	    }
-	    std::cout << "Happiness level = " << hl;
-            std::cout << std::endl;
+	    // std::cout << "Happiness level = " << hl;
+            // std::cout << std::endl;
             if (hl > bestHLsoFar) {
 	        bestHLsoFar = hl;
-	        bestCapitalsSoFar = it->getName() + "+" + jt->getName();
+		bestCapitalsSoFar.clear();
+	        bestCapitalsSoFar.push_back(it->getName());
+	        bestCapitalsSoFar.push_back(jt->getName());
 	    }
 	}
     }
     std::cout << std::endl;
-    std::cout << "The best capitals would be  " << bestCapitalsSoFar;
+    std::cout << "The best capitals would be ";
+    for (auto i : bestCapitalsSoFar) {
+        std::cout << i << " ";
+    }
     std::cout << std::endl;
     std::cout << "Happiness level = " << bestHLsoFar;
     std::cout << std::endl;
@@ -100,6 +112,82 @@ void calculateHappinessLevelForTwoRegionsByBruteForce(const std::vector<City>& v
     std::cout << "Percentage = " << static_cast<double>(10.0 * bestHLsoFar) 
         / getPopulationOfTheWholeVector(vec) << "%";
     std::cout << std::endl;
+
+    return bestCapitalsSoFar;
+}
+
+std::vector<unsigned> generateRandomVectorWithoutRepetition(unsigned floor,
+        unsigned ceil, unsigned size) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(floor, ceil);
+
+    std::vector<unsigned> vecOfRand;
+    vecOfRand.reserve(size);
+    vecOfRand.push_back(dis(gen));
+    while (vecOfRand.size() < size) {
+        unsigned tmp = dis(gen);
+        if (std::find(vecOfRand.begin(), vecOfRand.end(), tmp)
+                    == vecOfRand.end()) {
+                vecOfRand.push_back(tmp);
+        }  
+    }
+    return vecOfRand;
+}
+
+std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec, 
+        std::string numberOfRegions) {
+    return regionalizeUsingRandom(vec, std::stoi(numberOfRegions));
+}
+
+std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec,
+        unsigned numberOfRegions) {
+    std::cout << "regionalizeUsingRandom \n";  
+    std::cout << "number of regions = " << numberOfRegions << "\n";  
+
+    constexpr std::size_t tries{100};
+    std::vector<std::string> bestCapitalsSoFar{};
+    std::size_t bestHLsoFar{};
+    auto sortedVec = sortVec(vec);
+
+    for (std::size_t i{}; i < tries; ++i) {
+        auto vecOfRand = generateRandomVectorWithoutRepetition(1,
+                sortedVec.size(), numberOfRegions);
+//      for (auto j : vecOfRand) { std::cout << j << "-";} std::cout << "\n";
+        std::size_t hl{};
+        for (City j : sortedVec) {
+            std::size_t bestTmpSoFar{};
+	    for (auto x : vecOfRand) {
+	        std::size_t tmp = (10.0 - ((static_cast<double>(j.distanceFrom(sortedVec[x])) / 
+                        static_cast<double>(j.getDistanceToTheFarthest()))*10.0));
+                if (tmp > bestTmpSoFar) {
+                    bestTmpSoFar = tmp;
+                }
+	    }
+	    hl += (j.getPopulation() * bestTmpSoFar);
+	}
+        if (hl > bestHLsoFar) {
+            bestHLsoFar = hl;
+	    bestCapitalsSoFar.clear();
+	    for (auto it = vecOfRand.begin(); it != vecOfRand.end(); ++it) {
+                bestCapitalsSoFar.push_back(sortedVec[*it].getName());
+	    }
+	}	
+    }
+    std::cout << "The best capitals would be ";
+    for (auto i : bestCapitalsSoFar) {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "Happiness level = " << bestHLsoFar;
+    std::cout << std::endl;
+    std::cout << "Population = " << getPopulationOfTheWholeVector(vec);
+    std::cout << std::endl;
+    std::cout << "Percentage = " << static_cast<double>(10.0 * bestHLsoFar) 
+        / getPopulationOfTheWholeVector(vec) << "%";
+    std::cout << std::endl;
+
+    return bestCapitalsSoFar;
 }
 
 std::vector<City> sortVec(const std::vector<City>& vec) {

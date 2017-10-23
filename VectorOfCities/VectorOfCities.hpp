@@ -19,6 +19,7 @@
 //#include <memory>
 //#include <utility>
 //#include <type_traits>
+#include <random>
 #include "City.hpp"
 
 namespace VectorOfCities {
@@ -52,14 +53,30 @@ std::size_t getPopulationOfTheWholeVector(const std::vector<City>& vec);
  *
  * @param[in] std::vector<City>& vec
  */
-void calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec);
+std::vector<std::string> calculateHappinessLevelForOneRegionByBruteForce
+        (std::vector<City> vec);
+
+std::vector<unsigned> generateRandomVectorWithoutRepetition(unsigned floor,
+        unsigned ceil, unsigned size);
+
+/**
+ * @brief regionalize using random checking
+ */
+std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec, 
+    std::string numberOfRegions);
+
+/**
+ * @brief regionalize using random checking
+ */
+std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec,
+    unsigned numberOfRegions);
 
 /**
  * @brief NOT SAFE TO USE YET
  *
  * @param[in] std::vector<City>& vec
  */
-void calculateHappinessLevelForTwoRegionsByBruteForce
+std::vector<std::string> calculateHappinessLevelForTwoRegionsByBruteForce
     (const std::vector<City>& vec);
 
 std::vector<City> sortVec(const std::vector<City>& vec);

@@ -71,6 +71,61 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
     system( "rm -f HappinessLevel-onlyOneRegion.dat" );
 }    
 
+void plotHappinessIndex(const std::vector<City>& vec,
+        std::vector<std::string> capitals) {
+    std::ofstream data;
+    data.open("hi.dat");
+    for (const auto& i : vec) {
+        double bestHISoFar{};
+	for (const auto& j : capitals) {
+            auto it = std::find_if(std::begin(vec), std::end(vec),
+                    [&](City const& c) {return c.getName() == j; });
+	    std::size_t hi = 10.0 - ((static_cast<double>(i.distanceFrom(*it) / 
+                    static_cast<double>(i.getDistanceToTheFarthest()))*10.0));
+	    if (hi > bestHISoFar) {
+	        bestHISoFar = hi;
+            }
+	}
+        data << i.getLongitude();
+        data << " ";
+        data << i.getLatitude();
+        data << " ";
+        data << bestHISoFar;
+        data << std::endl;
+    }
+    data.close(); 
+
+    std::ofstream script;
+    script.open("hi.gnu");
+    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
+    script << std::endl;
+    script << "set output 'hi.png'";
+    script << std::endl;
+    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << std::endl;
+    script << "set title \"Happiness Index - Number of regions =  ";
+    script << capitals.size();
+    script << "\"";
+    script << std::endl;
+    script << "set ylabel \"latitude\"";
+    script << std::endl;
+    script << "set xlabel \"longitude\"";
+    script << std::endl;
+    script << "set xrange [14 : 25] reverse nowriteback";
+    script << std::endl;
+    script << "set yrange [49 : 56] noreverse nowriteback";
+    script << std::endl;
+    script << "plot 'hi.dat' with points palette pt 7 ps 5 ";
+    script << std::endl;
+    script << "set output";
+    script << std::endl;
+
+    script.close();
+    system( "gnuplot hi.gnu" );
+    system( "rm -f hi.gnu" );
+    system( "rm -f hi.dat" );
+}
+
 void plotPopulation(const std::vector<City>& vec) {
     std::ofstream data;
     data.open("population.dat");
