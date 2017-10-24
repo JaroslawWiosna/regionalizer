@@ -33,6 +33,7 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec);
 void plotHappinessIndex(const std::vector<City>& vec,
         std::vector<std::string> capitals);
 void plotPopulation(const std::vector<City>& vec);
+void plotPopulationAnimated(const std::vector<City>& vec);
 
 }
 

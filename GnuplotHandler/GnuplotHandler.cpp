@@ -17,7 +17,7 @@ void saveDummyPlot() {
     std::ofstream script;
     script.open("script.gnu");
 
-    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
+    script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
     script << std::endl;
     script << "set output 'script.png'";
     script << std::endl;
@@ -52,7 +52,7 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
 
     std::ofstream script;
     script.open("HappinessLevel-onlyOneRegion.gnu");
-    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
+    script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
     script << std::endl;
     script << "set output 'HappinessLevel-onlyOneRegion.png'";
     script << std::endl;
@@ -97,7 +97,7 @@ void plotHappinessIndex(const std::vector<City>& vec,
 
     std::ofstream script;
     script.open("hi.gnu");
-    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
+    script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
     script << std::endl;
     script << "set output 'hi.png'";
     script << std::endl;
@@ -147,7 +147,7 @@ void plotPopulation(const std::vector<City>& vec) {
 
     std::ofstream script;
     script.open("population.gnu");
-    script << "set terminal pngcairo  transparent enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
+    script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
     script << std::endl;
     script << "set output 'population.png'";
     script << std::endl;
@@ -172,6 +172,78 @@ void plotPopulation(const std::vector<City>& vec) {
     system( "gnuplot population.gnu" );
 //    system( "rm -f population.gnu" );
 //    system( "rm -f population.dat" );
+}
+
+void plotPopulationAnimated(const std::vector<City>& vec) {
+    std::ofstream data;
+    unsigned count{1};
+for(; count < vec.size() ; count+=(vec.size()/20)) {
+    data.open("population.dat");
+    auto sortedVec = vec;
+    sort(sortedVec.begin(), sortedVec.end(), [](const City& lhs, 
+            const City& rhs) {
+        return lhs.getPopulation() < rhs.getPopulation();
+    });
+    for (auto it = sortedVec.begin(); it != sortedVec.begin()+count; ++it) {
+        data << it->getLongitude();
+        data << " ";
+        data << it->getLatitude();
+        data << " ";
+        data << it->getPopulation();
+        data << std::endl;
+    }
+    data.close();
+
+    std::ofstream script;
+    script.open("population.gnu");
+    script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 size 2000, 1400";
+    script << std::endl;
+    script << "set output 'populationFrame";
+    if (count<10) {
+        script << "000";
+    } else if (count<100) {
+        script << "00";
+    } else if (count<1000) {
+        script << "0";
+    }
+    script << count;
+    script << ".png'";
+    script << std::endl;
+    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << std::endl;
+    script << "set title \"Population\"";
+    script << std::endl;
+    script << "set ylabel \"latitude\"";
+    script << std::endl;
+    script << "set xlabel \"longitude\"";
+    script << std::endl;
+    script << "set xrange [14 : 25] reverse nowriteback";
+    script << std::endl;
+    script << "set yrange [49 : 56] noreverse nowriteback";
+    script << std::endl;
+    script << "plot 'population.dat' with points palette pt 7 ps 5 ";
+    script << std::endl;
+    script << "set output";
+    script << std::endl;
+
+    script.close();
+    system( "gnuplot population.gnu" );
+    system( "rm -f population.gnu" );
+    system( "rm -f population.dat" );
+}
+plotPopulation(vec);
+
+system( "cp population.png populationFrame1000.png" );
+system( "cp population.png populationFrame1001.png" );
+system( "cp population.png populationFrame1002.png" );
+system( "cp population.png populationFrame1003.png" );
+system( "cp population.png populationFrame1004.png" );
+
+system( "rm -f populationAnimated.png" );
+system( "convert -delay 60 -loop 0 populationFrame*.png populationAnimated.gif" );
+system( "rm -f populationFrame*.png" );
+
+
 }
 
 }

@@ -99,5 +99,8 @@ int main(int argc, char *argv[]) {
     GnuplotHandler::plotPopulation(vec);
     GnuplotHandler::plotHappinessLevelWhenWeHaveOnlyOneRegion(vec);
     */
+    if (parser.hasKey("--gif")) {
+        GnuplotHandler::plotPopulationAnimated(vec);
+    }
     return 0;
 }    
