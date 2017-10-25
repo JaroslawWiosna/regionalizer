@@ -28,7 +28,7 @@ msgstr "Granda! %s estas procesita."
 
 #: main.cpp:36
 msgid "Help found, so I am about to print help..."
-msgstr "Helpo trovia, do printu helpon"
+msgstr "Helpo trovita, do printu helpon"
 
 #: main.cpp:33
 msgid "Help not found, so moving on..."
@@ -36,4 +36,4 @@ msgstr "Helpo ne trovita, do ni antauxeniru"
 
 #: main.cpp:50
 msgid "No list specified!"
-msgstr "Listo ne estis donata"
+msgstr "Listo ne estis donata!"
