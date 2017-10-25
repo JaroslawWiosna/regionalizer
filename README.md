@@ -15,6 +15,7 @@
   - [How to generate doxygen documentation?](#how-to-generate-doxygen-documentation)
   - [Creating database using city_update_tool](#creating-database-using-city_update_tools)
   - [Algorithms](#algorithms)
+  - [Clang format](#clang format)
   - [Coding style](#coding-style)
   - [Special thanks to](#special-thanks-to)
 
@@ -112,6 +113,17 @@ Database final order is as following: City name|Area|Population|Latitude|Longitu
 
 ---
 
+## Clang format
+
+As it is important for us to keep common rules of clean code for the repository we introduce the clang-format. It uses file .clang-format. In order to run it you have to download the tool with the instructions provided by us on our wiki page: [https://github.com/JaroslawWiosna/regionalizer/wiki/Clang](https://github.com/JaroslawWiosna/regionalizer/wiki/Clang) .<br />
+
+The rule is that you have to run it before each commit you make to the repository so we could keep consistency.
+In order to run it you have to be one folder up(over) the repository file and you have to run exacly the following command in the console:
+```sh
+find regionalizer -iname *.hpp -o -iname *.cpp | xargs clang-format -i -style=file
+```
+
+---
 ## Coding style
 
 ### Naming convention

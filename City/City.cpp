@@ -10,46 +10,31 @@
 
 #include "City.hpp"
 
-City::City(std::string name,
-        std::size_t area,
-        std::size_t population,
-        std::string latitude,
-        std::string longitude) : 
-            name{name},
-	    area{area},
-	    population{population},
-	    latitude{latitude},
-	    longitude{longitude},
-            distanceToTheFarthest{0} {
-
+City::City(std::string name, std::size_t area, std::size_t population,
+           std::string latitude, std::string longitude)
+    : name{name}, area{area}, population{population}, latitude{latitude},
+      longitude{longitude}, distanceToTheFarthest{0} {
 }
 
-City::City(std::string name,
-        std::string area,
-        std::string population,
-        std::string latitude,
-        std::string longitude) : 
-            name{name},
-	    area{0},
-	    population{0},
-	    latitude{latitude},
-	    longitude{longitude},
-            distanceToTheFarthest{0} {
+City::City(std::string name, std::string area, std::string population,
+           std::string latitude, std::string longitude)
+    : name{name}, area{0}, population{0}, latitude{latitude},
+      longitude{longitude}, distanceToTheFarthest{0} {
     this->area = std::stoi(area);
     this->population = std::stoi(population);
 }
-    
+
 double City::distanceFrom(City differentCity) const {
     double Alat = std::stod(this->latitude);
-    double Alon = std::stod(this->longitude); 
+    double Alon = std::stod(this->longitude);
     double Blat = std::stod(differentCity.latitude);
     double Blon = std::stod(differentCity.longitude);
 
     return haversineFormula(Alat, Alon, Blat, Blon);
 }
 
-double City::haversineFormula
-        (double Alat, double Alon, double Blat, double Blon) const {
+double City::haversineFormula(double Alat, double Alon, double Blat,
+                              double Blon) const {
     constexpr double R = 6371;
     Alat = Alat * 3.14 / 180.0; // to_radians
     Alon = Alon * 3.14 / 180.0; // to_radians
@@ -58,9 +43,9 @@ double City::haversineFormula
     double deltaLat = Blat - Alat;
     double deltaLon = Blon - Alon;
 
-    double a = pow(sin(0.5 * deltaLat),2)
-        + cos(Alat) * cos(Blat) * pow(sin(0.5 * deltaLon),2);
-    double c = 2 * atan2(sqrt(a),sqrt(1-a));
+    double a = pow(sin(0.5 * deltaLat), 2) +
+               cos(Alat) * cos(Blat) * pow(sin(0.5 * deltaLon), 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
     double d = R * c;
 
     return d;
@@ -110,5 +95,3 @@ std::string City::getAllFields() {
     res += " ;";
     return res;
 }
-
-

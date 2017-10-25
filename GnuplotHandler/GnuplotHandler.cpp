@@ -17,11 +17,13 @@ void saveDummyPlot() {
     std::ofstream script;
     script.open("script.gnu");
 
+
     script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 size 500, 350";
     script << std::endl;
     script << "set output 'script.png'";
     script << std::endl;
-    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << "set key inside left top vertical Right noreverse enhanced "
+              "autotitles box linetype -1 linewidth 1.000";
     script << std::endl;
     script << "set samples 50, 50";
     script << std::endl;
@@ -29,24 +31,24 @@ void saveDummyPlot() {
     script << std::endl;
 
     script.close();
-    system( "gnuplot script.gnu" );
-    system( "rm -f script.gnu" );
+    system("gnuplot script.gnu");
+    system("rm -f script.gnu");
 }
 
 bool isGnuplotInstalledOnHost() {
-    return ( 0 == system("gnuplot --version &> /dev/null") ? true : false );
+    return (0 == system("gnuplot --version &> /dev/null") ? true : false);
 }
 
 void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
     std::ofstream data;
     data.open("HappinessLevel-onlyOneRegion.dat");
-    for (const City& i : vec) {
+    for (const City &i : vec) {
         data << i.getLatitude();
-	data << " ";
+        data << " ";
         data << i.getLongitude();
-	data << " ";
-	data << "345345345";
-	data << std::endl;
+        data << " ";
+        data << "345345345";
+        data << std::endl;
     }
     data.close();
 
@@ -56,7 +58,8 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
     script << std::endl;
     script << "set output 'HappinessLevel-onlyOneRegion.png'";
     script << std::endl;
-    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << "set key inside left top vertical Right noreverse enhanced "
+              "autotitles box linetype -1 linewidth 1.000";
     script << std::endl;
     script << "set title \"HL\"";
     script << std::endl;
@@ -66,26 +69,31 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
     script << std::endl;
 
     script.close();
-    system( "gnuplot HappinessLevel-onlyOneRegion.gnu" );
-    system( "rm -f HappinessLevel-onlyOneRegion.gnu" );
-    system( "rm -f HappinessLevel-onlyOneRegion.dat" );
-}    
+    system("gnuplot HappinessLevel-onlyOneRegion.gnu");
+    system("rm -f HappinessLevel-onlyOneRegion.gnu");
+    system("rm -f HappinessLevel-onlyOneRegion.dat");
+}
 
-void plotHappinessIndex(const std::vector<City>& vec,
-        std::vector<std::string> capitals) {
+void plotHappinessIndex(const std::vector<City> &vec,
+                        std::vector<std::string> capitals) {
     std::ofstream data;
     data.open("hi.dat");
-    for (const auto& i : vec) {
+    for (const auto &i : vec) {
         double bestHISoFar{};
-	for (const auto& j : capitals) {
-            auto it = std::find_if(std::begin(vec), std::end(vec),
-                    [&](City const& c) {return c.getName() == j; });
-	    std::size_t hi = 10.0 - ((static_cast<double>(i.distanceFrom(*it) / 
-                    static_cast<double>(i.getDistanceToTheFarthest()))*10.0));
-	    if (hi > bestHISoFar) {
-	        bestHISoFar = hi;
+        for (const auto &j : capitals) {
+            auto it =
+                std::find_if(std::begin(vec), std::end(vec),
+                             [&](City const &c) { return c.getName() == j; });
+            std::size_t hi =
+                10.0 -
+                ((static_cast<double>(
+                      i.distanceFrom(*it) /
+                      static_cast<double>(i.getDistanceToTheFarthest())) *
+                  10.0));
+            if (hi > bestHISoFar) {
+                bestHISoFar = hi;
             }
-	}
+        }
         data << i.getLongitude();
         data << " ";
         data << i.getLatitude();
@@ -93,7 +101,7 @@ void plotHappinessIndex(const std::vector<City>& vec,
         data << bestHISoFar;
         data << std::endl;
     }
-    data.close(); 
+    data.close();
 
     std::ofstream script;
     script.open("hi.gnu");
@@ -101,7 +109,8 @@ void plotHappinessIndex(const std::vector<City>& vec,
     script << std::endl;
     script << "set output 'hi.png'";
     script << std::endl;
-    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << "set key inside left top vertical Right noreverse enhanced "
+              "autotitles box linetype -1 linewidth 1.000";
     script << std::endl;
     script << "set title \"Happiness Index - Number of regions =  ";
     script << capitals.size();
@@ -121,21 +130,21 @@ void plotHappinessIndex(const std::vector<City>& vec,
     script << std::endl;
 
     script.close();
-    system( "gnuplot hi.gnu" );
-    system( "rm -f hi.gnu" );
-    system( "rm -f hi.dat" );
+    system("gnuplot hi.gnu");
+    system("rm -f hi.gnu");
+    system("rm -f hi.dat");
 }
 
-void plotPopulation(const std::vector<City>& vec) {
+void plotPopulation(const std::vector<City> &vec) {
     std::ofstream data;
     data.open("population.dat");
 
     auto sortedVec = vec;
-    sort(sortedVec.begin(), sortedVec.end(), [](const City& lhs, 
-            const City& rhs) {
-        return lhs.getPopulation() < rhs.getPopulation();
-    });
-    for (const City& i : sortedVec) {
+    sort(sortedVec.begin(), sortedVec.end(),
+         [](const City &lhs, const City &rhs) {
+             return lhs.getPopulation() < rhs.getPopulation();
+         });
+    for (const City &i : sortedVec) {
         data << i.getLongitude();
         data << " ";
         data << i.getLatitude();
@@ -151,7 +160,8 @@ void plotPopulation(const std::vector<City>& vec) {
     script << std::endl;
     script << "set output 'population.png'";
     script << std::endl;
-    script << "set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000";
+    script << "set key inside left top vertical Right noreverse enhanced "
+              "autotitles box linetype -1 linewidth 1.000";
     script << std::endl;
     script << "set title \"HL\"";
     script << std::endl;
@@ -168,7 +178,6 @@ void plotPopulation(const std::vector<City>& vec) {
     script << "set output";
     script << std::endl;
 
-    script.close();
     system( "gnuplot population.gnu" );
 //    system( "rm -f population.gnu" );
 //    system( "rm -f population.dat" );
@@ -246,5 +255,5 @@ system( "rm -f populationFrame*.png" );
 
 }
 
-}
 
+} // namespace GnuplotHandler

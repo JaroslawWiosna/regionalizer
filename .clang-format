@@ -1,0 +1,28 @@
+BasedOnStyle: LLVM
+UseTab: Never
+# comment with namespace type after namespace closing brace
+FixNamespaceComments: true
+# case is one tab ahead of switch
+IndentCaseLabels: true
+IndentWidth: 4
+Language: Cpp
+MaxEmptyLinesToKeep: 3
+
+# for example getter will take three lines instead of one
+AllowShortFunctionsOnASingleLine: false
+# same for spaces using braces(new space)
+AllowShortBlocksOnASingleLine: false
+# custom to make our own BraceWrapping
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterClass: true
+    AfterControlStatement: false
+    AfterEnum : true
+    AfterFunction : false
+    AfterNamespace : false
+    AfterStruct : false
+    AfterUnion : false
+    BeforeCatch : true
+    BeforeElse : true
+    IndentBraces : false
+

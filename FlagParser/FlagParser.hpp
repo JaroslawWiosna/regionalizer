@@ -14,15 +14,17 @@
 
 #include <cstdio>
 #include <iostream>
-#include <vector>
 #include <map>
 #include <string>
-class FlagParser {
+#include <vector>
+class FlagParser
+{
   private:
     using Flags = std::map<std::string, std::string>;
     Flags flags;
+
   public:
-    FlagParser(int argc, char* argv[]);
+    FlagParser(int argc, char *argv[]);
     ~FlagParser();
     void parse(std::vector<std::string> vargv);
     void printFlags();

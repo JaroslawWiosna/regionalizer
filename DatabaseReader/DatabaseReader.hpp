@@ -14,14 +14,14 @@
 //#include <cfloat> // FLT_MIN
 #include <cmath> // abs
 //#include <algorithm>
-#include <vector>
 #include <string>
+#include <vector>
 //#include <memory>
 //#include <utility>
 //#include <type_traits>
+#include "City.hpp"
 #include <fstream>
 #include <sstream>
-#include "City.hpp"
 
 namespace DatabaseReader {
 
@@ -40,9 +40,9 @@ std::vector<City> readCitiesFromFile(std::string databaseFile);
  * @brief helper method to parse databaseFile
  * @todo: move to separate file? utils perhaps?
  */
-void split (std::string str, std::string splitBy, std::vector<std::string>& tokens);
+void split(std::string str, std::string splitBy,
+           std::vector<std::string> &tokens);
 
-}
+} // namespace DatabaseReader
 
 #endif // DATABASEREADER_HPP
-

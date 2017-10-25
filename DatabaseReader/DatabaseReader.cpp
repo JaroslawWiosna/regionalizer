@@ -16,39 +16,40 @@ std::vector<City> readCitiesFromFile(std::string databaseFile) {
     ifs.open(databaseFile, std::ifstream::in);
     std::string line{};
 
-    while(std::getline(ifs, line)) {
+    while (std::getline(ifs, line)) {
         if (line[0] == '#') {
             continue;
-	}
+        }
         std::vector<std::string> params;
         size_t pos;
-        while((pos = line.find(" "))!=std::string::npos) {
-            line.replace(line.begin()+pos,line.begin()+pos+1,"");
+        while ((pos = line.find(" ")) != std::string::npos) {
+            line.replace(line.begin() + pos, line.begin() + pos + 1, "");
         }
-	split(line, "|", params);
+        split(line, "|", params);
 
         City city(params[0], params[1], params[2], params[3], params[4]);
-	vecOfCities.push_back(city);
+        vecOfCities.push_back(city);
     }
 
     return vecOfCities;
 }
 
-void split (std::string str, std::string splitBy, std::vector<std::string>& tokens) {
+void split(std::string str, std::string splitBy,
+           std::vector<std::string> &tokens) {
     tokens.push_back(str);
     std::size_t splitAt;
     std::size_t splitLen = splitBy.size();
     std::string frag;
     while (true) {
         frag = tokens.back();
-	splitAt = frag.find(splitBy);
-	if (splitAt == std::string::npos) {
+        splitAt = frag.find(splitBy);
+        if (splitAt == std::string::npos) {
             break;
         }
-	tokens.back() = frag.substr(0, splitAt);
-	tokens.push_back(frag.substr(splitAt+splitLen, frag.size()-(splitAt+splitLen)));
+        tokens.back() = frag.substr(0, splitAt);
+        tokens.push_back(frag.substr(splitAt + splitLen,
+                                     frag.size() - (splitAt + splitLen)));
     }
 }
 
-}
-
+} // namespace DatabaseReader

@@ -11,19 +11,19 @@
 #ifndef GNUPLOTHANDLER_HPP
 #define GNUPLOTHANDLER_HPP
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 //#include <list>
 //#include <cfloat> // FLT_MIN
 //#include <cmath> // abs
 #include <algorithm>
-#include <vector>
 #include <string>
+#include <vector>
 //#include <memory>
 //#include <utility>
 //#include <type_traits>
-#include <stdlib.h>
 #include "City.hpp"
+#include <stdlib.h>
 
 namespace GnuplotHandler {
 
@@ -35,7 +35,6 @@ void plotHappinessIndex(const std::vector<City>& vec,
 void plotPopulation(const std::vector<City>& vec);
 void plotPopulationAnimated(const std::vector<City>& vec);
 
-}
+} // namespace GnuplotHandler
 
 #endif // GNUPLOTHANDLER_HPP
-

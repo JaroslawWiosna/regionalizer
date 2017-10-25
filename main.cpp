@@ -9,14 +9,14 @@
  *
  */
 
-#include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
+#include "FlagParser.hpp"
 #include "GnuplotHandler.hpp"
 #include "VectorOfCities.hpp"
 #include "help.txt.hpp"
 
-#include <locale.h>
 #include <libintl.h>
+#include <locale.h>
 
 #define _(STRING) gettext(STRING)
 
@@ -31,26 +31,28 @@ int main(int argc, char *argv[]) {
     textdomain("regionalizer");
 
     if (!parser.hasKey("--help")) {
-	std::cout << _("Help not found, so moving on...");
+        std::cout << _("Help not found, so moving on...");
         std::cout << std::endl;
-    } else {
-	std::cout << _("Help found, so I am about to print help...");	
-	std::cout << std::endl;
+    }
+    else {
+        std::cout << _("Help found, so I am about to print help...");
+        std::cout << std::endl;
         std::cout << ___help_txt;
-	std::cout << _("Aborting....");
-	std::cout << std::endl;
-	return -1;
+        std::cout << _("Aborting....");
+        std::cout << std::endl;
+        return -1;
     }
     if (!flags["--list"].empty()) {
         std::cout << "Great! " << flags["--list"] << " is being processed";
-	std::cout << std::endl;
-    } else {
-	std::cout << "No list specified!";
-	std::cout << std::endl;
-	std::cout << _("Aborting....");
-	std::cout << std::endl;
-	return -1;
-    } 
+        std::cout << std::endl;
+    }
+    else {
+        std::cout << "No list specified!";
+        std::cout << std::endl;
+        std::cout << _("Aborting....");
+        std::cout << std::endl;
+        return -1;
+    }
 
     std::string databaseFile{flags["--list"]};
     // Part 1 - end
@@ -59,12 +61,12 @@ int main(int argc, char *argv[]) {
 
     // Part 2 - end
     // Part 3 - start - calculate distance from one city to the farthest
-    
+
     VectorOfCities::setDistanceToTheFarthestInTheWholeVector(vec);
 
     // Part 3 - end
-    // Part 4 - start - by brute force check which city would be 
-    // the best capital. We have only one region. 
+    // Part 4 - start - by brute force check which city would be
+    // the best capital. We have only one region.
     // This part is just for testing "happiness level" concept
     // "Happiness level" - value from 0 to 10.
     // 10 is the best, we have 10 when we are the capital, because the
@@ -72,17 +74,21 @@ int main(int argc, char *argv[]) {
     // 0 is when the capital is the farthest city.
     // Formula: HL = 10 - ((distanceFrom(capital) / distanceToTheFarthest)*10)
     if (parser.hasKey("-N") && flags["-N"] == "1") {
-        auto capitals = VectorOfCities::
-                calculateHappinessLevelForOneRegionByBruteForce(vec);
-	GnuplotHandler::plotHappinessIndex(vec, capitals);
-    } else if (parser.hasKey("-N") && flags["-N"] == "2") {
-	auto capitals = VectorOfCities::
-                calculateHappinessLevelForTwoRegionsByBruteForce(vec);
-	GnuplotHandler::plotHappinessIndex(vec, capitals);
-    } else if (parser.hasKey("-N") && std::stoi(flags["-N"]) > 2) {
-        auto capitals = VectorOfCities::regionalizeUsingRandom(vec,
-                flags["-N"]);
-	GnuplotHandler::plotHappinessIndex(vec, capitals);
+        auto capitals =
+            VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(
+                vec);
+        GnuplotHandler::plotHappinessIndex(vec, capitals);
+    }
+    else if (parser.hasKey("-N") && flags["-N"] == "2") {
+        auto capitals =
+            VectorOfCities::calculateHappinessLevelForTwoRegionsByBruteForce(
+                vec);
+        GnuplotHandler::plotHappinessIndex(vec, capitals);
+    }
+    else if (parser.hasKey("-N") && std::stoi(flags["-N"]) > 2) {
+        auto capitals =
+            VectorOfCities::regionalizeUsingRandom(vec, flags["-N"]);
+        GnuplotHandler::plotHappinessIndex(vec, capitals);
     }
     // Part 4 - end
     // Part <last> - start - save to gnuplot.
@@ -93,7 +99,7 @@ int main(int argc, char *argv[]) {
         std::cout << "Gnuplot is not installed on host";
         std::cout << std::endl;
         std::cout << "Aborting...";
-	return -1;
+        return -1;
     }
     GnuplotHandler::saveDummyPlot();
     GnuplotHandler::plotPopulation(vec);
@@ -103,4 +109,4 @@ int main(int argc, char *argv[]) {
         GnuplotHandler::plotPopulationAnimated(vec);
     }
     return 0;
-}    
+}
