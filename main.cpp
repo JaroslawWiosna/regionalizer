@@ -33,8 +33,7 @@ int main(int argc, char *argv[]) {
     if (!parser.hasKey("--help")) {
         std::cout << _("Help not found, so moving on...");
         std::cout << std::endl;
-    }
-    else {
+    } else {
         std::cout << _("Help found, so I am about to print help...");
         std::cout << std::endl;
         std::cout << ___help_txt;
@@ -45,8 +44,7 @@ int main(int argc, char *argv[]) {
     if (!flags["--list"].empty()) {
         std::cout << "Great! " << flags["--list"] << " is being processed";
         std::cout << std::endl;
-    }
-    else {
+    } else {
         std::cout << "No list specified!";
         std::cout << std::endl;
         std::cout << _("Aborting....");
@@ -78,14 +76,12 @@ int main(int argc, char *argv[]) {
             VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(
                 vec);
         GnuplotHandler::plotHappinessIndex(vec, capitals);
-    }
-    else if (parser.hasKey("-N") && flags["-N"] == "2") {
+    } else if (parser.hasKey("-N") && flags["-N"] == "2") {
         auto capitals =
             VectorOfCities::calculateHappinessLevelForTwoRegionsByBruteForce(
                 vec);
         GnuplotHandler::plotHappinessIndex(vec, capitals);
-    }
-    else if (parser.hasKey("-N") && std::stoi(flags["-N"]) > 2) {
+    } else if (parser.hasKey("-N") && std::stoi(flags["-N"]) > 2) {
         auto capitals =
             VectorOfCities::regionalizeUsingRandom(vec, flags["-N"]);
         GnuplotHandler::plotHappinessIndex(vec, capitals);

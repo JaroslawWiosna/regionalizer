@@ -66,8 +66,7 @@ void FlagParser::parse(std::vector<std::string> vargv) {
 
             if (next->substr(0, prefix.size()) != prefix) {
                 flags[*it] = *next;
-            }
-            else {
+            } else {
                 flags[*it] = "";
             }
         }

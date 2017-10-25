@@ -15,7 +15,7 @@
   - [How to generate doxygen documentation?](#how-to-generate-doxygen-documentation)
   - [Creating database using city_update_tool](#creating-database-using-city_update_tools)
   - [Algorithms](#algorithms)
-  - [Clang format](#clang format)
+  - [Clang format](#clang-format)
   - [Coding style](#coding-style)
   - [Special thanks to](#special-thanks-to)
 

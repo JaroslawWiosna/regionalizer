@@ -23,6 +23,8 @@ BraceWrapping:
     AfterStruct : false
     AfterUnion : false
     BeforeCatch : true
-    BeforeElse : true
+    BeforeElse : false
     IndentBraces : false
+#option for pointer location like &vector instead of & vector
+PointerAlignment: Right
 
