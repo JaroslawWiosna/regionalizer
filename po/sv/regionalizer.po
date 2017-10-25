@@ -7,16 +7,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-17 21:48+0200\n"
+"POT-Creation-Date: 2017-10-25 19:40+0200\n"
 "PO-Revision-Date: 2017-10-19 19:16+0200\n"
 "Last-Translator: JaroslawWiosna <179892@edu.p.lodz.pl>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: main.cpp:34
+#: main.cpp:39 main.cpp:52
+msgid "Aborting...."
+msgstr ""
+
+#: main.cpp:45
+#, c-format
+msgid "Great! %s is being processed"
+msgstr ""
+
+#: main.cpp:36
+msgid "Help found, so I am about to print help..."
+msgstr ""
+
+#: main.cpp:33
 msgid "Help not found, so moving on..."
 msgstr "Hjälpafil inte hotad. Programmet fortsätter sin verksamhet."
+
+#: main.cpp:50
+msgid "No list specified!"
+msgstr ""

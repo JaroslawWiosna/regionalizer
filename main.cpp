@@ -21,7 +21,6 @@
 #define _(STRING) gettext(STRING)
 
 int main(int argc, char *argv[]) {
-    // Part 1 - start - parse argv and get databaseFile
     FlagParser parser(argc, argv);
     parser.printFlags();
     auto flags = parser.getFlags();
@@ -42,10 +41,13 @@ int main(int argc, char *argv[]) {
         return -1;
     }
     if (!flags["--list"].empty()) {
-        std::cout << "Great! " << flags["--list"] << " is being processed";
+        char buf[100];
+        std::sprintf(buf, _("Great! %s is being processed"),
+                     flags["--list"].c_str());
+        std::cout << buf;
         std::cout << std::endl;
     } else {
-        std::cout << "No list specified!";
+        std::cout << _("No list specified!");
         std::cout << std::endl;
         std::cout << _("Aborting....");
         std::cout << std::endl;
@@ -53,54 +55,14 @@ int main(int argc, char *argv[]) {
     }
 
     std::string databaseFile{flags["--list"]};
-    // Part 1 - end
-    // Part 2 - start - create vector of Cities based on databaseFile
     auto vec = DatabaseReader::readCitiesFromFile(databaseFile);
-
-    // Part 2 - end
-    // Part 3 - start - calculate distance from one city to the farthest
 
     VectorOfCities::setDistanceToTheFarthestInTheWholeVector(vec);
 
-    // Part 3 - end
-    // Part 4 - start - by brute force check which city would be
-    // the best capital. We have only one region.
-    // This part is just for testing "happiness level" concept
-    // "Happiness level" - value from 0 to 10.
-    // 10 is the best, we have 10 when we are the capital, because the
-    // distance to capital is equal to zero.
-    // 0 is when the capital is the farthest city.
-    // Formula: HL = 10 - ((distanceFrom(capital) / distanceToTheFarthest)*10)
-    if (parser.hasKey("-N") && flags["-N"] == "1") {
-        auto capitals =
-            VectorOfCities::calculateHappinessLevelForOneRegionByBruteForce(
-                vec);
-        GnuplotHandler::plotHappinessIndex(vec, capitals);
-    } else if (parser.hasKey("-N") && flags["-N"] == "2") {
-        auto capitals =
-            VectorOfCities::calculateHappinessLevelForTwoRegionsByBruteForce(
-                vec);
-        GnuplotHandler::plotHappinessIndex(vec, capitals);
-    } else if (parser.hasKey("-N") && std::stoi(flags["-N"]) > 2) {
-        auto capitals =
-            VectorOfCities::regionalizeUsingRandom(vec, flags["-N"]);
-        GnuplotHandler::plotHappinessIndex(vec, capitals);
+    if (parser.hasKey("-N")) {
+        VectorOfCities::regionalize(vec, std::stoi(flags["-N"]));
     }
-    // Part 4 - end
-    // Part <last> - start - save to gnuplot.
 
-    // Gnuploting temporary disabled
-    /*
-    if (!GnuplotHandler::isGnuplotInstalledOnHost()) {
-        std::cout << "Gnuplot is not installed on host";
-        std::cout << std::endl;
-        std::cout << "Aborting...";
-        return -1;
-    }
-    GnuplotHandler::saveDummyPlot();
-    GnuplotHandler::plotPopulation(vec);
-    GnuplotHandler::plotHappinessLevelWhenWeHaveOnlyOneRegion(vec);
-    */
     if (parser.hasKey("--gif")) {
         GnuplotHandler::plotPopulationAnimated(vec);
     }

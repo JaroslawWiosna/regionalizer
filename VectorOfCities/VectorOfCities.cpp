@@ -31,6 +31,22 @@ std::size_t getPopulationOfTheWholeVector(const std::vector<City> &vec) {
     return result;
 }
 
+std::vector<std::string> regionalize(std::vector<City> vec,
+                                     unsigned numberOfRegions) {
+    std::vector<std::string> capitals{};
+    if (numberOfRegions == 1) {
+        capitals = calculateHappinessLevelForOneRegionByBruteForce(vec);
+    } else if (numberOfRegions == 2) {
+        capitals =
+            VectorOfCities::calculateHappinessLevelForTwoRegionsByBruteForce(
+                vec);
+    } else {
+        capitals = VectorOfCities::regionalizeUsingRandom(vec, numberOfRegions);
+    }
+    GnuplotHandler::plotHappinessIndex(vec, capitals);
+    return capitals;
+}
+
 std::vector<std::string>
 calculateHappinessLevelForOneRegionByBruteForce(std::vector<City> vec) {
     std::vector<std::string> bestCapitalSoFar{};

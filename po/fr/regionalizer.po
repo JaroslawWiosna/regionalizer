@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-17 21:48+0200\n"
+"POT-Creation-Date: 2017-10-25 19:40+0200\n"
 "PO-Revision-Date: 2017-10-23 19:56+0200\n"
 "Last-Translator:  <179892@edu.p.lodz.pl>\n"
 "Language-Team: French\n"
@@ -17,6 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: main.cpp:34
+#: main.cpp:39 main.cpp:52
+msgid "Aborting...."
+msgstr ""
+
+#: main.cpp:45
+#, c-format
+msgid "Great! %s is being processed"
+msgstr ""
+
+#: main.cpp:36
+msgid "Help found, so I am about to print help..."
+msgstr ""
+
+#: main.cpp:33
 msgid "Help not found, so moving on..."
+msgstr ""
+
+#: main.cpp:50
+msgid "No list specified!"
 msgstr ""

@@ -1,17 +1,17 @@
-# German translations for regionalizer package.
+# Esperanto translations for regionalizer package.
 # Copyright (C) 2017 THE REGIONALIZER'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the REGIONALIZER package.
-# JaroslawWiosna <179892@edu.p.lodz.pl>, 2017.
+# This file is distributed under the same license as the regionalizer package.
+#  <179892@edu.p.lodz.pl>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-25 19:40+0200\n"
-"PO-Revision-Date: 2017-10-19 20:08+0200\n"
-"Last-Translator: JaroslawWiosna <179892@edu.p.lodz.pl>\n"
-"Language-Team: German\n"
-"Language: de\n"
+"PO-Revision-Date: 2017-10-25 19:49+0200\n"
+"Last-Translator:  <179892@edu.p.lodz.pl>\n"
+"Language-Team: Esperanto\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,21 +19,21 @@ msgstr ""
 
 #: main.cpp:39 main.cpp:52
 msgid "Aborting...."
-msgstr ""
+msgstr "Aborti..."
 
 #: main.cpp:45
 #, c-format
 msgid "Great! %s is being processed"
-msgstr ""
+msgstr "Granda! %s estas procesita."
 
 #: main.cpp:36
 msgid "Help found, so I am about to print help..."
-msgstr ""
+msgstr "Helpo trovia, do printu helpon"
 
 #: main.cpp:33
 msgid "Help not found, so moving on..."
-msgstr "Help (Hilfe) nicht gefunden. Lass uns weitermachen..."
+msgstr "Helpo ne trovita, do ni antauxeniru"
 
 #: main.cpp:50
 msgid "No list specified!"
-msgstr ""
+msgstr "Listo ne estis donata"

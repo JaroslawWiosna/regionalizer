@@ -20,6 +20,7 @@
 //#include <utility>
 //#include <type_traits>
 #include "City.hpp"
+#include "GnuplotHandler.hpp"
 #include <random>
 
 namespace VectorOfCities {
@@ -47,6 +48,10 @@ void setDistanceToTheFarthestInTheWholeVector(std::vector<City> &vec);
  * @param[in] std::vector<City>& vec
  */
 std::size_t getPopulationOfTheWholeVector(const std::vector<City> &vec);
+
+
+std::vector<std::string> regionalize(std::vector<City> vec,
+                                     unsigned numberOfRegions);
 
 /**
  * @brief "returns" City that is the best capital
