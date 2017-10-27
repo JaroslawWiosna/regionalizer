@@ -177,7 +177,7 @@ std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec,
 
     for (std::size_t i{}; i < tries; ++i) {
         auto vecOfRand = generateRandomVectorWithoutRepetition(
-            1, sortedVec.size(), numberOfRegions);
+            0, sortedVec.size()-1, numberOfRegions);
         //      for (auto j : vecOfRand) { std::cout << j << "-";} std::cout <<
         //      "\n";
         std::size_t hl{};
