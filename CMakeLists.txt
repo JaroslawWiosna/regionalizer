@@ -17,7 +17,7 @@ option(BUILD_TESTS "Build tests" ON)
 option(BUILD_LONG_RUNNING_TESTS "Build tests" OFF)
 
 #set(CMAKE_CXX_STANDARD 17)
-set(COMPILE_FLAGS "--std=gnu++17 -Wall -Wno-missing-braces -fconcepts --coverage -g -O0 -fprofile-arcs -ftest-coverage")
+set(COMPILE_FLAGS "--std=gnu++17 -Wall -Wno-missing-braces -fconcepts --coverage -g -O3 -fprofile-arcs -ftest-coverage")
 set(GTEST_FLAGS "-lgtest")
 set(LINK_FLAGS "-lpthread")
 
