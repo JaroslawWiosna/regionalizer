@@ -9,6 +9,7 @@
  *
  */
 
+#include "ClosestCity.hpp"
 #include "DatabaseReader.hpp"
 #include "FlagParser.hpp"
 #include "GnuplotHandler.hpp"
@@ -66,5 +67,8 @@ int main(int argc, char *argv[]) {
     if (parser.hasKey("--gif")) {
         GnuplotHandler::plotPopulationAnimated(vec);
     }
+
+    std::cout << ClosestCity::getAllBiggestCitiesInOrder(vec, "Poddebice");
+
     return 0;
 }

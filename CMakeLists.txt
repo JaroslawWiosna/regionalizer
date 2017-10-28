@@ -38,6 +38,7 @@ include_directories(
   FlagParser 
   DatabaseReader 
   GnuplotHandler
+  ClosestCity
 )
 set(files
   City/City.cpp
@@ -45,6 +46,7 @@ set(files
   FlagParser/FlagParser.cpp
   DatabaseReader/DatabaseReader.cpp
   GnuplotHandler/GnuplotHandler.cpp
+  ClosestCity/ClosestCity.cpp
 )
 
 ######
