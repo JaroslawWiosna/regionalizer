@@ -7,6 +7,10 @@
 
 # regionalizer [![Watchers](https://img.shields.io/github/watchers/JaroslawWiosna/regionalizer.svg?style=social&label=Watch)](https://github.com/JaroslawWiosna/regionalizer/watchers) [![Star](https://img.shields.io/github/stars/JaroslawWiosna/regionalizer.svg?style=social&label=Stars)](https://github.com/JaroslawWiosna/regionalizer/stargazers) [![Fork](https://img.shields.io/github/forks/JaroslawWiosna/regionalizer.svg?style=social&label=Fork)](https://github.com/JaroslawWiosna/regionalizer/network)
 
+> **regionalize** /ˈriːdʒ(ə)n(ə)lʌɪzə/ - the one who regionalizes.
+>
+> **to regionalize** [/ˈriːdʒ(ə)n(ə)lʌɪz/](https://en.oxforddictionaries.com/definition/regionalize) - to divide into regions, especially for administrative purposes. <sub> [based on thefreedictionary](https://www.thefreedictionary.com/regionalize) </sub>
+>
 > How to choose the best capital of a state and regions?
 
   - [Overview](#overview)
