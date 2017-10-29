@@ -41,7 +41,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class city_update_tool2 {
+public class City_update_tool2 {
 	final static String city_argument_splitter="|";
 	//takes coordinates like 22°15'E, removes direction and creates decimal part of degrees from minutes
 	public static String remove_direction_and_change_to_decimal(String coordinates){

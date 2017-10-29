@@ -17,7 +17,6 @@ package cities_updater_tool;
  * 					  on the given web-page
  */
 
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.BufferedReader; 
 import java.io.InputStreamReader;
@@ -25,15 +24,13 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-// not working so far
-public class city_update_tool {
+public class City_update_tool {
 	public static String cutTheNameFromString(int location_of_the_city_name_in_table,String... list){
 		String list2[]=list[location_of_the_city_name_in_table].split("<");
 		String city_name=list2[0];
 		return city_name;
 	}
-
-	public static void main(String[] args) {
+	public static void getCityAreaAndPopulation(){
 		String city_argument_splitter="|";
 		try {
 			URL data = new URL("https://pl.wikipedia.org/wiki/Miasta_w_Polsce_(statystyki)");
@@ -59,11 +56,11 @@ public class city_update_tool {
 						else if(inputLine.contains("<b>")){writeToFile+=cutTheNameFromString(3,list)+city_argument_splitter;}
 						else {writeToFile+=cutTheNameFromString(2,list)+city_argument_splitter;}
 					}
-					if(linecount==4||linecount==5){ 
+					else if(linecount==4||linecount==5){ 
 						String list2[]=list[1].split("<");
 						//area
 						if(linecount==4)
-							writeToFile+=(list2[0]+city_argument_splitter);
+							writeToFile+=(list2[0].replace(",", ".")+city_argument_splitter);
 						//liczba mieszkancow
 						else if(linecount==5){
 							String list3[]=list2[0].split("&");
@@ -82,7 +79,8 @@ public class city_update_tool {
 							writeToFile="";}
 					}
 				}
-				if(linecount==8){linecount=0;
+				if(linecount==8){
+					linecount=0;
 				}
 
 			}
@@ -91,5 +89,8 @@ public class city_update_tool {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		getCityAreaAndPopulation();
 	}
 }
