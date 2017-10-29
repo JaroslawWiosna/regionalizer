@@ -2,7 +2,7 @@
 # Values are separated by pipe sign "|"
 # Based on http://www.geonames.org/PL/largest-cities-in-poland.html 
 # City name|Area|Population|Latitude|Longitude
-Warsaw|517.24|1702139|52.23|21.012
+Warsaw | 517.24 | 1702139|52.23 |21.012
 Lodz|293.25|768755|51.75|19.467
 Krakow|250|755050|50.061|19.937
 Wroclaw|250|632893|51.1|17.033
