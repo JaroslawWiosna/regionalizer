@@ -46,6 +46,24 @@ This line from [The Count of Monte Cristo](https://en.wikisource.org/wiki/The_Co
 Every City wants to be the capital. Only then the happiness would be **max**. The worst case for a specific city would occur when the capital is in the middle of nowhere.
 Only then the happiness would be **min**. When the capital is somewhere in between, the happiness would be somewhere in between as well.
 
+Here is an example:
+
+- Hey, [Szczecin](https://en.wikipedia.org/wiki/Szczecin) tell me where the capital of Poland should be.
+ - *Near Szczecin, of course!*
+ - Yeah..., but the capital should be in the center of the state, don't you think?
+ - *well..., I agree, but I do not want the capital to be [Rzeszow](https://en.wikipedia.org/wiki/Rzesz%C3%B3w) It would be too far!*
+
+---
+
+When we have `a capital canditate`, let's find out what other cities think about it.
+ - Each city has an information about `the farthest` city.
+ - Let's calculate the distance between `a capital canditate` and A <-- first city of the vector(a.k.a. state, a.k.a. country)
+ - calculate `HI` which is `Happiness Index` = 10 * (calculated distance between A and `the candidate` / distance to the farthest city)
+ - calculate `HL` which is `Happiness Level` = `HI * population of A`
+ - Do it with every single city in the vector and the sum of `HL` of every single city is **the value**. It is like **votes**. Candidate with the greatest value of `HL` would be elected as the new capital.
+
+---
+
 With that being said the algorithm is quite obvious:
  - Assign the distance of the farthest city from every single one of city.
  - Check what would be the happiness level of the whole population when the capital is "the specific" city.
