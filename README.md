@@ -64,15 +64,15 @@ When we have `a capital canditate`, let's find out what other cities think about
 
 ---
 
-With that being said the algorithm is quite obvious:
- - Assign the distance of the farthest city from every single one of city.
- - Check what would be the happiness level of the whole population when the capital is "the specific" city.
- - Check every possible city
+~~With that being said the algorithm is quite obvious:~~
+ - ~~Assign the distance of the farthest city from every single one of city.~~
+ - ~~Check what would be the happiness level of the whole population when the capital is "the specific" city.~~
+ - ~~Check every possible city~~~~
 
-The objectives of the project
- - [x] Choose the best city for capital (or for the location of headquaters)
- - [ ] Choose the best cities for capitals of the regions. (Numer of regions will be passed as argvs)
- - [ ] Chosse the optimal number of regions. (Every city wants to be the capital, but there is no sense...)
+~~The objectives of the project~~
+ - [x] ~~Choose the best city for capital (or for the location of headquaters)~~
+ - [ ] ~~Choose the best cities for capitals of the regions. (Numer of regions will be passed as argvs)~~
+ - [ ] ~~Chosse the optimal number of regions. (Every city wants to be the capital, but there is no sense...)~~
 
 ---
 
