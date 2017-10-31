@@ -22,8 +22,11 @@
 #include "City.hpp"
 #include <fstream>
 #include <sstream>
+#include <experimental/filesystem>
 
 namespace DatabaseReader {
+
+namespace fs = std::experimental::filesystem;
 
 /**
  * @brief read data from file and returns a vector of Cities
@@ -34,7 +37,7 @@ namespace DatabaseReader {
  * @return std::vector<City>
  * Vector of cities
  */
-std::vector<City> readCitiesFromFile(std::string databaseFile);
+std::vector<City> readCitiesFromFile(const fs::path& databaseFile);
 
 /**
  * @brief helper method to parse databaseFile

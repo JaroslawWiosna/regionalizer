@@ -10,7 +10,7 @@
 
 namespace DatabaseReader {
 
-std::vector<City> readCitiesFromFile(std::string databaseFile) {
+std::vector<City> readCitiesFromFile(const fs::path& databaseFile) {
     std::vector<City> vecOfCities;
     std::ifstream ifs;
     ifs.open(databaseFile, std::ifstream::in);

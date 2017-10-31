@@ -69,7 +69,7 @@ set(files
 project (regionalizer)
 add_executable(regionalizer main.cpp ${files} ${COMPILED_RESOURCES}) 
 include_directories(${GTEST_INCLUDE_DIRS})
-target_link_libraries(regionalizer gtest pthread)
+target_link_libraries(regionalizer gtest pthread stdc++fs)
 
 enable_testing()
 
