@@ -14,7 +14,6 @@
 > How to choose the best capital of a state and regions?
 
   - [Overview](#overview)
-  - [How to clone?](#how-to-clone)
   - [How to build?](#how-to-build)
   - [How to contribute?](#how-to-contribute)
   - [How to generate doxygen documentation?](#how-to-generate-doxygen-documentation)
@@ -73,24 +72,6 @@ When we have `a capital canditate`, let's find out what other cities think about
  - [x] ~~Choose the best city for capital (or for the location of headquaters)~~
  - [ ] ~~Choose the best cities for capitals of the regions. (Numer of regions will be passed as argvs)~~
  - [ ] ~~Chosse the optimal number of regions. (Every city wants to be the capital, but there is no sense...)~~
-
----
-
-## How to clone?
-
-This repository has a submodule inside. In order to clone the repo with submodule use
-```sh
-git clone --recursive https://github.com/JaroslawWiosna/regionalizer.git
-cd regionalizer
-```
-...or if you have already cloned the repo without `recursive` flag:
-```sh
-git clone https://github.com/JaroslawWiosna/regionalizer.git
-cd regionalizer
-git submodule update --init --recursive
-```
-
-[Thanks to mklement0](https://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules)
 
 ---
 
