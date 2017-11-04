@@ -9,20 +9,13 @@
 #ifndef DATABASEREADER_HPP
 #define DATABASEREADER_HPP
 
+#include "City.hpp"
+#include <experimental/filesystem>
+#include <fstream>
 #include <iostream>
-//#include <list>
-//#include <cfloat> // FLT_MIN
-#include <cmath> // abs
-//#include <algorithm>
+#include <sstream>
 #include <string>
 #include <vector>
-//#include <memory>
-//#include <utility>
-//#include <type_traits>
-#include "City.hpp"
-#include <fstream>
-#include <sstream>
-#include <experimental/filesystem>
 
 namespace DatabaseReader {
 
@@ -37,7 +30,7 @@ namespace fs = std::experimental::filesystem;
  * @return std::vector<City>
  * Vector of cities
  */
-std::vector<City> readCitiesFromFile(const fs::path& databaseFile);
+std::vector<City> readCitiesFromFile(const fs::path &databaseFile);
 
 /**
  * @brief helper method to parse databaseFile

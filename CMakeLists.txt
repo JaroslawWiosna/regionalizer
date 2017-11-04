@@ -17,7 +17,7 @@ option(BUILD_TESTS "Build tests" ON)
 option(BUILD_LONG_RUNNING_TESTS "Build tests" OFF)
 
 #set(CMAKE_CXX_STANDARD 17)
-set(COMPILE_FLAGS "--std=gnu++17 -Wall -Wno-missing-braces -fconcepts --coverage -g -O3 -fprofile-arcs -ftest-coverage")
+set(COMPILE_FLAGS "--std=gnu++17 -Wall -Wno-missing-braces -ftest-coverage -fprofile-arcs")
 set(GTEST_FLAGS "-lgtest")
 set(LINK_FLAGS "-lpthread")
 
@@ -33,20 +33,24 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILE_FLAGS}" )
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 
 include_directories( 
+  Region
   City
   VectorOfCities
   FlagParser 
   DatabaseReader 
   GnuplotHandler
   ClosestCity
+  ProgressBar
 )
 set(files
+  Region/Region.cpp
   City/City.cpp
   VectorOfCities/VectorOfCities.cpp
   FlagParser/FlagParser.cpp
   DatabaseReader/DatabaseReader.cpp
   GnuplotHandler/GnuplotHandler.cpp
   ClosestCity/ClosestCity.cpp
+  ProgressBar/ProgressBar.cpp
 )
 
 ######
@@ -74,7 +78,7 @@ target_link_libraries(regionalizer gtest pthread stdc++fs)
 enable_testing()
 
 if(BUILD_TESTS)
-	add_subdirectory(regionalizerTests)
+	add_subdirectory(tests)
 endif()
 
 

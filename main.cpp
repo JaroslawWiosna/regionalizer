@@ -9,11 +9,8 @@
  *
  */
 
-#include "ClosestCity.hpp"
-#include "DatabaseReader.hpp"
 #include "FlagParser.hpp"
-#include "GnuplotHandler.hpp"
-#include "VectorOfCities.hpp"
+#include "Region.hpp"
 #include "help.txt.hpp"
 
 #include <libintl.h>
@@ -56,19 +53,15 @@ int main(int argc, char *argv[]) {
     }
 
     std::string databaseFile{flags["--list"]};
-    auto vec = DatabaseReader::readCitiesFromFile(databaseFile);
-
-    VectorOfCities::setDistanceToTheFarthestInTheWholeVector(vec);
+    Region region{databaseFile};
 
     if (parser.hasKey("-N")) {
-        VectorOfCities::regionalize(vec, std::stoi(flags["-N"]));
+        region.regionalize(flags["-N"]);
     }
 
     if (parser.hasKey("--gif")) {
-        GnuplotHandler::plotPopulationAnimated(vec);
+        region.plotPopulationAnimated();
     }
-
-    std::cout << ClosestCity::getAllBiggestCitiesInOrder(vec, "Poddebice");
 
     return 0;
 }

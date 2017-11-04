@@ -9,19 +9,12 @@
 #ifndef VECTOROFCITIES_HPP
 #define VECTOROFCITIES_HPP
 
-#include <iostream>
-//#include <list>
-//#include <cfloat> // FLT_MIN
-#include <algorithm>
-#include <cmath> // abs
-#include <string>
-#include <vector>
-//#include <memory>
-//#include <utility>
-//#include <type_traits>
 #include "City.hpp"
 #include "GnuplotHandler.hpp"
+#include "ProgressBar.hpp"
+#include <algorithm>
 #include <random>
+#include <vector>
 
 namespace VectorOfCities {
 

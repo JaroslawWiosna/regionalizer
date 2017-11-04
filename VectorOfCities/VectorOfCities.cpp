@@ -175,7 +175,9 @@ std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec,
     std::size_t bestHLsoFar{};
     auto sortedVec = sortVec(vec);
 
+    ProgressBar *bar = new ProgressBar{"regionalizeUsingRandom"};
     for (std::size_t i{}; i < tries; ++i) {
+        bar->printBar(100 * i / tries);
         auto vecOfRand = generateRandomVectorWithoutRepetition(
             0, sortedVec.size() - 1, numberOfRegions);
         //      for (auto j : vecOfRand) { std::cout << j << "-";} std::cout <<
@@ -203,6 +205,7 @@ std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec,
             }
         }
     }
+    delete bar;
     std::cout << "The best capitals would be ";
     for (auto i : bestCapitalsSoFar) {
         std::cout << i << " ";
