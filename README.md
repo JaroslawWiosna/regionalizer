@@ -21,6 +21,7 @@
   - [Algorithms](#algorithms)
   - [Clang format](#clang-format)
   - [Coding style](#coding-style)
+  - [Project wiki](#project-wiki)
   - [Special thanks to](#special-thanks-to)
 
 ---
@@ -130,17 +131,12 @@ find regionalizer -iname *.hpp -o -iname *.cpp | xargs clang-format -i -style=fi
 ---
 ## Coding style
 
-### Naming convention
+In our repository we use style defined by LLVM modified by additional flags that can be seen in: [https://github.com/JaroslawWiosna/regionalizer/blob/master/.clang-format](https://github.com/JaroslawWiosna/regionalizer/blob/master/.clang-format). They flags are further discussed in here: [http://clang.llvm.org/docs/ClangFormatStyleOptions.html](http://clang.llvm.org/docs/ClangFormatStyleOptions.html). Because we use that file each contributor resposibility in case of clean code is only using clang-format as it is described above. You can find more about LLVM on the following page: [http://llvm.org/docs/CodingStandards.html](http://llvm.org/docs/CodingStandards.html).
 
-> Use CamelCase
+---
+## Project wiki
 
-### Spaces or tabs?
-
-> Use spaces only. 4 spaces per indentiation level.
-
-### Maximum line length
-
-> Limit is 79 characters per line.
+We encourage you to visit our project wiki Page where you can find all knowledge base about our project, methods and alghoritms we use, project meetings and more. Here is the link to our wiki: [https://github.com/JaroslawWiosna/regionalizer/wiki](https://github.com/JaroslawWiosna/regionalizer/wiki).
 
 ---
 
