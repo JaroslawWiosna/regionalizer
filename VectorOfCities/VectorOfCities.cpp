@@ -160,7 +160,7 @@ std::vector<unsigned> generateRandomVectorWithoutRepetition(unsigned floor,
     return vecOfRand;
 }
 
-std::vector<std::string> regionalizeUsingRandom(std::vector<City> vec,
+std::vector<std::string> regionalizeUsingRandom(const std::vector<City> &vec,
                                                 std::string numberOfRegions) {
     return regionalizeUsingRandom(vec, std::stoi(numberOfRegions));
 }

@@ -10,14 +10,15 @@
 
 #include "City.hpp"
 
-City::City(std::string name, std::size_t area, std::size_t population,
-           std::string latitude, std::string longitude)
+City::City(const std::string &name, std::size_t area, std::size_t population,
+           const std::string &latitude, const std::string &longitude)
     : name{name}, area{area}, population{population}, latitude{latitude},
       longitude{longitude}, distanceToTheFarthest{0} {
 }
 
-City::City(std::string name, std::string area, std::string population,
-           std::string latitude, std::string longitude)
+City::City(const std::string &name, const std::string &area,
+           const std::string &population, const std::string &latitude,
+           const std::string &longitude)
     : name{name}, area{0}, population{0}, latitude{latitude},
       longitude{longitude}, distanceToTheFarthest{0} {
     this->area = std::stoi(area);

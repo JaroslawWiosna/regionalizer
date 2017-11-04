@@ -47,8 +47,8 @@ class City
      * @param[in] latitude
      * @param[in] longitude
      */
-    City(std::string name, std::size_t area, std::size_t population,
-         std::string latitude, std::string longitude);
+    City(const std::string &name, std::size_t area, std::size_t population,
+         const std::string &latitude, const std::string &longitude);
 
     /**
      * @brief Primary ctor of Class City
@@ -66,8 +66,9 @@ class City
      * @param[in] latitude
      * @param[in] longitude
      */
-    City(std::string name, std::string area, std::string population,
-         std::string latitude, std::string longitude);
+    City(const std::string &name, const std::string &area,
+         const std::string &population, const std::string &latitude,
+         const std::string &longitude);
 
     /**
      * @brief Calculate distance to other city

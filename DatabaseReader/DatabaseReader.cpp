@@ -37,12 +37,11 @@ std::vector<City> readCitiesFromFile(const fs::path &databaseFile) {
 void split(std::string str, std::string splitBy,
            std::vector<std::string> &tokens) {
     tokens.push_back(str);
-    std::size_t splitAt;
     std::size_t splitLen = splitBy.size();
     std::string frag;
     while (true) {
         frag = tokens.back();
-        splitAt = frag.find(splitBy);
+        std::size_t splitAt = frag.find(splitBy);
         if (splitAt == std::string::npos) {
             break;
         }
