@@ -59,10 +59,9 @@ after_success:
     - make test
     - find -name "*.gcda"
     - ls
+    - cd -
+    - ls
     - lcov --directory . --capture --output-file coverage.info
-    - lcov --base-directory . --capture --output-file coverage.info
-    - lcov --directory build --capture --output-file coverage.info
-    - lcov --base-directory build --capture --output-file coverage.info
     - lcov --remove coverage.info 'test/*' '/usr/*' --output-file coverage.info
     - lcov --list coverage.info
       #    - coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
