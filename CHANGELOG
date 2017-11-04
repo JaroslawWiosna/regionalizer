@@ -1,3 +1,15 @@
+0.3.0
+
+ - Recursive search for files when generating doxygen documentation 
+ - Hide system output
+ - Code of conduct
+ - ramdom regionalizer process 
+ - animated population map
+ - clang-format
+ - replace string to filesystem path
+ - gcc: -O0 changed to -O3
+ - codacy badge introduced
+
 0.2.0
 
  - Updated population map where Greatest Cities are on top
