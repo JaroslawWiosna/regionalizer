@@ -1,3 +1,14 @@
+0.3.1
+
+ - Region class introduced
+ - Progress Bar introduced
+ - Coverity enabled
+ - Submodule deleted
+ - Fixed issue template
+ - updated README.md with info about wiki and coding style
+ - adding fixed unittests for the database file.
+ - K-means algorithm proof of concept
+
 0.3.0
 
  - Recursive search for files when generating doxygen documentation 
