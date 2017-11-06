@@ -56,7 +56,17 @@ int main(int argc, char *argv[]) {
     Region region{databaseFile};
 
     if (parser.hasKey("-N")) {
-        region.regionalize(flags["-N"]);
+        auto subregions = region.regionalize(flags["-N"]);
+        std::cout << "The capitals are:" << std::endl;
+        for (const auto &subregion : subregions) {
+            std::cout << subregion.getCapital() << std::endl;
+        }
+        std::cout << "Happiness level = ";
+        std::size_t HL{};
+        for (const auto &subregion : subregions) {
+            HL += subregion.getHappinessLevel();
+        }
+        std::cout << std::endl;
     }
 
     if (parser.hasKey("--gif")) {
