@@ -16,7 +16,6 @@
 #include "DatabaseReader.hpp"
 #include "GnuplotHandler.hpp"
 #include "ProgressBar.hpp"
-#include "VectorOfCities.hpp"
 #include <algorithm>
 #include <experimental/filesystem>
 #include <random>

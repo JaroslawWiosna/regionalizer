@@ -14,7 +14,6 @@ project(databaseReader)
 file(GLOB src
   "*.cpp"
   "../../DatabaseReader/DatabaseReader.cpp"
-  "../../VectorOfCities/VectorOfCities.cpp"
   "../../GnuplotHandler/GnuplotHandler.cpp"
   "../../City/City.cpp"
   "../../ProgressBar/ProgressBar.cpp"
