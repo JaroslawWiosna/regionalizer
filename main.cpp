@@ -60,6 +60,13 @@ int main(int argc, char *argv[]) {
         std::cout << "The capitals are:" << std::endl;
         for (const auto &subregion : subregions) {
             std::cout << subregion.getCapital() << std::endl;
+
+            // dirty hack: make vector of capitals, but push_back only one
+            // capital...
+            std::vector<std::string> vectorOfCapitals{};
+            vectorOfCapitals.push_back(subregion.getCapital());
+            GnuplotHandler::plotHappinessIndex(
+                subregion.getVec(), vectorOfCapitals, subregion.getCapital());
         }
         std::cout << "Happiness level = ";
         std::size_t HL{};

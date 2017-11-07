@@ -77,7 +77,7 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
 }
 
 void plotHappinessIndex(const std::vector<City> &vec,
-                        std::vector<std::string> capitals) {
+                        std::vector<std::string> capitals, std::string name) {
     std::ofstream data;
     data.open("hi.dat");
     for (const auto &i : vec) {
@@ -110,7 +110,7 @@ void plotHappinessIndex(const std::vector<City> &vec,
     script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 "
               "size 2000, 1400";
     script << std::endl;
-    script << "set output 'hi.png'";
+    script << "set output '" << name << ".png'";
     script << std::endl;
     script << "set key inside left top vertical Right noreverse enhanced "
               "autotitles box linetype -1 linewidth 1.000";

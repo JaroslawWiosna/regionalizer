@@ -51,6 +51,9 @@ class Region
     void setName(std::string givenName);
 
     std::size_t getHappinessLevel() const;
+    std::vector<City> getVec() const {
+        return vec;
+    }
 
   private:
     /**
