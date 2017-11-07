@@ -15,8 +15,8 @@
 #include <gtest/gtest.h>
 
 TEST(Region, dummyTest) {
-	Region region{};
-	ASSERT_TRUE(true);
+    Region region{};
+    ASSERT_TRUE(true);
 }
 
 int main(int argc, char *argv[]) {
