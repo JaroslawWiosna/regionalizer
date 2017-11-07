@@ -46,10 +46,29 @@ class Region
      */
     std::string getName() const;
     std::string getCapital() const;
+    std::vector<City> getVec() const {
+        return vec;
+    }
 
     void setName(std::string givenName);
 
     std::size_t getHappinessLevel() const;
+
+    const Region operator+(const Region &) const;
+    Region &operator+=(const Region &);
+    const Region operator-(const Region &) const = delete;
+    Region &operator-=(const Region &) = delete;
+    const Region operator*(const Region &)const = delete;
+    Region &operator*=(const Region &) = delete;
+    const Region operator/(const Region &) const = delete;
+    Region &operator/=(const Region &) = delete;
+    Region operator%(const Region &) = delete;
+    bool operator==(const Region &) = delete;
+    bool operator>(const Region &) = delete;
+    bool operator<(const Region &) = delete;
+    bool operator>=(const Region &) = delete;
+    bool operator<=(const Region &) = delete;
+
 
   private:
     /**

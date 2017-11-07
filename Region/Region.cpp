@@ -275,3 +275,19 @@ std::vector<City> Region::sortVec() {
          });
     return sortedVec;
 }
+
+
+const Region Region::operator+(const Region &rhs) const {
+    Region result = *this;
+    result += rhs;
+    return result;
+}
+
+Region &Region::operator+=(const Region &rhs) {
+    auto rhsVec = rhs.getVec();
+    for (auto city : rhs.getVec()) {
+        this->push_back(city);
+    }
+    setDistanceToTheFarthestInTheWholeVector();
+    return *this;
+}
