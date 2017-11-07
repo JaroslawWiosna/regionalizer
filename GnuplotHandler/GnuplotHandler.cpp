@@ -127,6 +127,8 @@ void plotHappinessIndex(const std::vector<City> &vec,
     script << std::endl;
     script << "set yrange [49 : 56] noreverse nowriteback";
     script << std::endl;
+    script << "set cbrange [5: 10]";
+    script << std::endl;
     script << "plot 'hi.dat' with points palette pt 7 ps 5 ";
     script << std::endl;
     script << "set output";
