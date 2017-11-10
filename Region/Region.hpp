@@ -18,7 +18,9 @@
 #include "ProgressBar.hpp"
 #include <algorithm>
 #include <experimental/filesystem>
+#include <mutex>
 #include <random>
+#include <thread>
 #include <vector>
 
 namespace fs = std::experimental::filesystem;
@@ -88,6 +90,13 @@ class Region
     void setDistanceToTheFarthestInTheWholeVector();
 
     void push_back(City city);
+    /*
+        void call_from_thread(unsigned numberOfRegions,
+                              std::vector<City> sortedVec, std::mutex &mu,
+                              std::size_t &bestHLsoFar,
+                              std::vector<std::string> &bestCapitalsSoFar);
+    */
+    void call_from_thread_no_args();
 
     std::string calculateBestCapital() const;
     std::size_t getPopulation() const;
