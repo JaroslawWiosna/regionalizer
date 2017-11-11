@@ -1,6 +1,7 @@
 [![Licence](https://img.shields.io/github/license/JaroslawWiosna/regionalizer.svg)](https://github.com/JaroslawWiosna/regionalizer/blob/master/LICENSE)
 [![Release](https://img.shields.io/github/release/JaroslawWiosna/regionalizer.svg?maxAge=3600)](https://github.com/JaroslawWiosna/regionalizer/releases)
 [![GitHub contributors](https://img.shields.io/github/contributors/JaroslawWiosna/regionalizer.svg)](https://github.com/JaroslawWiosna/regionalizer/graphs/contributors)
+[![Pull Requests](https://img.shields.io/github/issues-pr/JaroslawWiosna/regionalizer.svg)](https://github.com/JaroslawWiosna/regionalizer/pulls)
 [![Travis status](https://travis-ci.org/JaroslawWiosna/regionalizer.svg?branch=master)](https://travis-ci.org/JaroslawWiosna/regionalizer)
 [![Coverage Status](https://coveralls.io/repos/github/JaroslawWiosna/regionalizer/badge.svg?branch=master)](https://coveralls.io/github/JaroslawWiosna/regionalizer?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/48b007a2de3648df9f3ca61c77ad45af)](https://www.codacy.com/app/JaroslawWiosna/regionalizer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JaroslawWiosna/regionalizer&amp;utm_campaign=Badge_Grade)
