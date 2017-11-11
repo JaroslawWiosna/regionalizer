@@ -32,7 +32,7 @@
 [![image](https://i.imgur.com/tTPunlN.png)](https://i.imgur.com/tTPunlN.png)
 [![image](https://media.giphy.com/media/3o7aCR7bNwd8EqMuAM/giphy.gif)](https://media.giphy.com/media/3o7aCR7bNwd8EqMuAM/giphy.gif)
 [![image](https://media.giphy.com/media/3o6fIQ4kPLuiMRFu00/giphy.gif)](https://media.giphy.com/media/3o6fIQ4kPLuiMRFu00/giphy.gif)
-[![image](https://i.imgur.com/ZRhei6y.png)](https://i.imgur.com/ZRhei6y.png)
+[![image](https://jaroslawwiosna.github.io/regionalizer/main_8cpp__incl.png)](https://jaroslawwiosna.github.io/regionalizer/main_8cpp__incl.png)
 
 How could we know what is the best city to locate the headquaters of our company?
  - Should we locate it in the biggest city?
