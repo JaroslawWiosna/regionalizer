@@ -246,7 +246,8 @@ Region::regionalizeUsingRandom(unsigned numberOfRegions) {
 
     for (unsigned i = 0; i < numberOfThreads; ++i) {
         t[i] = std::thread(&call_from_thread, numberOfRegions,
-                           std::ref(sortedVec), std::ref(mu), std::ref(bestHLsoFar), std::ref(bestCapitalsSoFar));
+                           std::ref(sortedVec), std::ref(mu),
+                           std::ref(bestHLsoFar), std::ref(bestCapitalsSoFar));
     }
 
     ProgressBar *bar = new ProgressBar{"regionalizeUsingRandom"};
