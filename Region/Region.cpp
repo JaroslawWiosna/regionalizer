@@ -192,10 +192,8 @@ Region::regionalizeUsingRandom(std::string numberOfRegions) {
 void call_from_thread(unsigned numberOfRegions, std::vector<City> sortedVec,
                       std::mutex &mu, std::size_t &bestHLsoFar,
                       std::vector<std::string> &bestCapitalsSoFar) {
-    constexpr std::size_t tries{10000};
-    ProgressBar *bar = new ProgressBar{"regionalizeUsingRandom"};
+    constexpr std::size_t tries{100};
     for (std::size_t i{}; i < tries; ++i) {
-        bar->printBar(100 * i / tries);
         auto vecOfRand = TESTgenerateRandomVectorWithoutRepetition(
             0, sortedVec.size() - 1, numberOfRegions);
         //      for (auto j : vecOfRand) { std::cout << j << "-";} std::cout <<
@@ -225,7 +223,6 @@ void call_from_thread(unsigned numberOfRegions, std::vector<City> sortedVec,
         }
         mu.unlock();
     }
-    delete bar;
 }
 
 void Region::call_from_thread_no_args() {
@@ -244,20 +241,20 @@ Region::regionalizeUsingRandom(unsigned numberOfRegions) {
     auto sortedVec = sortVec();
     std::mutex mu;
 
-    constexpr unsigned numberOfThreads{2};
+    constexpr unsigned numberOfThreads{32};
     std::thread t[numberOfThreads];
 
     for (unsigned i = 0; i < numberOfThreads; ++i) {
-
-        t[i] = std::thread(&call_from_thread, this, numberOfRegions, mu,
-                           sortedVec, bestHLsoFar, bestCapitalsSoFar);
-
-        //        t[i] = std::thread(&Region::call_from_thread_no_args, this);
+        t[i] = std::thread(&call_from_thread, numberOfRegions,
+                           std::ref(sortedVec), std::ref(mu), std::ref(bestHLsoFar), std::ref(bestCapitalsSoFar));
     }
 
+    ProgressBar *bar = new ProgressBar{"regionalizeUsingRandom"};
     for (unsigned i = 0; i < numberOfThreads; ++i) {
         t[i].join();
+        bar->printBar(100 * i / numberOfThreads);
     }
+    delete bar;
 
     std::cout << "The best capitals would be ";
     for (auto i : bestCapitalsSoFar) {
