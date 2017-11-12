@@ -16,7 +16,19 @@
 
 TEST(Region, dummyTest) {
     Region region{};
-    ASSERT_TRUE(true);
+
+    City a{"Aleksandrow Kujawski","7.23","12335","52.8833","18.7"};
+City b{"Aleksandrow Lodzki","13.82","21380","51.8167","19.3167"};
+City c{"Alwernia","8.88","3402","50.0667","19.5333"};
+
+    region += a;
+    ASSERT_EQ(region.getPopulation(), a.getPopulation());
+
+    region += b;
+    ASSERT_EQ(region.getPopulation(), a.getPopulation() + b.getPopulation());
+
+    region += c;
+    ASSERT_EQ(region.getPopulation(), a.getPopulation() + b.getPopulation() + c.getPopulation());
 }
 
 int main(int argc, char *argv[]) {

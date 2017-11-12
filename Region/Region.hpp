@@ -41,15 +41,6 @@ class Region
 
     void plotPopulationAnimated();
 
-    /**
-     * @brief  getter
-     */
-    std::string getName() const;
-    std::string getCapital() const;
-    std::vector<City> getVec() const {
-        return vec;
-    }
-
     void setName(std::string givenName);
 
     std::size_t getHappinessLevel() const;
@@ -69,8 +60,51 @@ class Region
     bool operator>=(const Region &) = delete;
     bool operator<=(const Region &) = delete;
 
+    const Region operator+(const City &) const;
+    Region &operator+=(const City &);
+    const Region operator-(const City &) const = delete;
+    Region &operator-=(const City &) = delete;
+    const Region operator*(const City &)const = delete;
+    Region &operator*=(const City &) = delete;
+    const Region operator/(const City &) const = delete;
+    Region &operator/=(const City &) = delete;
+    Region operator%(const City &) = delete;
+    bool operator==(const City &) = delete;
+    bool operator>(const City &) = delete;
+    bool operator<(const City &) = delete;
+    bool operator>=(const City &) = delete;
+    bool operator<=(const City &) = delete;
+
+    /**
+     * @brief  getter
+     */
+    std::string getName() const;
+    std::string getCapital() const;
+    std::vector<City> getVec() const;
+    std::size_t getPopulation() const;
+
 
   private:
+
+    /**
+     * @var Region::name
+     * Name of the region.
+     */
+    std::string name;
+
+    /**
+     * @var Region::capital
+     * Name of the capital.
+     */
+    std::string capital;
+
+    /**
+     * @var Region::vec
+     * Vector of cities.
+     */
+    std::vector<City> vec;
+
+
     /**
      * @brief set `distanceToTheFarthest` field in each object inside the vector
      *
@@ -90,15 +124,6 @@ class Region
     void push_back(City city);
 
     std::string calculateBestCapital() const;
-    std::size_t getPopulation() const;
-
-    /**
-     * @var Region::name
-     * Name of the region.
-     */
-    std::string name;
-    std::string capital;
-    std::vector<City> vec;
 
     std::vector<std::string>
     calculateHappinessLevelForOneRegionByBruteForce() const;

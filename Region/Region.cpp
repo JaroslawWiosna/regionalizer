@@ -46,6 +46,62 @@ void Region::plotPopulationAnimated() {
     GnuplotHandler::plotPopulationAnimated(vec);
 }
 
+void Region::setName(std::string givenName) {
+    name = givenName;
+}
+
+// TODO implement
+std::size_t Region::getHappinessLevel() const {
+    return 0;
+}
+
+const Region Region::operator+(const Region &rhs) const {
+    Region result = *this;
+    result += rhs;
+    return result;
+}
+
+Region &Region::operator+=(const Region &rhs) {
+    auto rhsVec = rhs.getVec();
+    for (auto city : rhs.getVec()) {
+        this->push_back(city);
+    }
+    setDistanceToTheFarthestInTheWholeVector();
+    return *this;
+}
+
+const Region Region::operator+(const City &rhs) const {
+    Region result = *this;
+    result += rhs;
+    return result;
+}
+
+Region &Region::operator+=(const City &rhs) {
+    this->push_back(rhs);
+    setDistanceToTheFarthestInTheWholeVector();
+    return *this;
+}
+
+std::string Region::getCapital() const {
+    //    auto capitals = calculateHappinessLevelForOneRegionByBruteForce();
+    //    return capitals.front();
+    return calculateBestCapital();
+}
+
+std::vector<City> Region::getVec() const {
+    return vec;
+}
+
+std::size_t Region::getPopulation() const {
+    std::size_t result{};
+    for (const auto &i : vec) {
+        result += i.getPopulation();
+    }
+    return result;
+}
+
+// private:
+
 void Region::setDistanceToTheFarthestInTheWholeVector() {
     for (City &i : vec) {
         double farthestDistanceSoFar{};
@@ -62,12 +118,6 @@ void Region::setDistanceToTheFarthestInTheWholeVector() {
 void Region::push_back(City city) {
     vec.push_back(city);
     //    setDistanceToTheFarthestInTheWholeVector();
-}
-
-std::string Region::getCapital() const {
-    //    auto capitals = calculateHappinessLevelForOneRegionByBruteForce();
-    //    return capitals.front();
-    return calculateBestCapital();
 }
 
 std::string Region::calculateBestCapital() const {
@@ -89,17 +139,6 @@ std::string Region::calculateBestCapital() const {
         }
     }
     return bestCapitalSoFar.front();
-}
-
-void Region::setName(std::string givenName) {
-    name = givenName;
-}
-std::size_t Region::getPopulation() const {
-    std::size_t result{};
-    for (const auto &i : vec) {
-        result += i.getPopulation();
-    }
-    return result;
 }
 
 std::vector<std::string>
@@ -262,11 +301,6 @@ std::vector<Region> Region::makeSubregionsBasedOnElectedCapitals(
     return subregions;
 }
 
-// TODO implement
-std::size_t Region::getHappinessLevel() const {
-    return 0;
-}
-
 std::vector<City> Region::sortVec() {
     auto sortedVec = vec;
     sort(sortedVec.begin(), sortedVec.end(),
@@ -277,17 +311,3 @@ std::vector<City> Region::sortVec() {
 }
 
 
-const Region Region::operator+(const Region &rhs) const {
-    Region result = *this;
-    result += rhs;
-    return result;
-}
-
-Region &Region::operator+=(const Region &rhs) {
-    auto rhsVec = rhs.getVec();
-    for (auto city : rhs.getVec()) {
-        this->push_back(city);
-    }
-    setDistanceToTheFarthestInTheWholeVector();
-    return *this;
-}
