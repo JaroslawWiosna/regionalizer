@@ -16,9 +16,9 @@
 #include "DatabaseReader.hpp"
 #include "GnuplotHandler.hpp"
 #include "ProgressBar.hpp"
+#include "RandomNumberGeneratorInteger.hpp"
 #include <algorithm>
 #include <experimental/filesystem>
-#include <random>
 #include <vector>
 
 namespace fs = std::experimental::filesystem;

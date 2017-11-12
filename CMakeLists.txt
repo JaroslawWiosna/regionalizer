@@ -40,6 +40,8 @@ include_directories(
   GnuplotHandler
   ClosestCity
   ProgressBar
+  RandomNumberGenerator
+  RandomNumberGeneratorInteger
 )
 set(files
   Region/Region.cpp
@@ -49,6 +51,8 @@ set(files
   GnuplotHandler/GnuplotHandler.cpp
   ClosestCity/ClosestCity.cpp
   ProgressBar/ProgressBar.cpp
+  RandomNumberGenerator/RandomNumberGenerator.cpp
+  RandomNumberGeneratorInteger/RandomNumberGeneratorInteger.cpp
 )
 
 ######

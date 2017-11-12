@@ -185,21 +185,8 @@ Region::calculateHappinessLevelForOneRegionByBruteForce() const {
 std::vector<unsigned>
 Region::generateRandomVectorWithoutRepetition(unsigned floor, unsigned ceil,
                                               unsigned size) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(floor, ceil);
-
-    std::vector<unsigned> vecOfRand;
-    vecOfRand.reserve(size);
-    vecOfRand.push_back(dis(gen));
-    while (vecOfRand.size() < size) {
-        unsigned tmp = dis(gen);
-        if (std::find(vecOfRand.begin(), vecOfRand.end(), tmp) ==
-            vecOfRand.end()) {
-            vecOfRand.push_back(tmp);
-        }
-    }
-    return vecOfRand;
+    RandomNumberGeneratorInteger generator{floor, ceil};
+    return generator.generateRandomVectorWithoutRepetition(size);
 }
 
 std::vector<std::string>

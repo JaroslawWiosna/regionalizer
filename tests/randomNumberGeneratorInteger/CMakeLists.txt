@@ -9,14 +9,10 @@
 #  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-project(region)
+project(randomNumberGeneratorInteger)
 
 file(GLOB src
   "*.cpp"
-  "../../Region/Region.cpp"
-  "../../City/City.cpp"
-  "../../ProgressBar/ProgressBar.cpp"
-  "../../GnuplotHandler/GnuplotHandler.cpp"
   "../../RandomNumberGeneratorInteger/RandomNumberGeneratorInteger.cpp"
 )
 
