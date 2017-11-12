@@ -309,5 +309,3 @@ std::vector<City> Region::sortVec() {
          });
     return sortedVec;
 }
-
-

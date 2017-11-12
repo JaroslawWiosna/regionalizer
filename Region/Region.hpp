@@ -85,7 +85,6 @@ class Region
 
 
   private:
-
     /**
      * @var Region::name
      * Name of the region.

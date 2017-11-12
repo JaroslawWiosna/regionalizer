@@ -10,7 +10,7 @@
 
 #include "City.hpp"
 
-City::City(const std::string &name, std::size_t area, std::size_t population,
+City::City(const std::string &name, double area, std::size_t population,
            const std::string &latitude, const std::string &longitude)
     : name{name}, area{area}, population{population}, latitude{latitude},
       longitude{longitude}, distanceToTheFarthest{0} {
@@ -19,9 +19,9 @@ City::City(const std::string &name, std::size_t area, std::size_t population,
 City::City(const std::string &name, const std::string &area,
            const std::string &population, const std::string &latitude,
            const std::string &longitude)
-    : name{name}, area{0}, population{0}, latitude{latitude},
+    : name{name}, area{0.0}, population{0}, latitude{latitude},
       longitude{longitude}, distanceToTheFarthest{0} {
-    this->area = std::stoi(area);
+    this->area = std::stod(area);
     this->population = std::stoi(population);
 }
 
@@ -60,7 +60,7 @@ std::string City::getName() const {
     return name;
 }
 
-std::size_t City::getArea() const {
+double City::getArea() const {
     return area;
 }
 

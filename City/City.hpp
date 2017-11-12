@@ -18,6 +18,7 @@
 #include <cmath> // abs
 //#include <algorithm>
 //#include <vector>
+#include <stdlib.h>
 #include <string>
 //#include <memory>
 //#include <utility>
@@ -47,7 +48,7 @@ class City
      * @param[in] latitude
      * @param[in] longitude
      */
-    City(const std::string &name, std::size_t area, std::size_t population,
+    City(const std::string &name, double area, std::size_t population,
          const std::string &latitude, const std::string &longitude);
 
     /**
@@ -120,7 +121,7 @@ class City
     /**
      * @brief  getter
      */
-    std::size_t getArea() const;
+    double getArea() const;
 
     /**
      * @brief  getter
@@ -153,7 +154,7 @@ class City
      * Name of the city.
      */
     std::string name;
-    std::size_t area;
+    double area;
     std::size_t population;
     std::string latitude;
     std::string longitude;

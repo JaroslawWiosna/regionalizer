@@ -19,6 +19,8 @@
 #include <cmath>
 #include <gtest/gtest.h>
 
+std::string failed_data = "";
+
 std::size_t database_diagnose(uint8_t option_to_return) {
     std::string input;
     std::ifstream cities_data;
@@ -36,38 +38,47 @@ std::size_t database_diagnose(uint8_t option_to_return) {
     while (!cities_data.eof()) {
         std::getline(cities_data, input);
         pipe_occurances += std::count(input.begin(), input.end(), '|');
+        if (pipe_occurances != 4 && input != "") {
+            failed_data = input;
+        };
         if (input.find("Warszawa") != std::string::npos) {
             same = input.compare("Warszawa|517.24|1753977|52.2|21.0333") ? false
                                                                          : true;
+            failed_data = input;
         }
         cities_number++;
     }
     cities_data.close();
     switch (option_to_return) {
         case 0: {
-            return (pipe_occurances + 4) / cities_number;
+            return cities_number;
         }
         case 1: {
-            return same;
+            return (pipe_occurances + 4) / cities_number;
         }
         case 2: {
-            if (cities_number >= 200) {
-                return true;
-            } else {
-                return false;
-            }
+            return same;
         }
     }
     return 0;
 }
 
 TEST(Database, common_database_tests) {
-    ASSERT_EQ(4, database_diagnose(0))
-        << "expects to have a 4 pipes in each city line";
-    ASSERT_EQ(true, database_diagnose(1))
-        << "expects a database info for Warsaw to be as tested string";
+    std::size_t cities_number = database_diagnose(0);
+    ASSERT_GE(cities_number, 200)
+        << "expects that the list contains at least 200 cities but have: "
+        << cities_number << " of them";
+
+    std::size_t pipe_occurances = database_diagnose(1);
+    ASSERT_EQ(4, pipe_occurances)
+        << "expects to have a 4 pipes in each city line but have a different "
+           "number of them in line: "
+        << failed_data;
+
     ASSERT_EQ(true, database_diagnose(2))
-        << "expects that the list contains at least 200 cities";
+        << "expects a database info for Warsaw to be as tested string "
+           "Warszawa|517.24|1753977|52.2|21.0333 but it was: "
+        << failed_data;
 }
 
 int main(int argc, char **argv) {
