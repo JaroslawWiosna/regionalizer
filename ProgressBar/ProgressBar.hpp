@@ -25,12 +25,16 @@ class ProgressBar
         struct winsize w;
         ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
         width = w.ws_col - 50;
+
+        printBar(0);
     }
 
     explicit ProgressBar(const std::string &name) : name{name} {
         struct winsize w;
         ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
         width = w.ws_col - 50;
+
+        printBar(0);
     }
 
     ~ProgressBar() {

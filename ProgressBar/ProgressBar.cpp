@@ -17,7 +17,7 @@ void ProgressBar::printBar(unsigned percent) {
             std::cout << "#";
         } else {
 
-            std::cout << " ";
+            std::cout << "-";
         }
     }
 
