@@ -237,7 +237,11 @@ Region::regionalizeUsingRandom(unsigned numberOfRegions) {
     delete bar;
     std::cout << "The best capitals would be ";
     for (auto i : bestCapitalsSoFar) {
-        std::cout << i << " ";
+        if (i == bestCapitalsSoFar[bestCapitalsSoFar.size() - 1]) {
+            std::cout << i;
+        } else {
+            std::cout << i << ", ";
+        }
     }
     std::cout << std::endl;
     std::cout << "Happiness level = " << bestHLsoFar;

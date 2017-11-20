@@ -22,8 +22,16 @@ std::vector<City> readCitiesFromFile(const fs::path &databaseFile) {
         }
         std::vector<std::string> params;
         size_t pos;
+        size_t input_space = 0;
         while ((pos = line.find(" ")) != std::string::npos) {
+            if ((line[pos - 1] != ' ' && line[pos - 1] != '|') &&
+                (line[pos + 1] != ' ' && line[pos + 1] != '|')) {
+                input_space = pos;
+            }
             line.replace(line.begin() + pos, line.begin() + pos + 1, "");
+        }
+        if (input_space) {
+            line.insert(input_space, " ");
         }
         split(line, "|", params);
 

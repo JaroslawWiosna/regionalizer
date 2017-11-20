@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
 
 namespace ClosestCity {
 
@@ -31,9 +32,8 @@ void removeCitiesInVectorThatAreSmallerThanMe(std::vector<City> &vec,
 /**
  * @brief after removing the cities with lower population it calculates the
  * distance from all the ctites to the given city named like cityName. Later it
- * sort the list of citites by that calculated distance. It then return the
- * second city on sorted list as the first should be the cityName. We already
- * now it has bigger population because we removed smaller.
+ * go trough the list of the cities not erased and looks up for the closest to
+ * the cityName until the end of the list. We return finally the closest city.
  *
  * @param[in] std::vector<City>& vec
  * @param[in] std::string cityName
