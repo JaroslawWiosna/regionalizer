@@ -1,16 +1,15 @@
-
 dist: trusty
-sudo: required
-
+os: linux
 language: cpp
+sudo: required
 
 compiler:
     - gcc
-#    - clang
+    - clang
 
 install:
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-6"; fi
-    - if [ "$CXX" = "clang++" ]; then export CXX="clang++-4.0"; fi
+    - if [ "$CXX" = "g++" ]; then export CC="gcc-7" CXX="g++-7"; fi
+    - if [ "$CXX" = "clang++" ]; then export CC="clang-5.0" CXX="clang++-5.0"; fi
     - cd ${TRAVIS_BUILD_DIR}
     - wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.13.orig.tar.gz
     - tar xf lcov_1.13.orig.tar.gz
@@ -21,9 +20,15 @@ addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty
+            - llvm-toolchain-trusty-5.0
             - george-edison55-precise-backports
         packages:
-            - g++-6
+            - gcc-7
+            - g++-7
+            - clang-5.0
+            - clang++-5.0
+            - llvm-5.0-dev
             - libopencv-dev
             - libgtest-dev
             - cmake
@@ -36,13 +41,14 @@ before_script:
     - "cd /usr/src/gtest && sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/ ; cd -"
 
 script: 
+    - ${CC} -v
+    - ${CXX} -v
     - mkdir build
     - cd build
     - cmake -DBUILD_TESTS=ON ..
-    - make
+    - cmake -DBUILD_TESTS=ON ..
+    - make VERBOSE=1
     - make test ARGS="-V"
-    - ./regionalizer --list ../database/cities_data -N 1
-    - ./regionalizer --list ../database/cities_data -N 2
 
 after_success:
     - cd ${TRAVIS_BUILD_DIR} 

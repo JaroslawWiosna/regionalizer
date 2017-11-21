@@ -16,14 +16,13 @@ option(BUILD_TESTS "Build tests" ON)
 #option(BUILD_LONG_RUNNING_TESTS "Build long running tests" OFF)
 option(BUILD_LONG_RUNNING_TESTS "Build tests" OFF)
 
-#set(CMAKE_CXX_STANDARD 17)
-set(COMPILE_FLAGS "--std=gnu++17 -Wall -Wno-missing-braces -O3 -ftest-coverage -fprofile-arcs")
+set(COMPILE_FLAGS "-std=c++1z -Wall -O2 -Wno-missing-braces -ftest-coverage -fprofile-arcs")
 set(GTEST_FLAGS "-lgtest")
 set(LINK_FLAGS "-lpthread")
 
-#if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-#  set(COMPILE_FLAGS  "${COMPILE_FLAGS} -stdlib=libstdc++")
-#endif()
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  set(COMPILE_FLAGS  "${COMPILE_FLAGS} -stdlib=libstdc++")
+endif()
 
 if(BUILD_TESTS)
   set(LINK_FLAGS "${GTEST_FLAGS} ${LINK_FLAGS}")
