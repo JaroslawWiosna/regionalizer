@@ -41,21 +41,14 @@ int main(int argc, char *argv[]) {
     if (!flags["--list"].empty()) {
         char buf[100];
         std::sprintf(buf, _("Great! %s is being processed"),
-                     flags["--list"].c_str());
-        std::cout << buf;
-        std::cout << std::endl;
-    } else {
-        std::cout << _("No list specified!");
-        std::cout << std::endl;
+                     flags["--list"].c_str());        std::cout << buf;        std::cout << std::endl;    } else {        std::cout << _("No list specified!");        std::cout << std::endl;
         std::cout << _("Aborting....");
         std::cout << std::endl;
-        return -1;
+                                               return -1;
     }
 
     std::string databaseFile{flags["--list"]};
-    Region region{databaseFile};
-
-    if (parser.hasKey("-N")) {
+    Region region{databaseFile};    if (parser.hasKey("-N")) {
         auto subregions = region.regionalize(flags["-N"]);
         std::cout << "The capitals are:" << std::endl;
         for (const auto &subregion : subregions) {
@@ -63,7 +56,7 @@ int main(int argc, char *argv[]) {
         }
         std::cout << "Happiness level = ";
         std::size_t HL{};
-        for (const auto &subregion : subregions) {
+                       for (const auto &subregion : subregions) {
             HL += subregion.getHappinessLevel();
         }
         std::cout << std::endl;
