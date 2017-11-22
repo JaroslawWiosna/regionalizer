@@ -46,6 +46,10 @@ void Region::plotPopulationAnimated() {
     GnuplotHandler::plotPopulationAnimated(vec);
 }
 
+void Region::plotHistogram() {
+    GnuplotHandler::plotHistogram(vec);
+}
+
 void Region::setName(std::string givenName) {
     name = givenName;
 }

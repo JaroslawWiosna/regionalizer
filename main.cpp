@@ -73,5 +73,9 @@ int main(int argc, char *argv[]) {
         region.plotPopulationAnimated();
     }
 
+    if (parser.hasKey("--histogram") || parser.hasKey("--hist")) {
+        region.plotHistogram();
+    }
+
     return 0;
 }

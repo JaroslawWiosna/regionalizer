@@ -40,6 +40,7 @@ class Region
     std::vector<Region> regionalize(unsigned numberOfRegions);
 
     void plotPopulationAnimated();
+    void plotHistogram();
 
     void setName(std::string givenName);
 

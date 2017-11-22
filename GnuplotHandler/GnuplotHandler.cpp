@@ -263,5 +263,53 @@ void plotPopulationAnimated(const std::vector<City> &vec) {
     system("rm -f populationFrame*.png");
 }
 
+void plotHistogram(const std::vector<City> &vec) {
+    std::ofstream data;
+    data.open("histogram.dat");
+
+    auto sortedVec = vec;
+    sort(sortedVec.begin(), sortedVec.end(),
+         [](const City &lhs, const City &rhs) {
+             return lhs.getPopulation() < rhs.getPopulation();
+         });
+    for (const City &i : sortedVec) {
+        data << i.getPopulation();
+        data << std::endl;
+    }
+    data.close();
+
+    std::ofstream script;
+    script.open("histogram.gnu");
+    script << "set terminal pngcairo enhanced font \"arial,10\" fontscale 1.0 "
+              "size 2000, 1400";
+    script << std::endl;
+    script << "set output 'histogram.png'";
+    script << std::endl;
+    script << "n=2 #number of intervals";
+    script << std::endl;
+    script << "set title \"Histogram\"";
+    script << std::endl;
+    script << "max=15000. #max value";
+    script << std::endl;
+    script << "min=100. #min value";
+    script << std::endl;
+    script << "width=(max-min)/n";
+    script << std::endl;
+    script << "hist(x,width)=width*floor(x/width)+width/2.0";
+    script << std::endl;
+    script << "set boxwidth width*0.9";
+    script << std::endl;
+    script << "set style fill solid 0.5 # fill style";
+    script << std::endl;
+    script << "plot \"histogram.dat\" u (hist($1,width)):(1.0) smooth freq w "
+              "boxes lc rgb\"black\" notitle";
+    script << std::endl;
+    script << "set output";
+    script << std::endl;
+
+    system("gnuplot histogram.gnu");
+    system("rm -f histogram.gnu");
+    system("rm -f histogram.dat");
+}
 
 } // namespace GnuplotHandler
