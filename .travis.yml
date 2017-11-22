@@ -29,6 +29,7 @@ addons:
             - clang-5.0
             - clang++-5.0
             - llvm-5.0-dev
+            - clang-format
             - libopencv-dev
             - libgtest-dev
             - cmake
@@ -41,6 +42,8 @@ before_script:
     - "cd /usr/src/gtest && sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/ ; cd -"
 
 script: 
+    - (cd .. && exec find regionalizer -iname *.hpp -o -iname *.cpp | xargs clang-format -i -style=file)
+    - git status
     - ${CC} -v
     - ${CXX} -v
     - mkdir build
