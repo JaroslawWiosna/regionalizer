@@ -43,7 +43,7 @@ before_script:
 
 script: 
     - (cd .. && exec find regionalizer -iname *.hpp -o -iname *.cpp | xargs clang-format -i -style=file)
-    - git status
+    - ./check_coding_style.sh
     - ${CC} -v
     - ${CXX} -v
     - mkdir build
