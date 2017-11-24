@@ -13,6 +13,7 @@
 #define REGION_HPP
 
 #include "City.hpp"
+#include "ClosestCity.hpp"
 #include "DatabaseReader.hpp"
 #include "GnuplotHandler.hpp"
 #include "ProgressBar.hpp"
@@ -41,6 +42,8 @@ class Region
 
     void plotPopulationAnimated();
     void plotHistogram();
+
+    // void showTheCitiesClosestToTheSubregionCity(std::vector<City> vec) const;
 
     void setName(std::string givenName);
 
@@ -83,6 +86,7 @@ class Region
     std::string getCapital() const;
     std::vector<City> getVec() const;
     std::size_t getPopulation() const;
+
 
 
   private:

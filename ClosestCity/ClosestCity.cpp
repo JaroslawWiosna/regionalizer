@@ -36,7 +36,7 @@ std::string getTheClosestCityThatIsBiggerThanMe(std::vector<City> vec,
             });
 
         auto distanceToTheClosestCity = std::numeric_limits<std::size_t>::max();
-        
+
         for (auto city : vec) {
             if (city.getPopulation() > specifiedCity->getPopulation()) {
                 if (city.distanceFrom(*specifiedCity) <

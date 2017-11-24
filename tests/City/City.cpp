@@ -81,7 +81,7 @@ TEST(City, CityClassTests) {
         << "DistanceToTheFarthest should be set by setDistanceToTheFarthest to "
            "the value "
         << distance << " but it was " << city1.getDistanceToTheFarthest();
-    std::size_t distance2 = 33.3;
+    std::size_t distance2 = 33;
     city2.setDistanceToTheFarthest(distance2);
     ASSERT_EQ(distance2, city2.getDistanceToTheFarthest())
         << "DistanceToTheFarthest should be set by setDistanceToTheFarthest to "

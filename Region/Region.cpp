@@ -304,3 +304,7 @@ std::vector<City> Region::sortVec() {
          });
     return sortedVec;
 }
+// TODO: Move the function call from main to the function below
+/*void Region::showTheCitiesClosestToTheSubregionCity() const {
+
+}*/

@@ -9,6 +9,7 @@
  *
  */
 
+
 #include "FlagParser.hpp"
 #include "Region.hpp"
 #include "help.txt.hpp"
@@ -60,6 +61,13 @@ int main(int argc, char *argv[]) {
         std::cout << "The capitals are:" << std::endl;
         for (const auto &subregion : subregions) {
             std::cout << subregion.getCapital() << std::endl;
+            auto vec =
+                DatabaseReader::readCitiesFromFile("../database/cities_data");
+            std::cout << "Which is near: "
+                      << ClosestCity::getAllBiggestCitiesInOrder(
+                             vec, subregion.getCapital())
+                      << std::endl;
+            // subregion.showTheCitiesClosestToTheSubregionCity(vec);
         }
         std::cout << "Happiness level = ";
         std::size_t HL{};
