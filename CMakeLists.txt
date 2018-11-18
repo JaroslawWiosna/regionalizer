@@ -12,7 +12,7 @@
 cmake_minimum_required (VERSION 2.6)
 
 option(SANITIZER "Address Sanitizer" OFF)
-option(BUILD_TESTS "Build tests" ON)
+option(BUILD_TESTS "Build tests" OFF)
 #option(BUILD_LONG_RUNNING_TESTS "Build long running tests" OFF)
 option(BUILD_LONG_RUNNING_TESTS "Build tests" OFF)
 
@@ -32,54 +32,27 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILE_FLAGS}" )
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 
 include_directories( 
-  Region
-  City
-  FlagParser 
-  DatabaseReader 
-  GnuplotHandler
-  ClosestCity
-  ProgressBar
-  RandomNumberGenerator
-  RandomNumberGeneratorInteger
+  src/City
+  src/Coordinate
+  src/Latitude
+  src/Longitude
+  src/Region
 )
 set(files
-  Region/Region.cpp
-  City/City.cpp
-  FlagParser/FlagParser.cpp
-  DatabaseReader/DatabaseReader.cpp
-  GnuplotHandler/GnuplotHandler.cpp
-  ClosestCity/ClosestCity.cpp
-  ProgressBar/ProgressBar.cpp
-  RandomNumberGenerator/RandomNumberGenerator.cpp
-  RandomNumberGeneratorInteger/RandomNumberGeneratorInteger.cpp
+  src/City/City.cpp
+  src/Coordinate/Coordinate.cpp
+  src/Latitude/Latitude.cpp
+  src/Longitude/Longitude.cpp
+  src/Region/Region.cpp
 )
-
-######
-
-  SET(RESOURCE_COMPILER xxd)
-  SET(INPUT_FILE "../help.txt")
-  SET(OUTPUT_FILE ${INPUT_FILE}.hpp)
-  #  ADD_CUSTOM_COMMAND(
-  #    OUTPUT ${OUTPUT_FILE}.test
-  #    COMMAND rm -f help.txt.hpp
-  #    COMMENT "Removing ${OUTPUT_FILE}")
-  ADD_CUSTOM_COMMAND(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${RESOURCE_COMPILER} -i ${INPUT_FILE} ${OUTPUT_FILE}
-    COMMENT "Compiling ${INPUT_FILE} (text file) to ${OUTPUT_FILE}")
-  LIST(APPEND COMPILED_RESOURCES ${OUTPUT_FILE})
 
 ######
 
 project (regionalizer)
-add_executable(regionalizer main.cpp ${files} ${COMPILED_RESOURCES}) 
-include_directories(${GTEST_INCLUDE_DIRS})
+#add_executable(regionalizer src/main.cpp ${files} ${COMPILED_RESOURCES}) 
+add_executable(regionalizer src/main.cpp ${files}) 
 target_link_libraries(regionalizer gtest pthread stdc++fs)
 
-enable_testing()
 
-if(BUILD_TESTS)
-	add_subdirectory(tests)
-endif()
 
 
