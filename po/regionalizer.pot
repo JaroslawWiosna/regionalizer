@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-25 19:40+0200\n"
+"POT-Creation-Date: 2018-11-19 18:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:39 main.cpp:52
-msgid "Aborting...."
-msgstr ""
-
-#: main.cpp:45
-#, c-format
-msgid "Great! %s is being processed"
-msgstr ""
-
-#: main.cpp:36
-msgid "Help found, so I am about to print help..."
-msgstr ""
-
-#: main.cpp:33
-msgid "Help not found, so moving on..."
-msgstr ""
-
-#: main.cpp:50
-msgid "No list specified!"
+#: src/main.cpp:20
+msgid "This is regionalizer"
 msgstr ""

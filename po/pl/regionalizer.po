@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-25 19:40+0200\n"
+"POT-Creation-Date: 2018-11-19 18:42+0100\n"
 "PO-Revision-Date: 2017-10-17 21:43+0200\n"
 "Last-Translator: JaroslawWiosna <179892@edu.p.lodz.pl>\n"
 "Language-Team: Polish\n"
@@ -18,23 +18,21 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: main.cpp:39 main.cpp:52
-msgid "Aborting...."
-msgstr "Przerywam..."
+#: src/main.cpp:20
+msgid "This is regionalizer"
+msgstr ""
 
-#: main.cpp:45
-#, c-format
-msgid "Great! %s is being processed"
-msgstr "Super! %s jest przetwarzana"
+#~ msgid "Aborting...."
+#~ msgstr "Przerywam..."
 
-#: main.cpp:36
-msgid "Help found, so I am about to print help..."
-msgstr "pomoc znaleziona, wiec wyswietlam pomoc..."
+#~ msgid "Great! %s is being processed"
+#~ msgstr "Super! %s jest przetwarzana"
 
-#: main.cpp:33
-msgid "Help not found, so moving on..."
-msgstr "pomoc nie znaleziona, wiec kontynuujmy..."
+#~ msgid "Help found, so I am about to print help..."
+#~ msgstr "pomoc znaleziona, wiec wyswietlam pomoc..."
 
-#: main.cpp:50
-msgid "No list specified!"
-msgstr "Nie okreslono listy"
+#~ msgid "Help not found, so moving on..."
+#~ msgstr "pomoc nie znaleziona, wiec kontynuujmy..."
+
+#~ msgid "No list specified!"
+#~ msgstr "Nie okreslono listy"
