@@ -40,6 +40,7 @@ include_directories(
 )
 set(files
   src/City/City.cpp
+  src/cities.cpp
   src/Coordinate/Coordinate.cpp
   src/Latitude/Latitude.cpp
   src/Longitude/Longitude.cpp

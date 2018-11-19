@@ -1,31 +1,20 @@
 #include "../Region/Region.hpp"
 #include "../City/City.hpp"
 
-//Region::Region(std::vector<std::shared_ptr<City>> vec) : cities{std::move(vec)} {
-//Region::Region(std::vector<std::shared_ptr<City>>&& vec) : cities{vec} {
-//Region::Region(std::vector<std::shared_ptr<City>>&& vec) : cities{vec} {
-Region::Region(const std::vector<std::shared_ptr<City>>& vec) {
-//Region::Region(std::vector<std::shared_ptr<City>> vec) {
-    //cities.reserve(vec.size());
-    for (const std::shared_ptr<City>& item : vec) {
-        //cities.push_back(std::make_shared<City>(*item));
+//struct EntryInLookupTableOfDistances {
+//    std::shared_ptr<City> a;
+//    std::shared_ptr<City> b;
+//    double distance;
+//};
 
-        //cities.push_back(item);
-        std::shared_ptr<City> tmp(item);
-        cities.push_back(tmp);
+//////
 
-        std::cout << item << "\t" << item->name() << " \tuse_count() = " << item.use_count() << "\n";
-    }
-
+Region::Region(std::vector<std::shared_ptr<City>> vec) : cities{vec} {
     electCapital();
+    fillLookupTableOfDistances();
     findTheLongestDistance();
 
     std::cout << "address of cities " << &cities << "\n";
-
-    for (const std::shared_ptr<City>& item : cities) {
-        std::cout << item << "\t" << item->name() << " \tuse_count() = " << item.use_count() << "\n";
-    }
-    std::cout << "\n";
 }
 
 void Region::electCapital() {
@@ -38,24 +27,42 @@ void Region::electCapital() {
     capital = maxPopulation;
 }
 
-void Region::findTheLongestDistance() {
-    double result{0};
+void Region::fillLookupTableOfDistances() {
     for (auto it = cities.begin(); it != cities.end(); ++it) {
         for (auto jt = it+1; jt != cities.end(); ++jt) {
-            double distance = (*it)->distanceTo(**jt);
-            std::cout << "\t" << (*it)->name() << "-" << (*jt)->name() << "  \t" << distance << " \n";
-            if (distance > result) {
-                result = distance;
-                extremePoint1 = it;
-                extremePoint2 = jt;
-            }
+            const double distance = (*it)->distanceTo(**jt);
+            lookupTableOfDistances.emplace_back(EntryInLookupTableOfDistances{*it, *jt, distance});
         }
     }
-    longestDistance = result;
+}
+
+void Region::findTheLongestDistance() {
+//    double result{0};
+//    auto max_distance = std::minmax_element(lookupTableOfDistances.begin(), lookupTableOfDistances.end(),
+//                                            [](EntryInLookupTableOfDistances const& lhs, EntryInLookupTableOfDistances const& rhs){return lhs.distance < rhs.distance;} );
+
+//    auto max_distance = std::max(lookupTableOfDistances, [](const EntryInLookupTableOfDistances& lhs, const EntryInLookupTableOfDistances& rhs){return lhs.distance < rhs.distance;});
+//    longestDistance = max_distance->distance;
+
+    longestDistance = 0;
+    for (auto it = lookupTableOfDistances.begin(); it != lookupTableOfDistances.end(); ++it) {
+        if (it->distance > longestDistance) {
+            longestDistance = it->distance;
+            extremePoint1 = it->a;
+            extremePoint2 = it->b;
+        }
+    }
 }
 
 std::string Region::capitalName() const{
     return (*capital)->name();
+}
+
+void Region::printLookupTableOfDistances() const {
+    for (const auto& item : lookupTableOfDistances) {
+        std::cout << item.a->name() << " " << item.b->name() << " " << item.distance << "\n";
+    }
+    std::cout << "\n";
 }
 
 double Region::getLongestDistance() const{
@@ -83,7 +90,7 @@ std::vector<Region> Region::makeSubregions(int number) const {
 void Region::printInfo() {
     std::cout << "The capital is " << capitalName() << "\n";
     std::cout << "The longest distance is " << getLongestDistance() << " km"
-              << ", between " << (*extremePoint1)->name() << " and " << (*extremePoint2)->name() << "\n";
+              << ", between " << (extremePoint1)->name() << " and " << (extremePoint2)->name() << "\n";
     std::cout << "This region has " << cities.size() << " cities:" << "\n";
     for (const auto& city : cities) {
     std::cout << "\t" << city->name() << "\n";
