@@ -20,7 +20,7 @@ public:
     void printLookupTableOfDistances() const;
     double getLongestDistance() const;
 
-    std::vector<Region> makeSubregions(int number) const;
+    std::vector<Region> makeSubregions(unsigned) const;
     void printInfo();
 
 private:
@@ -34,4 +34,11 @@ private:
     double longestDistance;
     std::shared_ptr<City> extremePoint1;
     std::shared_ptr<City> extremePoint2;
+};
+
+struct Subregion {
+    explicit Subregion(std::shared_ptr<City> capital) : capital{capital}, cities{} {}
+    explicit Subregion(std::shared_ptr<City> capital, std::vector<std::shared_ptr<City>> cities) : capital{capital}, cities{cities} {}
+    std::shared_ptr<City> capital;
+    std::vector<std::shared_ptr<City>> cities;
 };

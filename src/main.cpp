@@ -2,6 +2,7 @@
 #include "Latitude/Latitude.hpp"
 #include "Region/Region.hpp"
 #include "cities.hpp"
+#include "KMeans/KMeans.hpp"
 #include <algorithm>
 #include <memory>
 #include <vector>
@@ -25,13 +26,14 @@ textdomain("hello");
 
 //  polska.printLookupTableOfDistances();
 
-  v.clear();
-//  auto subregions = polska.makeSubregions(2);
+  auto subregions = polska.makeSubregions(2);
 
 //  for (auto subregion : subregions) {
 //      subregion.printInfo();
 //  }
 //  subregions.at(1).printInfo();
+
+//  KMeans(v, 2);
 
   return 0;
 }

@@ -1,5 +1,8 @@
 #include "../Region/Region.hpp"
 #include "../City/City.hpp"
+#include <random>
+#include<algorithm>
+#include<utility>
 
 //struct EntryInLookupTableOfDistances {
 //    std::shared_ptr<City> a;
@@ -14,7 +17,7 @@ Region::Region(std::vector<std::shared_ptr<City>> vec) : cities{vec} {
     fillLookupTableOfDistances();
     findTheLongestDistance();
 
-    std::cout << "address of cities " << &cities << "\n";
+//    std::cout << "address of cities " << &cities << "\n";
 }
 
 void Region::electCapital() {
@@ -69,7 +72,67 @@ double Region::getLongestDistance() const{
     return longestDistance;
 }
 
-std::vector<Region> Region::makeSubregions(int number) const {
+std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
+    static std::random_device rd;
+    static std::mt19937 rng(rd());
+    std::uniform_int_distribution<int> uni(0, cities.size()-1);
+
+    if (numberOfSubregions > cities.size()) {
+        throw;
+    }
+////old approach
+/*
+    std::vector<std::shared_ptr<City>> newCenters;
+    while (newCenters.size() < numberOfSubregions) {
+        const int randomInt = uni(rng);
+        const std::shared_ptr<City>& ref = cities.at(randomInt);
+        std::shared_ptr<City> candidate(ref);
+        if (std::find(newCenters.begin(), newCenters.end(), candidate) == newCenters.end()) {
+            newCenters.push_back(candidate);
+        }
+    }
+
+    for (const auto& item : newCenters) {
+        std::cout << item->name() << "\n";
+    }
+*/
+///end of old approach
+
+    std::vector<Subregion> subregions;
+    while (subregions.size() < numberOfSubregions) {
+        const int randomInt = uni(rng);
+        const std::shared_ptr<City>& ref = cities.at(randomInt);
+        std::shared_ptr<City> candidate(ref);
+        if (std::find_if(subregions.begin(), subregions.end(), [&candidate](const auto& elem){return (elem.capital == candidate);}) == subregions.end()) {
+            subregions.push_back(Subregion{candidate});
+        }
+    }
+    for (const auto& item : subregions) {
+        std::cout << item.capital->name() << "\n";
+    }
+    for (const auto& city : cities) {
+        std::vector<std::pair<std::shared_ptr<City>,double>> distanceToEachCapital;
+        for(const auto& item : subregions) {
+            distanceToEachCapital.push_back(std::make_pair(item.capital, city->distanceTo(*(item.capital))));
+        }
+        // now find the closest capital
+        std::shared_ptr<City> closestCapital;
+        double distanceToTheClosestCapital{1000000};
+        for(const auto& item : distanceToEachCapital) {
+            if (item.second < distanceToTheClosestCapital) {
+                distanceToTheClosestCapital = item.second;
+                closestCapital = item.first;
+            }
+        }
+    }
+
+    //
+
+//    std::vector<std::vector<std::shared_ptr<City>>> newRegions;
+
+
+
+
     std::vector<std::shared_ptr<City>> first;
     std::vector<std::shared_ptr<City>> second;
 
@@ -93,7 +156,7 @@ void Region::printInfo() {
               << ", between " << (extremePoint1)->name() << " and " << (extremePoint2)->name() << "\n";
     std::cout << "This region has " << cities.size() << " cities:" << "\n";
     for (const auto& city : cities) {
-    std::cout << "\t" << city->name() << "\n";
+    std::cout << "" << city->name() << ", ";
     }
     std::cout << "\n";
 }

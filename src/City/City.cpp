@@ -8,7 +8,7 @@ struct City::Impl {
                                                                   population} {
 
 
-      std::cout << "\t\t\t city ctor\n";
+//      std::cout << "\t\t\t city ctor\n";
   }
 
   std::string name;

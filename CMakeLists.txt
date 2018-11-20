@@ -34,6 +34,7 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 include_directories( 
   src/City
   src/Coordinate
+  src/KMeans
   src/Latitude
   src/Longitude
   src/Region
@@ -42,6 +43,7 @@ set(files
   src/City/City.cpp
   src/cities.cpp
   src/Coordinate/Coordinate.cpp
+  src/KMeans/KMeans.cpp
   src/Latitude/Latitude.cpp
   src/Longitude/Longitude.cpp
   src/Region/Region.cpp
