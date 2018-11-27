@@ -108,7 +108,7 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
         }
     }
     for (const auto& item : subregions) {
-        std::cout << item.capital->name() << "\n";
+//        std::cout << item.capital->name() << "\n";
     }
     for (const auto& city : cities) {
         std::vector<std::pair<std::shared_ptr<City>,double>> distanceToEachCapital;
@@ -122,6 +122,12 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
             if (item.second < distanceToTheClosestCapital) {
                 distanceToTheClosestCapital = item.second;
                 closestCapital = item.first;
+            }
+        }
+        for(auto& item : subregions) {
+            if (item.capital.get() == closestCapital.get()) {
+                std::shared_ptr<City> candidate1(city);
+                item.cities.push_back(candidate1);
             }
         }
     }
@@ -145,9 +151,11 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
     }
 
     std::vector<Region> result;
-    result.push_back(Region{first});
-    result.push_back(Region{second});
+    for (auto subregion : subregions) {
+        result.push_back(Region(subregion.cities));
+    }
     return result;
+
 }
 
 void Region::printInfo() {
@@ -155,8 +163,8 @@ void Region::printInfo() {
     std::cout << "The longest distance is " << getLongestDistance() << " km"
               << ", between " << (extremePoint1)->name() << " and " << (extremePoint2)->name() << "\n";
     std::cout << "This region has " << cities.size() << " cities:" << "\n";
-    for (const auto& city : cities) {
-    std::cout << "" << city->name() << ", ";
-    }
-    std::cout << "\n";
+//    for (const auto& city : cities) {
+//    std::cout << "" << city->name() << ", ";
+//    }
+//    std::cout << "\n";
 }

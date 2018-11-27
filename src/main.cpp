@@ -22,15 +22,18 @@ textdomain("hello");
 
   Region polska{v};
   std::cout << polska.capitalName() << "\n";
-  polska.printInfo();
+//  polska.printInfo();
 
 //  polska.printLookupTableOfDistances();
 
-  auto subregions = polska.makeSubregions(2);
+  auto subregions = polska.makeSubregions(7);
 
-//  for (auto subregion : subregions) {
-//      subregion.printInfo();
-//  }
+  std::cout << "Number of subregions: " << subregions.size() << "\n";
+
+  for (auto subregion : subregions) {
+      std::cout << "===============\n";
+      subregion.printInfo();
+  }
 //  subregions.at(1).printInfo();
 
 //  KMeans(v, 2);
