@@ -13,14 +13,14 @@
 //////
 
 Region::Region(std::vector<std::shared_ptr<City>> vec) : cities{vec} {
-    electCapital();
     fillLookupTableOfDistances();
     findTheLongestDistance();
-
+    electCapital();
 //    std::cout << "address of cities " << &cities << "\n";
 }
 
 void Region::electCapital() {
+#if 0
     std::vector<std::shared_ptr<City>>::iterator maxPopulation = cities.begin();
     for (auto it = cities.begin(); it != cities.end(); ++it) {
         if ((*it)->population() > (*maxPopulation)->population()) {
@@ -28,6 +28,28 @@ void Region::electCapital() {
         }
     }
     capital = maxPopulation;
+#endif
+
+    double unhappinessLevel{10000000000};
+    double currentUnhappinessLevel{0};
+    double currentLongestDistance = 0;
+//    std::vector<std::shared_ptr<City>>::iterator candidate = cities.begin();
+    for (auto it = cities.begin(); it != cities.end(); ++it) {
+        currentUnhappinessLevel = 0;
+        for (auto jt = cities.begin(); jt != cities.end(); ++jt) {
+            auto candidateToBeTheLongestDistance = (**it).distanceTo(**jt);
+            if (candidateToBeTheLongestDistance > currentLongestDistance) {
+                currentLongestDistance = candidateToBeTheLongestDistance;
+            }
+        }
+        for (auto jt = cities.begin(); jt != cities.end(); ++jt) {
+            currentUnhappinessLevel += (**it).distanceTo(**jt) * (**jt).population() / currentLongestDistance;
+        }
+        if (currentUnhappinessLevel < unhappinessLevel) {
+            unhappinessLevel = currentUnhappinessLevel;
+            capital = it;
+        }
+    }
 }
 
 void Region::fillLookupTableOfDistances() {
@@ -72,6 +94,10 @@ double Region::getLongestDistance() const{
     return longestDistance;
 }
 
+std::shared_ptr<City> Region::getCapital() const {
+    return *capital;
+}
+
 std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
     static std::random_device rd;
     static std::mt19937 rng(rd());
@@ -80,23 +106,6 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
     if (numberOfSubregions > cities.size()) {
         throw;
     }
-////old approach
-/*
-    std::vector<std::shared_ptr<City>> newCenters;
-    while (newCenters.size() < numberOfSubregions) {
-        const int randomInt = uni(rng);
-        const std::shared_ptr<City>& ref = cities.at(randomInt);
-        std::shared_ptr<City> candidate(ref);
-        if (std::find(newCenters.begin(), newCenters.end(), candidate) == newCenters.end()) {
-            newCenters.push_back(candidate);
-        }
-    }
-
-    for (const auto& item : newCenters) {
-        std::cout << item->name() << "\n";
-    }
-*/
-///end of old approach
 
     std::vector<Subregion> subregions;
     while (subregions.size() < numberOfSubregions) {
@@ -132,30 +141,45 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
         }
     }
 
-    //
-
-//    std::vector<std::vector<std::shared_ptr<City>>> newRegions;
-
-
-
-
-    std::vector<std::shared_ptr<City>> first;
-    std::vector<std::shared_ptr<City>> second;
-
-    first.push_back(*capital);
-
-    for (auto it = cities.begin(); it != cities.end(); ++it) {
-        if (it != capital) {
-            second.push_back(*it);
-        }
-    }
-
     std::vector<Region> result;
     for (auto subregion : subregions) {
         result.push_back(Region(subregion.cities));
     }
-    return result;
+//    return result;
 
+    for (int i=0; i<100; ++i) {
+        subregions.clear();
+        for (const auto& item: result) {
+            subregions.push_back(Subregion{item.getCapital()});
+        }
+        for (const auto& city : cities) {
+            std::vector<std::pair<std::shared_ptr<City>,double>> distanceToEachCapital;
+            for(const auto& item : subregions) {
+                distanceToEachCapital.push_back(std::make_pair(item.capital, city->distanceTo(*(item.capital))));
+            }
+            // now find the closest capital
+            std::shared_ptr<City> closestCapital;
+            double distanceToTheClosestCapital{1000000};
+            for(const auto& item : distanceToEachCapital) {
+                if (item.second < distanceToTheClosestCapital) {
+                    distanceToTheClosestCapital = item.second;
+                    closestCapital = item.first;
+                }
+            }
+            for(auto& item : subregions) {
+                if (item.capital.get() == closestCapital.get()) {
+                    std::shared_ptr<City> candidate1(city);
+                    item.cities.push_back(candidate1);
+                }
+            }
+        }
+        result.clear();
+        for (auto subregion : subregions) {
+            result.push_back(Region(subregion.cities));
+        }
+    }
+
+    return result;
 }
 
 void Region::printInfo() {

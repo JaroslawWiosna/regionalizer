@@ -26,7 +26,7 @@ textdomain("hello");
 
 //  polska.printLookupTableOfDistances();
 
-  auto subregions = polska.makeSubregions(7);
+  auto subregions = polska.makeSubregions(4);
 
   std::cout << "Number of subregions: " << subregions.size() << "\n";
 

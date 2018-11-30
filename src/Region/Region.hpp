@@ -20,6 +20,8 @@ public:
     void printLookupTableOfDistances() const;
     double getLongestDistance() const;
 
+    std::shared_ptr<City> getCapital() const;
+
     std::vector<Region> makeSubregions(unsigned) const;
     void printInfo();
 
