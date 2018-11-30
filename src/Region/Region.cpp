@@ -62,13 +62,6 @@ void Region::fillLookupTableOfDistances() {
 }
 
 void Region::findTheLongestDistance() {
-//    double result{0};
-//    auto max_distance = std::minmax_element(lookupTableOfDistances.begin(), lookupTableOfDistances.end(),
-//                                            [](EntryInLookupTableOfDistances const& lhs, EntryInLookupTableOfDistances const& rhs){return lhs.distance < rhs.distance;} );
-
-//    auto max_distance = std::max(lookupTableOfDistances, [](const EntryInLookupTableOfDistances& lhs, const EntryInLookupTableOfDistances& rhs){return lhs.distance < rhs.distance;});
-//    longestDistance = max_distance->distance;
-
     longestDistance = 0;
     for (auto it = lookupTableOfDistances.begin(); it != lookupTableOfDistances.end(); ++it) {
         if (it->distance > longestDistance) {
@@ -115,9 +108,6 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
         if (std::find_if(subregions.begin(), subregions.end(), [&candidate](const auto& elem){return (elem.capital == candidate);}) == subregions.end()) {
             subregions.push_back(Subregion{candidate});
         }
-    }
-    for (const auto& item : subregions) {
-//        std::cout << item.capital->name() << "\n";
     }
     for (const auto& city : cities) {
         std::vector<std::pair<std::shared_ptr<City>,double>> distanceToEachCapital;

@@ -6,9 +6,6 @@ struct City::Impl {
        std::size_t population)
       : name{name}, latitude{latitude}, longitude{longitude}, population{
                                                                   population} {
-
-
-//      std::cout << "\t\t\t city ctor\n";
   }
 
   std::string name;
