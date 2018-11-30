@@ -1,3 +1,13 @@
+1.2.0
+*YET TO BE DELIVERED*
+
+ - Take number of subregions from user (argv)
+
+1.1.0
+
+ - Cities in Poland are hardcoded (included in the source code)
+ - A basic algorithm of electing the capital and subregions
+
 1.0.0
 
  - Starting from scratch

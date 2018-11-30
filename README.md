@@ -27,6 +27,10 @@
 
 ---
 
+This version of readme is outdated. Please, stay tuned for a upgraded version
+
+---
+
 ## Overview
 
 [![image](https://i.imgur.com/tTPunlN.png)](https://i.imgur.com/tTPunlN.png)
