@@ -14,7 +14,7 @@
 
 #define _(STRING) gettext(STRING)
 
-int main() {
+int main(int argc, char *argv[]) {
 setlocale(LC_ALL, "");
 bindtextdomain("hello", "./locale");
 textdomain("hello");
@@ -23,8 +23,15 @@ textdomain("hello");
   Region polska{v};
   std::cout << polska.capitalName() << "\n";
 
+  auto numberOfSubregions{4};
+  if (argc == 2) {
+      numberOfSubregions = std::stoi(argv[1]);
+  }
 
-  auto subregions = polska.makeSubregions(4);
+  if (numberOfSubregions <= 1 || numberOfSubregions >= 10) {
+      numberOfSubregions = 4;
+  }
+  auto subregions = polska.makeSubregions(numberOfSubregions);
 
   std::cout << "Number of subregions: " << subregions.size() << "\n";
 
