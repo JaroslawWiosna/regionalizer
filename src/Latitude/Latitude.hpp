@@ -4,7 +4,7 @@
 class Latitude : public Coordinate {
 public:
   Latitude(double angle) : Coordinate{angle} {}
-  Latitude(std::string str) : Latitude{std::stod(str)} {}
+  Latitude(const std::string& str) : Latitude{std::stod(str)} {}
 
   std::string print();
   std::string to_string();

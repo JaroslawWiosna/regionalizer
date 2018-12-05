@@ -12,7 +12,7 @@
 
 //////
 
-Region::Region(std::vector<std::shared_ptr<City>> vec) : cities{vec} {
+Region::Region(const std::vector<std::shared_ptr<City>>& vec) : cities{vec} {
     fillLookupTableOfDistances();
     findTheLongestDistance();
     electCapital();

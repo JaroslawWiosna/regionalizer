@@ -2,7 +2,7 @@
 #include <cmath>
 
 struct City::Impl {
-  Impl(std::string name, Latitude latitude, Longitude longitude,
+  Impl(const std::string& name, Latitude latitude, Longitude longitude,
        std::size_t population)
       : name{name}, latitude{latitude}, longitude{longitude}, population{
                                                                   population} {
@@ -14,7 +14,7 @@ struct City::Impl {
   std::size_t population;
 };
 
-City::City(std::string name, Latitude latitude, Longitude longitude,
+City::City(const std::string& name, Latitude latitude, Longitude longitude,
            std::size_t population)
     : pImpl{std::make_unique<Impl>(name, latitude, longitude, population)} {}
 

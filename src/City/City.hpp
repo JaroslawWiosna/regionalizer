@@ -13,9 +13,9 @@ public:
       explicit City(std::string name, Latitude latitude, Longitude longitude) :
      City{name, latitude, longitude, 0} {}
   */
-  explicit City(std::string name, Latitude latitude, Longitude longitude,
+  explicit City(const std::string& name, Latitude latitude, Longitude longitude,
                 std::size_t population);
-  explicit City(std::string name, Latitude latitude, Longitude longitude)
+  explicit City(const std::string& name, Latitude latitude, Longitude longitude)
       : City{name, latitude, longitude, 0} {}
 
 

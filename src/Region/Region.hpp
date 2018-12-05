@@ -14,7 +14,7 @@ struct EntryInLookupTableOfDistances {
 
 class Region {
 public:
-    explicit Region(std::vector<std::shared_ptr<City>> vec);
+    explicit Region(const std::vector<std::shared_ptr<City> > &vec);
 
     std::string capitalName() const;
     void printLookupTableOfDistances() const;

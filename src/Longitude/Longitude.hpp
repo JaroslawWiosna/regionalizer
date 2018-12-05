@@ -4,7 +4,7 @@
 class Longitude : public Coordinate {
 public:
   Longitude(double angle) : Coordinate{angle} {}
-  Longitude(std::string str) : Longitude{std::stod(str)} {}
+  Longitude(const std::string& str) : Longitude{std::stod(str)} {}
 
   std::string print();
   std::string to_string();
