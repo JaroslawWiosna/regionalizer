@@ -137,7 +137,7 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
     }
 //    return result;
 
-    for (int i=0; i<100; ++i) {
+    for (int i=0; i<10; ++i) {
         subregions.clear();
         for (const auto& item: result) {
             subregions.push_back(Subregion{item.getCapital()});
