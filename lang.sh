@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 #xgettext --keyword=_ --language=C --add-comments --sort-output -o po/regionalizer.pot main.cpp
 #msginit --input=po/regionalizer.pot --locale=pl --output=po/pl/regionalizer.po
