@@ -12,21 +12,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <string.h>
+
 #define _(STRING) gettext(STRING)
 
 int main(int argc, char *argv[]) {
-setlocale(LC_ALL, "");
-bindtextdomain("hello", "./locale");
-textdomain("hello");
+  setlocale(LC_ALL, "");
+  bindtextdomain("hello", "./locale");
+  textdomain("hello");
+
+  bool doDemo{false};
+  for (int i = 1; i < argc; ++i) {
+      if (strcmp(argv[i], "--demo") == 0) {
+          doDemo = true;
+          break;
+      }
+  }
+
+  if (!doDemo) {
+      std::cout << "./regionalizer --demo -N [number] \t to run demo\n";
+      return -1;
+  }
+
+  int numberOfSubregions = 0;
+  for (int i = 1; i < argc-1; ++i) {
+      if ((strcmp(argv[i], "--number") == 0) || (strcmp(argv[i], "-N") == 0 ) ) {
+          numberOfSubregions = std::stoi(argv[i+1]);
+          break;
+      }
+  }
+  if (0 == numberOfSubregions) {
+      std::cout << "./regionalizer --demo -N [number] \t to run demo\n";
+      return -1;
+  }
+
+
   printf("%s\n", _("This is regionalizer"));
 
   Region polska{v};
   std::cout << polska.capitalName() << "\n";
-
-  auto numberOfSubregions{4};
-  if (argc == 2) {
-      numberOfSubregions = std::stoi(argv[1]);
-  }
 
   if (numberOfSubregions <= 1 || numberOfSubregions >= 10) {
       numberOfSubregions = 4;
