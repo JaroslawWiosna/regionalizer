@@ -48,7 +48,7 @@ script:
     - cmake -DBUILD_TESTS=ON ..
     - cmake -DBUILD_TESTS=ON ..
     - make VERBOSE=1
-    - make test
+#    - make test
     - ./regionalizer --demo -N 5
     - ./regionalizer --demo -N 6
 

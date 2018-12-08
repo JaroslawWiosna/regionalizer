@@ -56,6 +56,10 @@ project (regionalizer)
 add_executable(regionalizer src/main.cpp ${files}) 
 target_link_libraries(regionalizer gtest pthread stdc++fs)
 
+enable_testing()
 
+if(BUILD_TESTS)
+	add_subdirectory(tests)
+endif()
 
 
