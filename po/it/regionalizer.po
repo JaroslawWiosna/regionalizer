@@ -1,0 +1,42 @@
+# Italian translations for PACKAGE package.
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#  <179892@edu.p.lodz.pl>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-09 11:38+0100\n"
+"PO-Revision-Date: 2018-12-09 12:12+0100\n"
+"Last-Translator:  <179892@edu.p.lodz.pl>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/main.cpp:54
+#, c-format
+msgid "Number of subregions: %s"
+msgstr ""
+
+#: src/Region/Region.cpp:177
+#, c-format
+msgid "The capital is %s"
+msgstr ""
+
+#: src/Region/Region.cpp:183
+#, c-format
+msgid "The longest distance is %s km, between %s and %s"
+msgstr ""
+
+#: src/main.cpp:44
+msgid "This is regionalizer"
+msgstr "Questo è regionalizer"
+
+#: src/Region/Region.cpp:189
+#, c-format
+msgid "This region has %s cities."
+msgstr ""
