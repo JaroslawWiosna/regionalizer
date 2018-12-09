@@ -1,5 +1,6 @@
 #include "../Region/Region.hpp"
 #include "../City/City.hpp"
+#include "../gettext.hpp"
 #include <random>
 #include<algorithm>
 #include<utility>
@@ -173,10 +174,24 @@ std::vector<Region> Region::makeSubregions(unsigned numberOfSubregions) const {
 }
 
 void Region::printInfo() {
-    std::cout << "The capital is " << capitalName() << "\n";
-    std::cout << "The longest distance is " << getLongestDistance() << " km"
-              << ", between " << (extremePoint1)->name() << " and " << (extremePoint2)->name() << "\n";
-    std::cout << "This region has " << cities.size() << " cities:" << "\n";
+    const char* capitalLine = _("The capital is %s");
+    char buf1[1024];
+    sprintf(buf1, capitalLine, capitalName().c_str());
+    std::string capitalLineAsString{buf1};
+    std::cout << capitalLineAsString << "\n";
+
+    const char* distanceLine = _("The longest distance is %s km, between %s and %s");
+    char buf2[1024];
+    sprintf(buf2, distanceLine, std::to_string(getLongestDistance()).c_str(), extremePoint1->name().c_str(), extremePoint2->name().c_str());
+    std::string distanceLineAsString{buf2};
+    std::cout << distanceLineAsString << "\n";
+
+    const char* numberOfCitiesLine = _( "This region has %s cities.");
+    char buf3[1024];
+    sprintf(buf3, numberOfCitiesLine, std::to_string(cities.size()).c_str());
+    std::string numberOfCitiesLineAsString{buf3};
+    std::cout << numberOfCitiesLineAsString << "\n";
+
 //    for (const auto& city : cities) {
 //    std::cout << "" << city->name() << ", ";
 //    }

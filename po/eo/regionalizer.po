@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-25 19:40+0200\n"
+"POT-Creation-Date: 2018-12-09 11:38+0100\n"
 "PO-Revision-Date: 2017-10-25 19:49+0200\n"
 "Last-Translator:  <179892@edu.p.lodz.pl>\n"
 "Language-Team: Esperanto\n"
@@ -17,23 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: main.cpp:39 main.cpp:52
-msgid "Aborting...."
-msgstr "Aborti..."
-
-#: main.cpp:45
+#: src/main.cpp:54
 #, c-format
-msgid "Great! %s is being processed"
-msgstr "Granda! %s estas procesita."
+msgid "Number of subregions: %s"
+msgstr ""
 
-#: main.cpp:36
-msgid "Help found, so I am about to print help..."
-msgstr "Helpo trovita, do printu helpon"
+#: src/Region/Region.cpp:177
+#, c-format
+msgid "The capital is %s"
+msgstr ""
 
-#: main.cpp:33
-msgid "Help not found, so moving on..."
-msgstr "Helpo ne trovita, do ni antauxeniru"
+#: src/Region/Region.cpp:183
+#, c-format
+msgid "The longest distance is %s km, between %s and %s"
+msgstr ""
 
-#: main.cpp:50
-msgid "No list specified!"
-msgstr "Listo ne estis donata!"
+#: src/main.cpp:44
+msgid "This is regionalizer"
+msgstr ""
+
+#: src/Region/Region.cpp:189
+#, c-format
+msgid "This region has %s cities."
+msgstr ""
+
+#~ msgid "Aborting...."
+#~ msgstr "Aborti..."
+
+#~ msgid "Great! %s is being processed"
+#~ msgstr "Granda! %s estas procesita."
+
+#~ msgid "Help found, so I am about to print help..."
+#~ msgstr "Helpo trovita, do printu helpon"
+
+#~ msgid "Help not found, so moving on..."
+#~ msgstr "Helpo ne trovita, do ni antauxeniru"
+
+#~ msgid "No list specified!"
+#~ msgstr "Listo ne estis donata!"

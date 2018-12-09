@@ -3,18 +3,12 @@
 #include "Region/Region.hpp"
 #include "cities.hpp"
 #include "KMeans/KMeans.hpp"
+#include "gettext.hpp"
 #include <algorithm>
 #include <memory>
 #include <vector>
 
-#include <libintl.h>
-#include <locale.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include <string.h>
-
-#define _(STRING) gettext(STRING)
 
 int main(int argc, char *argv[]) {
   setlocale(LC_ALL, "");
@@ -57,7 +51,11 @@ int main(int argc, char *argv[]) {
   }
   auto subregions = polska.makeSubregions(numberOfSubregions);
 
-  std::cout << "Number of subregions: " << subregions.size() << "\n";
+  const char* numberOfSubregionsLine = _("Number of subregions: %s");
+  char buf[1024];
+  sprintf(buf, numberOfSubregionsLine, std::to_string(subregions.size()).c_str());
+  std::string numberOfSubregionsLineAsString{buf};
+  std::cout << numberOfSubregionsLineAsString << "\n";
 
   for (auto subregion : subregions) {
       std::cout << "===============\n";

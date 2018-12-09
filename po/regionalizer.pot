@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-19 18:42+0100\n"
+"POT-Creation-Date: 2018-12-09 11:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.cpp:20
+#: src/main.cpp:54
+#, c-format
+msgid "Number of subregions: %s"
+msgstr ""
+
+#: src/Region/Region.cpp:177
+#, c-format
+msgid "The capital is %s"
+msgstr ""
+
+#: src/Region/Region.cpp:183
+#, c-format
+msgid "The longest distance is %s km, between %s and %s"
+msgstr ""
+
+#: src/main.cpp:44
 msgid "This is regionalizer"
+msgstr ""
+
+#: src/Region/Region.cpp:189
+#, c-format
+msgid "This region has %s cities."
 msgstr ""

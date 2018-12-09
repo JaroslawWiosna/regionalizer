@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-19 18:42+0100\n"
+"POT-Creation-Date: 2018-12-09 11:38+0100\n"
 "PO-Revision-Date: 2017-10-17 21:43+0200\n"
 "Last-Translator: JaroslawWiosna <179892@edu.p.lodz.pl>\n"
 "Language-Team: Polish\n"
@@ -18,9 +18,29 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: src/main.cpp:20
+#: src/main.cpp:54
+#, c-format
+msgid "Number of subregions: %s"
+msgstr "Liczba podregionów: %s"
+
+#: src/Region/Region.cpp:177
+#, c-format
+msgid "The capital is %s"
+msgstr "Stolica to %s"
+
+#: src/Region/Region.cpp:183
+#, c-format
+msgid "The longest distance is %s km, between %s and %s"
+msgstr "Najdłuższy dystans wynosi %s km, pomiędzy %s i %s"
+
+#: src/main.cpp:44
 msgid "This is regionalizer"
-msgstr ""
+msgstr "To jest regionalizer"
+
+#: src/Region/Region.cpp:189
+#, c-format
+msgid "This region has %s cities."
+msgstr "Liczba miast tego regionu to %s"
 
 #~ msgid "Aborting...."
 #~ msgstr "Przerywam..."
