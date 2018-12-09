@@ -4,7 +4,7 @@
 #include <memory>
 #include <random>
 
-void KMeans(std::vector<std::shared_ptr<City>> vec, int number) {
+void KMeans(const std::vector<std::shared_ptr<City>>& vec, int number) {
     static std::random_device rd;
     static std::mt19937 rng(rd());
     std::uniform_int_distribution<int> uni(1, vec.size());

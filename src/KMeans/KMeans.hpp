@@ -3,4 +3,4 @@
 #include <memory>
 class City;
 
-void KMeans(std::vector<std::shared_ptr<City>> vec, int number);
+void KMeans(const std::vector<std::shared_ptr<City>>& vec, int number);

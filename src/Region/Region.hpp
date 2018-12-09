@@ -40,7 +40,7 @@ private:
 
 struct Subregion {
     explicit Subregion(std::shared_ptr<City> capital) : capital{capital}, cities{} {}
-    explicit Subregion(std::shared_ptr<City> capital, std::vector<std::shared_ptr<City>> cities) : capital{capital}, cities{cities} {}
+    explicit Subregion(std::shared_ptr<City> capital, const std::vector<std::shared_ptr<City>>& cities) : capital{capital}, cities{cities} {}
     std::shared_ptr<City> capital;
     std::vector<std::shared_ptr<City>> cities;
 };
